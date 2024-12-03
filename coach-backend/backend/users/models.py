@@ -36,14 +36,12 @@ class User(AbstractUser):
     """Custom User model."""
 
     USER_TYPE_CHOICES = [
-        ("Administrator", _("Administrator")),
-        ("User", _("User")),
-        ("Developer", _("Developer")),
-        ("Investor", _("Investor")),
+        ("User", _("Coach")),
+        ("Client", _("Client")),
     ]
 
-    fullname = CharField(_("Full Name"), max_length=255)
-    user_type = CharField(_("User Type"), max_length=50, choices=USER_TYPE_CHOICES, default="User")
+    fullname = CharField(_("Full Name"), max_length=255, default="John Doe")
+    user_type = CharField(_("User Type"), max_length=50, choices=USER_TYPE_CHOICES, default="Client")
     phone_number = models.CharField(_("Phone Number"), max_length=20, blank=True)
     email = EmailField(_("Email Address"), unique=True)
     username = None  # Remove the default username field
@@ -59,7 +57,7 @@ class User(AbstractUser):
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
-    objects: ClassVar[EncryptedUserManager] = EncryptedUserManager()
+    objects: ClassVar[UserManager] = UserManager()
 
     def get_absolute_url(self) -> str:
         """Get URL for user's detail view."""

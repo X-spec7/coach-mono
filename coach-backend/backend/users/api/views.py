@@ -56,12 +56,11 @@ class RegisterView(APIView):
             firstName = data["first_name"]
             lastName = data["last_name"]
             role = data["user_type"]
-            phoneNumber = data["phone_number"]
             email = data["email"]
             password = data["password"]
 
             if password:
-                if len(password) >= 8:
+                if len(password) >= 6:
                     if not User.objects.filter(email=email).exists():
                         user = User.objects.create_user(
                             email=email,
@@ -69,7 +68,6 @@ class RegisterView(APIView):
                             first_name=firstName,
                             last_name=lastName,
                             user_type=role,
-                            phone_number=phoneNumber,
                             password=password,
                         )
                         if User.objects.filter(email=email).exists():
@@ -122,7 +120,7 @@ class RegisterView(APIView):
 class MailVerifyView(APIView):
     def post(self, request):
         user = request.user
-        user.mail_verify_statu = True
+        user.email_verified = True
         user.save()
         return Response({"success": "Email verified"}, status=status.HTTP_200_OK)
 
@@ -183,7 +181,7 @@ class LoginView(APIView):
             user = authenticate(request, email=email, password=password)
             print("user=====>", user)
             if user is not None:
-                if user.mail_verify_statu:
+                if user.email_verified:
                     login(request, user)
                     refresh = RefreshToken.for_user(user)
                     return Response(
