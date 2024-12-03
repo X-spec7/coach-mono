@@ -10,6 +10,7 @@ from .managers import UserManager
 
 
 class EncryptedUserManager(BaseUserManager):
+    """Custom manager for the User model."""
     def create_user(self, email, password=None, **extra_fields):
         if not email:
             raise ValueError("The Email field must be set")
@@ -32,39 +33,38 @@ class EncryptedUserManager(BaseUserManager):
 
 
 class User(AbstractUser):
+    """Custom User model."""
 
     USER_TYPE_CHOICES = [
-        ("Administrator", "Administrator"),
-        ("User", "User"),
-        ("Developer", "Developer"),
-        ("Investor", "Investor"),
+        ("Administrator", _("Administrator")),
+        ("User", _("User")),
+        ("Developer", _("Developer")),
+        ("Investor", _("Investor")),
     ]
 
-    # First and last name do not cover name patterns around the globe
-    fullname = CharField(max_length=255, default="John Doe")
-    name = CharField(_("Name of User"), blank=True, max_length=255)
-    first_name = models.CharField(_("firstName of User"), blank=True, max_length=100)
-    last_name = models.CharField(_("lastName of User"), blank=True, max_length=100)
-    user_type = CharField(max_length=50, choices=USER_TYPE_CHOICES, default="User")
-    phoneNumber = models.CharField(
-        _("phone Number of User"), blank=True, max_length=255
+    fullname = CharField(_("Full Name"), max_length=255)
+    user_type = CharField(_("User Type"), max_length=50, choices=USER_TYPE_CHOICES, default="User")
+    phone_number = models.CharField(_("Phone Number"), max_length=20, blank=True)
+    email = EmailField(_("Email Address"), unique=True)
+    username = None  # Remove the default username field
+    profile_info = models.TextField(_("Profile Information"), blank=True)
+    user_image = models.ImageField(
+        _("User Image"),
+        upload_to="user_images/",
+        null=True,
+        blank=True,
     )
-    email = EmailField(_("email address"), unique=True)
-    username = None  # type: ignore[assignment]
-    profile_info = models.TextField(blank=True)
-    user_image = models.ImageField(upload_to="media/user_images", null=True, blank=True)
-    mail_verify_statu = models.BooleanField(default=False)
+    email_verified = models.BooleanField(_("Email Verified"), default=False)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
-    objects: ClassVar[UserManager] = UserManager()
+    objects: ClassVar[EncryptedUserManager] = EncryptedUserManager()
 
     def get_absolute_url(self) -> str:
-        """Get URL for user's detail view.
-
-        Returns:
-            str: URL for user detail.
-
-        """
+        """Get URL for user's detail view."""
         return reverse("users:detail", kwargs={"pk": self.id})
+
+    class Meta:
+        verbose_name = _("User")
+        verbose_name_plural = _("Users")

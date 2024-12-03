@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='user',
-            name='phoneNumber',
+            name='phone_number',
             field=models.CharField(blank=True, max_length=255, verbose_name='phone Number of User'),
         ),
         migrations.AddField(
