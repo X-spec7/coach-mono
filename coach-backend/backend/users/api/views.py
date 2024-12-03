@@ -53,10 +53,10 @@ class RegisterView(APIView):
     def post(self, request):
         try:
             data = request.data
-            firstName = data["firstName"]
-            lastName = data["lastName"]
+            firstName = data["first_name"]
+            lastName = data["last_name"]
             role = data["user_type"]
-            phoneNumber = data["phoneNumber"]
+            phoneNumber = data["phone_number"]
             email = data["email"]
             password = data["password"]
 
@@ -69,7 +69,7 @@ class RegisterView(APIView):
                             first_name=firstName,
                             last_name=lastName,
                             user_type=role,
-                            phoneNumber=phoneNumber,
+                            phone_number=phoneNumber,
                             password=password,
                         )
                         if User.objects.filter(email=email).exists():

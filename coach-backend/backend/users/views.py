@@ -31,7 +31,6 @@ class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     def get_object(self):
         return self.request.user
 
-
 user_update_view = UserUpdateView.as_view()
 
 
