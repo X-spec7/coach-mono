@@ -95,10 +95,10 @@ const RecentActivity = () => {
                   </AccordionHeader>
                   <AccordionBody className='pt-1.5 px-0 pb-0 border-0'>
                     <div className='text-gray-20 text-xs'>
-                      <div className='flex '>
-                        <ClockSvg width='13' height='13' />
+                      <div className='flex items-center'>
+                        <ClockSvg width='13' height='13' color='#878A94'/>
                         <p className='pl-1.5 pr-4'>{activity.duration}-minute</p>
-                        <FireSvg width='16' height='16' />
+                        <FireSvg width='16' height='16' color='#878A94'/>
                         <p className='pl-1.5'>{activity.calory} Cal</p>
                       </div>
                       <p className='break-word pt-1'>{activity.description}</p>

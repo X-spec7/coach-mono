@@ -1,4 +1,7 @@
 import React from 'react'
+import { usePathname } from 'next/navigation'
+
+import { BarbellSvg, BoulFoodSvg, CalendarSvg, ChartBarSvg, ChatTeardropDotsSvg, IdentificationBadgeSvg, MonitorSvg, SquaresFourSvg } from '@/components/shared/Svg'
 
 export const LogoutSvg = () => {
   return (
@@ -8,4 +11,82 @@ export const LogoutSvg = () => {
       <path fill-rule="evenodd" clip-rule="evenodd" d="M0.866117 0.866117C1.10054 0.631696 1.41848 0.5 1.75 0.5H6.125C6.47018 0.5 6.75 0.779822 6.75 1.125C6.75 1.47018 6.47018 1.75 6.125 1.75L1.75 1.75L1.75 14.25H6.125C6.47018 14.25 6.75 14.5298 6.75 14.875C6.75 15.2202 6.47018 15.5 6.125 15.5H1.75C1.41848 15.5 1.10054 15.3683 0.866117 15.1339C0.631696 14.8995 0.5 14.5815 0.5 14.25V1.75C0.5 1.41848 0.631696 1.10054 0.866117 0.866117Z" fill="#757D83"/>
     </svg>
   )
+}
+
+interface NavbarSvgProps {
+  route: string
+  isItemActive: boolean
+}
+
+export const NavbarSvg = ({ route, isItemActive }: NavbarSvgProps) => {
+
+    switch (route) {
+      case '/dashboard':
+        return (
+          <SquaresFourSvg
+            width='20'
+            height='20'
+            color={isItemActive ? '#212738' : '#757D83'}
+          />
+        )
+      case '/statistics':
+        return (
+          <ChartBarSvg
+            width='20'
+            height='20'
+            color={isItemActive ? '#212738' : '#757D83'}
+          />
+        )
+      case '/exercises':
+        return (
+          <BarbellSvg
+            width='20'
+            height='20'
+            color={isItemActive ? '#212738' : '#757D83'}
+          />
+        )
+      case '/schedule':
+        return (
+          <CalendarSvg
+            width='20'
+            height='20'
+            color={isItemActive ? '#212738' : '#757D83'}
+          />
+        )
+      case '/classes':
+        return (
+          <MonitorSvg
+            width='20'
+            height='20'
+            color={isItemActive ? '#212738' : '#757D83'}
+          />
+        )
+      case '/trainers':
+        return (
+          <IdentificationBadgeSvg
+            width='20'
+            height='20'
+            color={isItemActive ? '#212738' : '#757D83'}
+          />
+        )
+      case '/messages':
+        return (
+          <ChatTeardropDotsSvg
+            width='20'
+            height='20'
+            color={isItemActive ? '#212738' : '#757D83'}
+          />
+        )
+      case '/meal-plan':
+        return (
+          <BoulFoodSvg
+            width='20'
+            height='20'
+            color={isItemActive ? '#212738' : '#757D83'}
+          />
+        )
+        
+
+    }
+
 }
