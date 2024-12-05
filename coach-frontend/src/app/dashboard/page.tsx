@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Dashboard from "@/components/dashboard";
 
 export const metadata: Metadata = {
   title:
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 const Home: React.FC = () => {
   return (
     <>
-      <div>Dashboard</div>
+      <Dashboard />
     </>
   );
 }

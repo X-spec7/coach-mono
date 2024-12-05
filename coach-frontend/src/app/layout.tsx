@@ -4,7 +4,7 @@ import "flatpickr/dist/flatpickr.min.css";
 import "@/css/satoshi.css";
 import "@/css/style.css";
 import React, { useEffect, useState } from "react";
-import Loader from "@/components/common/Loader";
+import Loader from "@/components/shared/Loader";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
 
 export default function RootLayout({
@@ -24,13 +24,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning={true}>
-        <div className="dark:bg-boxdark-2 dark:text-bodydark">
+        <>
           {
             loading 
             ? <Loader />
             : <DefaultLayout>{children}</DefaultLayout>
           }
-        </div>
+        </>
       </body>
     </html>
   );

@@ -1,7 +1,10 @@
 DB_URL=postgresql://root:secret@localhost:5432/coach?sslmode=disable
 
-start-postgres:
+run-postgres:
 	docker run --name postgres14 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:14-alpine
+
+start-postgres:
+	docker start postgres14
 
 stop-postgres:
 	docker stop postgres14

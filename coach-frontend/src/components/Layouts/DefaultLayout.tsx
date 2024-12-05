@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import Sidebar from "@/components/Layouts/Sidebar";
 
@@ -10,16 +11,16 @@ export default function DefaultLayout({
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <>
-      <div className="flex">
+      <div className="flex w-full min-h-screen bg-gray-bg">
         {/* <!-- ===== Sidebar Start ===== --> */}
         <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         {/* <!-- ===== Sidebar End ===== --> */}
 
         {/* <!-- ===== Content Area Start ===== --> */}
-        <div className="relative flex flex-1 flex-col lg:ml-72.5">
+        <div className="relative flex-1">
 
-          <main>
-            <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+          <main className="h-[calc(100%-32px)]">
+            <div className="mx-auto h-full">
               {children}
             </div>
           </main>
