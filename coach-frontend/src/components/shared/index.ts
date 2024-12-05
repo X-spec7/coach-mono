@@ -1,3 +1,5 @@
-export { default as ClickOutside } from "./ClickOutside";
-export { default as Breadcrumb } from "./Breadcrumbs";
-export { default as SearchField } from "./Search";
+export { default as ClickOutside } from './ClickOutside'
+export { default as Breadcrumb } from './Breadcrumbs'
+export { default as SearchField } from './Search'
+export { PrimaryButton as PrimaryButton, AddButton as AddButton } from './Button'
+export { Tick as Tick } from './Tick'

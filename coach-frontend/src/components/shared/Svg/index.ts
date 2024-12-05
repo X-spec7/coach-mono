@@ -1,0 +1,7 @@
+export { default as HeartBeatSvg } from './HeartBeat'
+export { default as ClockSvg } from './Clock'
+export { default as FireSvg } from './Fire'
+export { default as CaretUpSvg } from './CaretUp'
+export { default as CaretDownSvg } from './CaretDown'
+export { default as FootPrintSvg } from './FootPrint'
+export { default as ChartBarSvg } from './ChartBar'
