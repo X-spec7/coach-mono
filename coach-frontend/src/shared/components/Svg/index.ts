@@ -13,6 +13,4 @@ export { default as CoinVerticalSvg } from './CoinVertical'
 export { default as ChatTeardropDotsSvg } from './ChatTeardropDots'
 export { default as CalendarSvg } from './Calendar'
 export { default as BoulFoodSvg } from './BoulFood'
-
-// TODO: figure out the exact behaviour
 export { default as BarbellSvg } from './Barbell'

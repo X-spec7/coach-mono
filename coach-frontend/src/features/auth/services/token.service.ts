@@ -1,13 +1,19 @@
 class TokenService {
   getLocalAccessToken() {
-    const token = localStorage.getItem('access_token')
-    return token
+    if (typeof window !== "undefined") {
+      const token = localStorage.getItem('access_token')
+      return token
+    }
   }
   setLocalAccessToken(token: string) {
-    localStorage.setItem('access_token', token)
+    if (typeof window !== undefined) {
+      localStorage.setItem('access_token', token)
+    }
   }
   removeLocalAccessToken() {
-    localStorage.removeItem('access_token')
+    if (typeof window !== undefined) {
+      localStorage.removeItem('access_token')
+    }
   }
 }
 

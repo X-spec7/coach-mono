@@ -3,9 +3,9 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { useAppDispatch } from '@/redux/hook'
 
 import { registerAsync } from '../../authSlice/authSlice'
-import { useAppDispatch } from '@/redux/hook'
 import { RegisterPayloadDTO } from '../../types/authTypes'
 
 const SignUpPage: React.FC = () => {

@@ -10,20 +10,20 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   const [token, setToken] = useState<string | null>()
 
-  useEffect(() => {
-    const token = localStorage.getItem("token")
-    setToken(token)
-    if (!token) {
-      // Redirect to SignIn page if there's no token
-      router.push("/signin");
-    }
-  }, [router]);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token")
+  //   setToken(token)
+  //   if (!token) {
+  //     // Redirect to SignIn page if there's no token
+  //     router.push("/signin");
+  //   }
+  // }, [router]);
 
-  if (token === null) {
-    return (
-      <></>
-    )
-  }
+  // if (token === null) {
+  //   return (
+  //     <></>
+  //   )
+  // }
 
   return (
     <DefaultLayout>
