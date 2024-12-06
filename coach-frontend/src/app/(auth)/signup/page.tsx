@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const SignUp: React.FC = () => {
   return (
 
-      <div className="rounded-sm border border-stroke bg-white shadow-default max-w-screen-md">
+      <div className="rounded-sm border border-stroke bg-white shadow-default min-w-150">
         <div className="flex flex-wrap items-center w-full">
 
           <div className="w-full border-stroke xl:border-l-2">

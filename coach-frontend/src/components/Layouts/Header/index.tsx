@@ -72,7 +72,7 @@ const Header = (props: HeaderProps) => {
         </div>
 
         <div className="flex flex-col justify-between items-start">
-          <h4 className="text-black text-2xl">{props.title}</h4>
+          <h3 className="text-black text-2xl">{props.title}</h3>
           <p className="text-gray-20 text-xs">{props.description}</p>
         </div>
 

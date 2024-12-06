@@ -1,7 +1,9 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Header } from '../Layouts'
+import { Header, Footer } from '../../Layouts'
+import RightSideBar from './RightSideBar'
+import DashboardContent from './DashboardContent'
 
 const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -16,11 +18,10 @@ const Dashboard = () => {
           title='Hello, Mario Rossi!  👋'
           description='Welcome and Let’s do some workout today!'
         />
-        <div className='h-full'></div>
+        <DashboardContent />
+        <Footer />
       </div>
-      <div className='w-85 bg-white rounded-4xl'>
-
-      </div>
+      <RightSideBar />
     </div>
   )
 }
