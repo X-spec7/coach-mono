@@ -4,8 +4,8 @@ import 'flatpickr/dist/flatpickr.min.css'
 import '@/css/satoshi.css'
 import '@/css/style.css'
 import React, { useEffect, useState } from 'react'
-import Loader from '@/components/shared/Loader'
-import { LayoutProps } from '@/types/common'
+import Loader from '@/shared/components/Loader'
+import { LayoutProps } from '@/shared/types/common'
 
 const RootLayout: React.FC<LayoutProps> = ({ children }) => {
   const [loading, setLoading] = useState<boolean>(true)

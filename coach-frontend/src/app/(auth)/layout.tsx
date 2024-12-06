@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { LayoutProps } from '@/types/common'
+import { LayoutProps } from '@/shared/types/common'
 
 const Layout: React.FC<LayoutProps> = ({children}) => {
   return (
