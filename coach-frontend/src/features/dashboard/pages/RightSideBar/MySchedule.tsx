@@ -11,8 +11,6 @@ const scheduleOverviewDummyData = scheduleDummyData.length > 3 ? scheduleDummyDa
 interface ScheduleOverviewProps extends Omit<Schedule, 'tutorName' | 'day'>{}
 
 const ScheduleOverview:React.FC<ScheduleOverviewProps> = ({title, description, time, completed}) => {
-  console.log('time: ', time)
-  console.log('now: ', Date.now())
 
   const timeIn12HourFormat = formatTimeTo12Hour(time)
 

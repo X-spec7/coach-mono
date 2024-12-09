@@ -2,6 +2,7 @@ import { Class, ClassLevel } from "@/shared/types"
 
 import { HeartBeatSvg } from "@/shared/components/Svg"
 import KebabMenu from "@/shared/components/Menu/KebabMenu"
+import { UserCircleSvg } from "@/shared/components/Svg"
 
 interface ClassCardProps extends Omit<Class, 'durationPerSession' | 'price'>{}
 
@@ -35,8 +36,8 @@ const ClassCard: React.FC<ClassCardProps> = ({ category, title, tutor, videoNumb
           <h3 className='text-black text-xs font-bold'>
             {title}
           </h3>
-          <div className='flex justify-start gap-4 items-center text-gray-20 text-[11px]'>
-            {/* avatar */}
+          <div className='flex justify-start gap-1 items-center text-gray-20 text-[11px]'>
+            <UserCircleSvg width="14" height="14" color="#878A94"/>
             {tutor}
           </div>
         </div>

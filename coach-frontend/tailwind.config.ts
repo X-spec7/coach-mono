@@ -44,8 +44,8 @@ const config: Config = {
         yellow: {
           DEFAULT: "#FFF080",
           dark: "#E3D46B",
-          light: "FFF7B8",
-          subtle: "FFFCE0",
+          light: "#FFF7B8",
+          subtle: "#FFFCE0",
         },
         green: {
           DEFAULT: "#DAF17E",
@@ -137,6 +137,7 @@ const config: Config = {
         35: "8.75rem",
         36.5: "9.125rem",
         37.5: "9.375rem",
+        38: "9.625rem",
         39: "9.75rem",
         39.5: "9.875rem",
         40: "10rem",
@@ -479,6 +480,14 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  // plugins: [
+  //   function ({ addUtilities }) {
+  //     addUtilities({
+  //       '.apexcharts-bar-area:hover': {
+  //         fill: '#FF0099 !important',
+  //       },
+  //     });
+  //   },
+  // ],
 };
 export default config;

@@ -1,5 +1,6 @@
-import React from 'react';
 import { Metadata } from 'next';
+
+import ClassesPage from '@/features/classes';
 
 export const metadata: Metadata = {
   title:
@@ -7,12 +8,12 @@ export const metadata: Metadata = {
   description: "This is Classes for COA-CH",
 };
 
-const ClassesPage: React.FC = () => {
+const Classes: React.FC = () => {
   return (
-    <div>
-      Classes
-    </div>
+    <>
+      <ClassesPage />
+    </>
   )
 }
 
-export default ClassesPage
+export default Classes

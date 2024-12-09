@@ -1,13 +1,11 @@
-import React from 'react'
+'use client'
 
-import { Progress } from '@/shared/types'
+import React from 'react'
+import ReactApexChart from 'react-apexcharts'
+
 import { ClassCategory } from '@/shared/types'
 
-interface ProgressPanelProps {
-  cardioProgress: Progress
-  strengthProgress: Progress
-  flexibilityProgress: Progress
-}
+import { radialApexChartOptions } from './chart'
 
 const totalProgress = 75
 
@@ -84,8 +82,8 @@ const TrainingProgressComponent: React.FC<TrainingProgressComponentProps> = ({ca
 
 const ProgressPanel = () => {
   return (
-    <div className='flex flex-col items-center gap-4 w-full h-[520px] bg-white rounded-20 px-4 pt-4 pb-5'>
-      <div className='flex justify-between w-full items-center'>
+    <div className='flex flex-col items-center w-full h-[520px] bg-white rounded-20 px-4 pt-4 pb-5'>
+      <div className='flex justify-between w-full items-center mb-4'>
         <h3 className='text-black text-base font-medium'>Progress</h3>
         {/* TODO: should be replaced with dropdown button */}
         <div className='flex justify-center items-center w-22 h-8 rounded-20 bg-green text-center text-gray-30 font-medium text-xxs'>This Week</div>
@@ -96,20 +94,30 @@ const ProgressPanel = () => {
         <p className='text-xxs text-gray-20'>Goal Completion</p>
       </div>
 
-      <div className='flex items-center text-center w-48 h-48 rounded-full border-red-30 border mb-[6px]'>Progress Circle Component</div>
+      <ReactApexChart
+        options={radialApexChartOptions}
+        series={[trainingProgressDummyData[0].progress, trainingProgressDummyData[1].progress, trainingProgressDummyData[2].progress]}
+        type="radialBar"
+        width={192}
+        height={192}
+      />
+      
+      {/* <div className='flex items-center text-center w-48 h-48 rounded-full border-red-30 border mb-[6px]'>Progress Circle Component</div> */}
 
-      {
-        trainingProgressDummyData.map((progressData, index) => (
-          <TrainingProgressComponent
-            key={index}
-            category={progressData.category}
-            sessionName={progressData.sessionName}
-            totalSessionCount={progressData.totalSessionCount}
-            completedSessionCount={progressData.completedSessionCount}
-            progress={progressData.progress}
-          />
-        ))
-      }
+      <div className='flex flex-col items-center gap-4 w-full'>
+        {
+          trainingProgressDummyData.map((progressData, index) => (
+            <TrainingProgressComponent
+              key={index}
+              category={progressData.category}
+              sessionName={progressData.sessionName}
+              totalSessionCount={progressData.totalSessionCount}
+              completedSessionCount={progressData.completedSessionCount}
+              progress={progressData.progress}
+            />
+          ))
+        }
+      </div>
 
     </div>
   )

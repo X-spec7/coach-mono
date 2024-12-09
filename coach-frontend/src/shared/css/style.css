@@ -22,6 +22,10 @@
         scrollbar-width: none; /* Firefox */
     }
 
+    .apexcharts-bar-area:hover {
+        fill: #FFF080 !important;
+    }
+
     /* .chat-height {
         @apply h-[calc(100vh_-_8.125rem)] lg:h-[calc(100vh_-_5.625rem)];
     }

@@ -2,6 +2,7 @@ import React from 'react'
 import Profile from './Profile'
 import MySchedule from './MySchedule'
 import RecentActivity from './RecentActivity'
+import Calendar from './Calendar'
 
 const profileDummyData = {
   fullname: 'Mario Rossi',
@@ -23,10 +24,7 @@ const RightSideBar = () => {
         height={profileDummyData.height}
         age={profileDummyData.age}
       />
-
-      {/* TODO: should replace with Calender component */}
-      <div className='flex items-center justify-center h-72 rounded-20 border-red-30 border'>Calender</div>
-
+      <Calendar />
       <MySchedule />
       <RecentActivity />
     </div>

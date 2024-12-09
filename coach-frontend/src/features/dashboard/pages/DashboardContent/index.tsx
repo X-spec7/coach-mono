@@ -4,6 +4,7 @@ import Link from 'next/link'
 import ClassCard from './ClassCard'
 import ProgressPanel from './ProgressPanel'
 import MealPlan from './MealPlan'
+import { ActivityPanel, FootStepsPanel, HeartRatePanel, CaloriesPanel } from './chart-panel'
 import { classDummyData } from '@/dev/dummy-data'
 
 const dashboardClassDummyData = classDummyData.length > 3 ? classDummyData.slice(0, 2) : classDummyData
@@ -15,15 +16,23 @@ const DashboardContent = () => {
       <div className='flex flex-col flex-1 h-full'>
 
         {/* <-- Calorie Heart Rate Steps Chart Part --> */}
-        <div className='flex justify-between items-center gap-4 w-full'>
-          <div className='flex flex-1 justify-center items-center h-56 border-red-30 border rounded-4xl bg-white text-2xl text-black font-semibold'>Calories Chart</div>
-          <div className='flex flex-1 justify-center items-center h-56 border-red-30 border rounded-4xl bg-white text-2xl text-black font-semibold'>Heart Rate Chart</div>
-          <div className='flex flex-1 justify-center items-center h-56 border-red-30 border rounded-4xl bg-white text-2xl text-black font-semibold'>Steps Chart</div>
+        <div className='grid grid-cols-3 justify-between items-center gap-4 w-full'>
+          <div className='flex justify-center items-center h-56 rounded-4xl bg-white'>
+            <CaloriesPanel />
+          </div>
+
+          <div className='flex justify-center items-center h-56 rounded-4xl bg-white'>
+            <HeartRatePanel />
+          </div>
+
+          <div className='flex justify-center items-center h-56 rounded-4xl bg-white'>
+            <FootStepsPanel />
+          </div>
         </div>
 
         {/* <-- Activity Chart Part --> */}
-        <div className='flex justify-center items-center h-70 rounded-4xl bg-white mt-4 border-red-30 border'>
-          <p className='text-2xl text-black font-semibold'>Activity Chart</p>
+        <div className='flex justify-center items-center h-70 rounded-4xl bg-white mt-4'>
+          <ActivityPanel />
         </div>
 
         {/* <-- My Classes Part --> */}

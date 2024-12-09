@@ -5,10 +5,6 @@ export function formatTimeTo12Hour(date: string): string {
   let hours = dateObj.getHours()
   const minutes = dateObj.getMinutes()
 
-  console.log('dateObj: ', dateObj)
-  console.log('hours: ', hours)
-  console.log('minutes: ', minutes)
-
   const ampm = hours >= 12 ? 'PM' : 'AM'
   hours = hours % 12
   hours = hours ? hours : 12
@@ -33,4 +29,9 @@ export function toSnakeCase(obj: Record<string, any>): Record<string, any> {
   }
 
   return obj
+}
+
+export function capitalizeFirstLetter(str: string): string {
+  if (!str) return "";
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }

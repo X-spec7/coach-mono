@@ -78,7 +78,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
           {/* <!-- SIDEBAR HEADER --> */}
           <div className='flex items-center gap-2 pl-3'>
             <div className='bg-red-30 w-7 h-7 rounded-full'></div>
-            <Link href='/'>
+            <Link href='/dashboard'>
               <h2 className='text-black text-2xl font-semibold'>
                 COA-CH
               </h2>
