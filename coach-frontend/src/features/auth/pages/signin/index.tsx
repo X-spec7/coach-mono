@@ -46,9 +46,9 @@ const SignInPage: React.FC = () => {
   }
 
   return (
-    <div className='rounded-sm border border-stroke bg-white shadow-default max-w-screen-md'>
+    <div className='rounded-20 border border-stroke bg-white shadow-default max-w-screen-md'>
       <div className='flex flex-wrap items-center'>
-        <div className='w-full border-strokee xl:border-l-2'>
+        <div className='w-full'>
           <div className='w-full p-4 sm:p-12.5 xl:p-17.5'>
             <span className='mb-1.5 block font-medium'>Start for free</span>
             <h2 className='mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl'>
@@ -96,7 +96,7 @@ const SignInPage: React.FC = () => {
                 <button
                   type='submit'
                   disabled={loading}
-                  className='w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90'
+                  className='w-full cursor-pointer rounded-lg border border-green bg-green p-4 text-black text-xl font-medium transition hover:bg-opacity-90'
                 >
                   {loading ? 'Signing In...' : 'Sign In'}
                 </button>

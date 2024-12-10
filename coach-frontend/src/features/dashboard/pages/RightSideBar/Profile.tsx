@@ -1,5 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
+import { TitleWithEllipsis } from '@/shared/components'
 
 interface ProfileProps {
   fullname: string
@@ -43,14 +45,20 @@ const ProfileDetail: React.FC<ProfileDetailProps> = ({ label, value }) => {
 const profileAvatarUrl = '/images/user/user-01.png'
 
 const Profile: React.FC<ProfileProps> = ({fullname, level, number, weight, height, age}) => {
+  const router = useRouter()
+
+  const onClickEllipsis = (menu: string) => {
+    const routerName = menu.toLowerCase()
+    router.push(`/${routerName}`)
+  }
+  
   return (
     <div className='flex flex-col justify-start gap-5 pb-2 px-1.5'>
-      {/* <!-- Title --> */}
-      <div className='flex justify-between items-center'>
-        <h3 className='text-black font-medium'>My Profile</h3>
-        {/* TODO: should replace with ellipsis menu */}
-        <span>...</span>
-      </div>
+      <TitleWithEllipsis
+        title='My Profile'
+        menus={['Profile']}
+        onClick={onClickEllipsis}
+      />
 
       {/* <!-- Profile Overview --> */}
       <div className='flex justify-center items-center gap-4'>
