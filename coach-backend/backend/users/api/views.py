@@ -15,13 +15,19 @@ from backend.users.models import User
 from .serializers import UserSerializer, LoginSerializer
 
 def send_mail(email, content):
+    apiKey = os.getenv("ELASTIC_API_KEY")
+    registeredEmail = os.getenv("ElASTIC_REGISTERED_EMAIL")
+
+    print("api key: ", apiKey)
+    print("registered email: ", registeredEmail)
+
     email_params = {
-        "apikey": os.getenv("MAIL_KEY"),
-        "from": "ka.tahara.dev@gmail.com",
+        "apikey": os.getenv("ELASTIC_API_KEY"),
+        "from": os.getenv("ElASTIC_REGISTERED_EMAIL"),
         "to": email,
-        "subject": "Email Verify - SoTru Account",
-        "body": f"{content}",
-        "isTransactional": True,
+        "subject": "Email Verify - Coach Account",
+        "bodyHtml": f"{content}",
+        # "isTransactional": True,
     }
 
     response = requests.post(
@@ -29,6 +35,46 @@ def send_mail(email, content):
         data=email_params,
     )
     return response
+
+def send_mailgun_mail(to_mail, content):
+    try:
+        MAILGUN_API_URL = "https://api.mailgun.net/v3/sandbox5023f2da06d8495cbcb235139417e7bf.mailgun.org/messages"
+        api_key = os.getenv("MAILGUN_API_KEY")
+
+        print('api key', api_key)
+        
+        FROM_EMAIL_ADDRESS = "John Doe <mercury.spec77@gmail.com>"
+
+        resp = requests.post(MAILGUN_API_URL, auth=("api", api_key),
+            data={"from": FROM_EMAIL_ADDRESS,
+            "to": to_mail, "subject": "Email verification", "text": f"{content}"})
+        return resp
+
+    except Exception as ex:
+        print(f"Mailgun error: {ex}")
+
+    # url = "https://api.postmarkapp.com/email"
+    # server_token = os.getenv("MAILGUN_KEY")
+
+    # # Define the email data
+    # email_data = {
+    #     "From": os.getenv("MAILGUN_REGISTERED_EMAIL"),
+    #     "To": to_mail,
+    #     "Subject": "Email Verification",
+    #     "TextBody": "Hey registering user.",
+    #     "HtmlBody": f"{content}",
+    #     "MessageStream": "outbound"
+    # }
+
+    # # Define headers
+    # headers = {
+    #     "Accept": "application/json",
+    #     "Content-Type": "application/json",
+    #     "X-Postmark-Server-Token": server_token,
+    # }
+
+    # response = requests.post(url, json=email_data, headers=headers)
+    # return response
 
 
 class UserViewSet(RetrieveModelMixin, ListModelMixin, UpdateModelMixin, GenericViewSet):
@@ -69,14 +115,20 @@ class RegisterView(APIView):
                             last_name=lastName,
                             user_type=role,
                             password=password,
+                            email_verified=True,
                         )
                         if User.objects.filter(email=email).exists():
                             # mail verify
                             refresh = RefreshToken.for_user(user)
+                            # response = send_mailgun_mail(
+                            #     email,
+                            #     f"{os.getenv('FRONT_URL')}/mail-verify/?token={str(refresh.access_token)}",
+                            # )
                             response = send_mail(
                                 email,
                                 f"{os.getenv('FRONT_URL')}/mail-verify/?token={str(refresh.access_token)}",
                             )
+                            print('response in send mail: ', response)
                             if response.status_code == 200:
                                 return Response(
                                     {
@@ -193,9 +245,10 @@ class LoginView(APIView):
                             "result": {
                                 "token": str(refresh.access_token),
                                 "user": {
-                                    "username": user.first_name,
+                                    "firstname": user.first_name,
+                                    "lastname": user.last_name,
                                     "email": user.email,
-                                    "permission": user.user_type,
+                                    "usertype": user.user_type,
                                     # Include any other user fields as needed
                                 },
                             },
