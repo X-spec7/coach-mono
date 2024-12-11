@@ -6,7 +6,7 @@ import RightSideBar from './RightSideBar'
 import DashboardContent from './DashboardContent'
 
 const Dashboard = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false)
   
   return (
     <div className="flex justify-between gap-4 p-4 h-full">
@@ -18,7 +18,9 @@ const Dashboard = () => {
           title='Hello, Mario Rossi!  👋'
           description='Welcome and Let’s do some workout today!'
         />
+
         <DashboardContent />
+        
         <Footer />
       </div>
       <RightSideBar />

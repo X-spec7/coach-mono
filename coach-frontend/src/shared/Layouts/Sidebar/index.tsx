@@ -1,9 +1,8 @@
 'use client'
 
 import React from 'react'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 
 import SidebarItem from '@/shared/Layouts/Sidebar/SidebarItem'
 import { ClickOutside } from '@/shared/components'

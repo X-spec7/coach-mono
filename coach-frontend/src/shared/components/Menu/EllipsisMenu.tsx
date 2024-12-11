@@ -2,7 +2,12 @@
 
 import React, { useState, useRef, useEffect } from "react"
 
-const EllipsisMenu = () => {
+interface EllipsisMenuProps {
+  menus: string[]
+  onClick?: (menu: string) => void
+}
+
+const EllipsisMenu: React.FC<EllipsisMenuProps> = ({ menus, onClick }) => {
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement | null>(null)
 
@@ -47,7 +52,8 @@ const EllipsisMenu = () => {
         </svg>
       </button>
 
-      {isOpen && (
+      {/* TODO: remove default values in future */}
+      {isOpen && menus.length == 0 && (
         <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-9999">
           <ul className="py-1">
             <li>
@@ -83,6 +89,30 @@ const EllipsisMenu = () => {
                 Option 3
               </button>
             </li>
+          </ul>
+        </div>
+      )}
+
+      {isOpen && menus.length != 0 && (
+        <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-9999">
+          <ul className="py-1">
+            {
+              menus.map((menu, index) => (
+                <li key={index}>
+                  <button
+                    className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
+                    onClick={() => {
+                      if(onClick) {
+                        onClick(menu)
+                      }
+                      setIsOpen(false)
+                    }}
+                  >
+                    {menu}
+                  </button>
+                </li>
+              ))
+            }
           </ul>
         </div>
       )}
