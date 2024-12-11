@@ -9,6 +9,7 @@ from rest_framework.views import APIView
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.permissions import AllowAny
 from rest_framework_simplejwt.tokens import RefreshToken
+from django_ratelimit.decorators import ratelimit
 
 from backend.users.models import User
 
@@ -91,7 +92,8 @@ class UserViewSet(RetrieveModelMixin, ListModelMixin, UpdateModelMixin, GenericV
         serializer = UserSerializer(request.user, context={"request": request})
         return Response(status=status.HTTP_200_OK, data=serializer.data)
 
-
+# TODO: increate rate limit 
+@ratelimit(key='ip', rate='5/min')
 class RegisterView(APIView):
     permission_classes = (permissions.AllowAny,)
     authentication_classes = ()
