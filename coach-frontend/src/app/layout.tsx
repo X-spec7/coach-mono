@@ -1,37 +1,41 @@
-"use client";
-import "jsvectormap/dist/jsvectormap.css";
-import "flatpickr/dist/flatpickr.min.css";
-import "@/css/satoshi.css";
-import "@/css/style.css";
-import React, { useEffect, useState } from "react";
-import Loader from "@/components/common/Loader";
-import DefaultLayout from "@/components/Layouts/DefaultLayout";
+'use client'
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [loading, setLoading] = useState<boolean>(true);
+import React, { useEffect, useState } from 'react'
+import { Provider } from 'react-redux'
+import { createStore } from '@/redux/store'
 
-  // const pathname = usePathname();
+import 'jsvectormap/dist/jsvectormap.css'
+import 'flatpickr/dist/flatpickr.min.css'
+
+import '../shared/css/style.css'
+import '../shared/css/satoshi.css'
+
+
+import Loader from '@/shared/components/Loader'
+import { LayoutProps } from '@/shared/types/common'
+
+const RootLayout: React.FC<LayoutProps> = ({ children }) => {
+  const store = createStore()
+
+  const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 1000);
-  }, []);
+    setTimeout(() => setLoading(false), 1000)
+  }, [])
 
   return (
-    <html lang="en">
+    <html lang='en'>
       <body suppressHydrationWarning={true}>
-        <div className="dark:bg-boxdark-2 dark:text-bodydark">
+        <>
           {
             loading 
             ? <Loader />
-            : <DefaultLayout>{children}</DefaultLayout>
+            : <Provider store={store}>{children}</Provider>
           }
-        </div>
+        </>
       </body>
     </html>
-  );
+  )
 }
+
+export default RootLayout
