@@ -1,5 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
+import SchedulePage from '@/features/schedule';
 
 export const metadata: Metadata = {
   title:
@@ -7,12 +8,10 @@ export const metadata: Metadata = {
   description: "This is Schedule for COA-CH",
 };
 
-const SchedulePage:React.FC = () => {
+const Schedule:React.FC = () => {
   return (
-    <div>
-      Schedule
-    </div>
+    <SchedulePage />
   )
 }
 
-export default SchedulePage
+export default Schedule

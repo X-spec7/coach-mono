@@ -1,4 +1,3 @@
-import React from 'react'
 import Profile from './Profile'
 import MySchedule from './MySchedule'
 import RecentActivity from './RecentActivity'

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Metadata } from 'next'
+import MessagesPage from '@/features/messages'
 
 export const metadata: Metadata = {
   title:
@@ -7,12 +8,10 @@ export const metadata: Metadata = {
   description: "This is Messages for COA-CH",
 }
 
-const MessagesPage: React.FC = () => {
+const Messages: React.FC = () => {
   return (
-    <div>
-      Messages
-    </div>
+    <MessagesPage />
   )
 }
 
-export default MessagesPage
+export default Messages

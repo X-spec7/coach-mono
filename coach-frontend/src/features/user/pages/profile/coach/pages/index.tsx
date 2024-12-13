@@ -1,19 +1,18 @@
 'use client'
 
-import { useState } from 'react'
-
 import { Header, Footer } from '@/shared/Layouts'
 import CoachProfileContent from './content/CoachProfileContent'
+import { useSelector } from 'react-redux'
+import { selectUser } from '@/features/user/userSlice/userSlice'
 
 const CoachProfilePage = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
 
+  const user = useSelector(selectUser)
+  
   return (
     <div className='flex flex-col items-center gap-4 w-full h-full p-4'>
       <Header
-        sidebarOpen={sidebarOpen}
-        setSidebarOpen={setSidebarOpen}
-        title='Hello, Mario Rossi!  👋'
+        title={`Hello, ${user.firstName} ${user.lastName}!  👋`}
         description='Let’s complete your wonderful today!'
       />
 

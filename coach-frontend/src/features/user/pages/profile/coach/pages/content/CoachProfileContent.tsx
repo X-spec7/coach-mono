@@ -1,9 +1,14 @@
 'use client'
 
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import Image from 'next/image'
+import { useAppDispatch } from '@/redux/hook'
+import { getProfileAsync, updateProfileAsync } from '@/features/user/userSlice/userSlice'
+import { ProfilePayloadDTO } from '@/features/user/types'
 
 const CoachProfileContent = () => {
+  const dispatch = useAppDispatch()
+
   const [avatar, setAvatar] = useState<string | ArrayBuffer | null>(null)
   const [banner, setBanner] = useState<string | ArrayBuffer | null>(null)
   const [formData, setFormData] = useState({
@@ -14,6 +19,8 @@ const CoachProfileContent = () => {
     experience: '',
     specialization: ''
   })
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>, type: string) => {
     const file = e.target.files?.[0]
@@ -30,6 +37,35 @@ const CoachProfileContent = () => {
   const handleInputChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target
     setFormData({ ...formData, [name]: value })
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    setError(null)
+
+    const formDataToSubmit: ProfilePayloadDTO = {
+      first_name: formData.firstName,
+      last_name: formData.lastName,
+      address: formData.address,
+      phone_number: formData.phone,
+      years_of_experience: Number(formData.experience),
+      specialization: formData.specialization,
+      avatar_image: avatar,
+      banner_image: banner,
+    }
+
+    try {
+      dispatch(updateProfileAsync(formDataToSubmit))
+        .unwrap()
+        .then((result) => {
+          setLoading(false)
+        })
+    } catch (err) {
+      console.log('Profile update error: ', err)
+      setError('Profile Update Failed')
+      setLoading(false)
+    }
   }
 
   return (
@@ -62,7 +98,7 @@ const CoachProfileContent = () => {
           </div>
         </div>
 
-        {/* Right Side - Input Fields */}
+        {/* Right Side - Avatar Image and Input Fields */}
         <div className='flex flex-col gap-4 w-1/2 max-w-125'>
           <label className='block text-gray-500'>Avatar Image</label>
           <div
@@ -86,6 +122,7 @@ const CoachProfileContent = () => {
             )}
           </div>
 
+          {/* Text Inputs for User Info */}
           <input
             type='text'
             name='firstName'
@@ -137,6 +174,17 @@ const CoachProfileContent = () => {
             <option value='nutrition'>Nutrition</option>
             <option value='life-coach'>Life Coach</option>
           </select>
+
+          {/* Submit Button */}
+          <button
+            onClick={handleSubmit}
+            className='mt-6 bg-green text-black py-3 px-4 rounded-md'
+            disabled={loading}
+          >
+            {loading ? 'Updating...' : 'Update Profile'}
+          </button>
+
+          {error && <p className='text-red-500'>{error}</p>}
         </div>
       </div>
     </div>

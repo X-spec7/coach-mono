@@ -9,15 +9,10 @@ interface HealthScorePanelProps {
 
 const HealthScorePanel: React.FC<HealthScorePanelProps> = ({ percent, tag }) => {
   const wholeSegments = Math.floor(percent / 20)
-  console.log('whole segments: ', wholeSegments)
 
   const remainder = percent - 20 * wholeSegments
-  
-  console.log('remainder: ', remainder)
 
   const remainderPercent = remainder * 100 / 20
-
-  console.log('remainder percent: ', remainderPercent)
 
   return (
     <div className='flex flex-col justify-start items-start p-4 xl:py-8 bg-blue rounded-20'>
@@ -37,8 +32,6 @@ const HealthScorePanel: React.FC<HealthScorePanelProps> = ({ percent, tag }) => 
       <div className='flex justify-between items-center gap-2 w-full'>
         {Array.from({ length: 5 }, (_, i) => {
           const percent = i < wholeSegments ? 100 : (i - 1) < wholeSegments ? remainderPercent : 0
-
-          console.log(`${i}th percent: ${percent}`)
 
           return (
             <BasicProgressBar

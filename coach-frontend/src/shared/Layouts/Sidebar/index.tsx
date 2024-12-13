@@ -1,19 +1,15 @@
 'use client'
 
-import React from 'react'
-import { usePathname, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { setSidebarOpen, selectIsSidebarOpen } from '@/redux/globalAppSlice'
+import { useSelector, useDispatch } from 'react-redux'
 
 import SidebarItem from '@/shared/Layouts/Sidebar/SidebarItem'
 import { ClickOutside } from '@/shared/components'
 import useLocalStorage from '@/shared/hooks/useLocalStorage'
 
 import { LogoutSvg } from './Svg'
-
-interface SidebarProps {
-  sidebarOpen: boolean
-  setSidebarOpen: (arg: boolean) => void
-}
 
 const menuGroups = [
   {
@@ -55,23 +51,32 @@ const menuGroups = [
   },
 ]
 
-const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
+const Sidebar = () => {
   const router = useRouter()
-  const pathname = usePathname()
+  const dispatch = useDispatch()
+  
+  const isSidebarOpen = useSelector(selectIsSidebarOpen)
+
+  const handleToggleSidebar = () => {
+    dispatch(setSidebarOpen(false))
+  }
   
   const [pageName, setPageName] = useLocalStorage('selectedMenu', 'dashboard')
 
   const onLogout = () => {
-    localStorage.removeItem("token")
+    localStorage.removeItem("access_token")
     router.push('/signin')
   }
 
   return (
-    <ClickOutside onClick={() => setSidebarOpen(false)}>
+    <ClickOutside onClick={() => handleToggleSidebar()}>
       <aside
-        className={`flex flex-col justify-between w-55 h-[calc(100%-32px)] box-border my-4 ml-4 px-4 py-8 bg-white rounded-4xl overflow-y-hidden duration-300 ease-linear lg:translate-x-0 ${
-          sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
+        className={`
+          max-lg:fixed max-lg:top-0 max-lg:left-0 max-lg:z-99999
+          flex flex-col justify-between
+          h-[calc(100%-32px)] box-border my-4 ml-4 px-4 py-8 w-55 lg:translate-x-0
+          bg-white rounded-4xl max-lg:border-stroke max-lg:border-2
+          duration-200 ease-linear ${ isSidebarOpen ? "-translate-x-2" : "-translate-x-60"}`}
       >
         <div>
           {/* <!-- SIDEBAR HEADER --> */}
@@ -84,7 +89,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
             </Link>
 
             <button
-              onClick={() => setSidebarOpen(!sidebarOpen)}
+              onClick={() => handleToggleSidebar()}
               aria-controls='sidebar'
               className='block lg:hidden'
             >
@@ -128,7 +133,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
         </div>
         
         <div>
-          <div className='flex flex-col gap-4 p-4 bg-blue rounded-20'>
+          <div className='lg:flex lg:flex-col gap-4 p-4 bg-blue rounded-20 hidden'>
             <div className='h-8'>
               <div className='bg-red-30 w-8 h-8 rounded-full'></div>
             </div>

@@ -91,7 +91,7 @@ const CaloriesStatistics = () => {
         <CaloriesChart />
       </div>
 
-      <div className='grid grid-cols-4 gap-4 w-full'>
+      <div className='grid grid-cols-2 xl:grid-cols-4 gap-4 w-full'>
         {
           nutritionDummyData.map((nutrition, index) => {
             return (

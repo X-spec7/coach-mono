@@ -1,19 +1,23 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect } from 'react'
 
+import { useAppDispatch } from '@/redux/hook'
+import { getProfileAsync } from '@/features/user/userSlice/userSlice'
 import { Header, Footer } from '@/shared/Layouts'
 import ContentHeader from './content-header'
 import StatisticsContent from './content'
 
 const StatisticsPage = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(getProfileAsync())
+  }, [])
   
   return (
     <div className='flex flex-col gap-4 p-4'>
       <Header
-        sidebarOpen={sidebarOpen}
-        setSidebarOpen={setSidebarOpen}
         title='Statistics'
         description='Track Your Progress and Achievements'
       />

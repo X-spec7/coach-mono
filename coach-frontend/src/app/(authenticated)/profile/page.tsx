@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { CoachProfilePage } from '@/features/profile'
+import { CoachProfilePage } from '@/features/user/pages/profile'
 
 export const metadata: Metadata = {
   title:

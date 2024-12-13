@@ -1,5 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
+import MealPlanPage from '@/features/meal-plan';
 
 export const metadata: Metadata = {
   title:
@@ -7,12 +8,10 @@ export const metadata: Metadata = {
   description: "This is Meal Plan for COA-CH",
 };
 
-const MealPlanPage: React.FC = () => {
+const MealPlan: React.FC = () => {
   return (
-    <div>
-      Meal Plan
-    </div>
+    <MealPlanPage />
   )
 }
 
-export default MealPlanPage
+export default MealPlan
