@@ -1,4 +1,4 @@
-export { default as SignInPage } from './auth/pages/signin'
-export { default as SignUpPage } from './auth/pages/signup'
+export { default as SignInPage } from './user/pages/signin'
+export { default as SignUpPage } from './user/pages/signup'
 
 export { default as Dashboard } from './dashboard/pages'

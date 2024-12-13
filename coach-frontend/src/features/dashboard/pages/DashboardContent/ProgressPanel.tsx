@@ -82,7 +82,7 @@ const TrainingProgressComponent: React.FC<TrainingProgressComponentProps> = ({ca
 
 const ProgressPanel = () => {
   return (
-    <div className='flex flex-col items-center w-full h-[520px] bg-white rounded-20 px-4 pt-4 pb-5'>
+    <div className='flex flex-col flex-1 items-center h-[520px] bg-white rounded-20 px-4 pt-4 pb-5'>
       <div className='flex justify-between w-full items-center mb-4'>
         <h3 className='text-black text-base font-medium'>Progress</h3>
         {/* TODO: should be replaced with dropdown button */}

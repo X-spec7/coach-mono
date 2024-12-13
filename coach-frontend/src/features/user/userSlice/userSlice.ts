@@ -1,11 +1,10 @@
-
 import { PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
 import { createAppSlice } from '@/redux/createAppSlice'
 import { AxiosError } from 'axios'
 
-import authService from '../services/auth.service'
-import { LoginPayloadDTO, RegisterPayloadDTO, User } from '../types/authTypes'
-import tokenService from '../services/token.service'
+import { UserResponseDTO, LoginPayloadDTO, RegisterPayloadDTO, User, ProfilePayloadDTO } from '../types'
+import { convertJsonUserToObject } from '../utils'
+import { authService, tokenService, profileService } from '../services'
 
 export interface AuthSliceState {
   isAuthenticated: boolean
@@ -16,7 +15,7 @@ const initialUser: User = {
   firstName: '',
   lastName: '',
   userType: '',
-  email: ''
+  email: '',
 }
 const accessToken = tokenService.getLocalAccessToken()
 
@@ -26,7 +25,7 @@ const initialState: AuthSliceState = {
 }
 
 export const registerAsync = createAsyncThunk<AuthSliceState, RegisterPayloadDTO>(
-  'auth/register',
+  'authentication/register',
   async (registerPayload: RegisterPayloadDTO, thunkApi) => {
     try {
       const response = await authService.register(registerPayload)
@@ -34,23 +33,55 @@ export const registerAsync = createAsyncThunk<AuthSliceState, RegisterPayloadDTO
         return response
       }
     } catch (_error) {
-      const error = _error as Error | AxiosError;
+      const error = _error as Error | AxiosError
       console.log(error)
       thunkApi.rejectWithValue(error.message)
     }
   }
 )
 
-export const loginAsync = createAsyncThunk<AuthSliceState, LoginPayloadDTO>(
-  'auth/login',
+export const loginAsync = createAsyncThunk<UserResponseDTO, LoginPayloadDTO>(
+  'authentication/login',
   async (loginPayload: LoginPayloadDTO, thunkApi) => {
     try {
       const response = await authService.login(loginPayload)
       if (response.status === 200) {
-        return response
+        return response.data.result.user
       }
     } catch (_error) {
-      const error = _error as Error | AxiosError;
+      const error = _error as Error | AxiosError
+      console.log(error)
+      thunkApi.rejectWithValue(error.message)
+    }
+  }
+)
+
+export const updateProfileAsync = createAsyncThunk<UserResponseDTO, ProfilePayloadDTO>(
+  'authentication/profile/update',
+  async (profileUpdatePayload: ProfilePayloadDTO, thunkApi) => {
+    try {
+      const response = await profileService.updateProfile(profileUpdatePayload)
+      if (response.status === 200) {
+        return response.data.result.user
+      }
+    } catch (_error) {
+      const error = _error as Error | AxiosError
+      console.log(error)
+      thunkApi.rejectWithValue(error.message)
+    }
+  }
+)
+
+export const getProfileAsync = createAsyncThunk<UserResponseDTO>(
+  'authentication/profile/get',
+  async (_, thunkApi) => {
+    try {
+      const response = await profileService.getProfile()
+      if (response.status === 200) {
+        return response.data.user
+      }
+    } catch (_error) {
+      const error = _error as Error | AxiosError
       console.log(error)
       thunkApi.rejectWithValue(error.message)
     }
@@ -76,10 +107,16 @@ export const authSlice = createAppSlice({
     builder
       .addCase(loginAsync.fulfilled, (state, { payload }) => {
         state.isAuthenticated = true
-        state.user = payload.user
+        state.user = convertJsonUserToObject(payload)
       })
       .addCase(loginAsync.rejected, (state) => {
         state.isAuthenticated = false
+      })
+      .addCase(updateProfileAsync.fulfilled, (state, { payload }) => {
+        state.user = convertJsonUserToObject(payload)
+      })
+      .addCase(getProfileAsync.fulfilled, (state, { payload }) => {
+        state.user = convertJsonUserToObject(payload)
       })
   },
   selectors: {
@@ -87,3 +124,5 @@ export const authSlice = createAppSlice({
     selectUser: (auth) => auth.user,
   }
 })
+
+export const { selectUser } = authSlice.selectors

@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useAppDispatch } from '@/redux/hook'
 
-import { loginAsync } from '../../authSlice/authSlice'
+import { loginAsync } from '../../userSlice/userSlice'
 
 const SignInPage: React.FC = () => {
   const router = useRouter()
@@ -34,7 +34,6 @@ const SignInPage: React.FC = () => {
         .unwrap()
         .then((result) => {
           setLoading(false)
-          console.log('login successfully: ', result)
           router.push('/dashboard')
         })
       

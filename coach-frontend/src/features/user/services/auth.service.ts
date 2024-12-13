@@ -1,13 +1,13 @@
-import { toSnakeCase } from '@/shared/utils/format'
 import httpPublic from '@/shared/services/httpPublic'
 
 import tokenService from './token.service'
-import { LoginPayloadDTO, RegisterPayloadDTO } from '../types/authTypes'
+import { LoginPayloadDTO, RegisterPayloadDTO } from '../types'
 
 class AuthService {
   async register(payload: RegisterPayloadDTO) {
+
     return httpPublic
-      .post('/authentication/register/', toSnakeCase(payload))
+      .post('/authentication/register/', payload)
       .then((response) => {
         return response.data
       })
@@ -20,7 +20,7 @@ class AuthService {
         if (response.data.result.token) {
           tokenService.setLocalAccessToken(response.data.result.token)
         }
-        return response.data
+        return response
       })
   }
 

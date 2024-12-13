@@ -1,5 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
+import TrainersPage from '@/features/trainers';
 
 export const metadata: Metadata = {
   title:
@@ -7,12 +8,10 @@ export const metadata: Metadata = {
   description: "This is Trainers for COA-CH",
 };
 
-const TrainersPage: React.FC = () => {
+const Trainers: React.FC = () => {
   return (
-    <div>
-      Trainers
-    </div>
+    <TrainersPage />
   )
 }
 
-export default TrainersPage
+export default Trainers

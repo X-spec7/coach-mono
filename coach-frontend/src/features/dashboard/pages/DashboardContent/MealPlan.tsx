@@ -70,7 +70,7 @@ const mealPlanDummyData = mealDummyData.length > 3 ? mealDummyData.slice(0, 2) :
 
 const MealPlan = () => {
   return (
-    <div className='flex flex-col gap-4'>
+    <div className='flex flex-col gap-4 min-w-60'>
       <div className='flex justify-between items-center'>
         <h3 className='text-black font-medium'>Meal Plan</h3>
         <p className='text-black'>...</p>

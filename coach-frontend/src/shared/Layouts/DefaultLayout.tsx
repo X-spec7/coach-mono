@@ -1,6 +1,3 @@
-'use client'
-
-import React, { useState } from 'react'
 import Sidebar from '@/shared/Layouts/Sidebar'
 
 export default function DefaultLayout({
@@ -8,13 +5,12 @@ export default function DefaultLayout({
 }: {
   children: React.ReactNode
 }) {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
     <>
       <div className='flex w-full min-h-screen bg-gray-bg'>
         {/* <!-- ===== Sidebar Start ===== --> */}
-        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        <Sidebar />
         {/* <!-- ===== Sidebar End ===== --> */}
 
         {/* <!-- ===== Content Area Start ===== --> */}

@@ -1,7 +1,17 @@
-import React from 'react'
+'use client'
+
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { TitleWithEllipsis } from '@/shared/components'
+import { selectUser } from '@/features/user/userSlice/userSlice'
+import { useSelector } from 'react-redux'
+
+import * as dotenv from 'dotenv'
+
+dotenv.config()
+
+const baseUrl = process.env.BASE_URL
 
 interface ProfileProps {
   fullname: string
@@ -32,6 +42,7 @@ const getUnitByLabel = (label: Label): string => {
 }
 
 const ProfileDetail: React.FC<ProfileDetailProps> = ({ label, value }) => {
+
   const unit = getUnitByLabel(label)
 
   return (
@@ -42,16 +53,27 @@ const ProfileDetail: React.FC<ProfileDetailProps> = ({ label, value }) => {
   )
 }
 
-const profileAvatarUrl = '/images/user/user-01.png'
-
-const Profile: React.FC<ProfileProps> = ({fullname, level, number, weight, height, age}) => {
+const Profile: React.FC<ProfileProps> = ({ level, number, weight, height, age }) => {
   const router = useRouter()
+
+  const user = useSelector(selectUser)
+
+  const onLogout = () => {
+    localStorage.removeItem("access_token")
+    router.push('/signin')
+  }
+
+  const [isUserLoaded, setIsUserLoaded] = useState(() => !!(user && user.firstName !== ''))
+
+  useEffect(() => {
+    setIsUserLoaded(!!(user && user.firstName !== ''))
+  }, [user])
 
   const onClickEllipsis = (menu: string) => {
     const routerName = menu.toLowerCase()
     router.push(`/${routerName}`)
   }
-  
+
   return (
     <div className='flex flex-col justify-start gap-5 pb-2 px-1.5'>
       <TitleWithEllipsis
@@ -62,15 +84,35 @@ const Profile: React.FC<ProfileProps> = ({fullname, level, number, weight, heigh
 
       {/* <!-- Profile Overview --> */}
       <div className='flex justify-center items-center gap-4'>
-        <Image
-          width={48}
-          height={48}
-          src={profileAvatarUrl}
-          alt={`${fullname} avatar`}
-        />
+        {!isUserLoaded ? (
+          <div className='h-9 w-9 bg-gray-300 animate-pulse rounded-full'></div>
+        ) : (user.profilePicture ? (
+          <Image
+            width={36}
+            height={36}
+            src={baseUrl + user.profilePicture}
+            style={{
+              width: 'auto',
+              height: 'auto',
+            }}
+            alt='User'
+            className='rounded-full'
+          />
+        ) : (
+          <Image
+            width={36}
+            height={36}
+            src={'/images/user/user-01.png'}
+            style={{
+              width: 'auto',
+              height: 'auto',
+            }}
+            alt='User'
+          />
+        ))}
 
         <div>
-          <h4 className='text-lg text-black font-medium'>{fullname}</h4>
+          <h4 className='text-lg text-black font-medium'>{user.firstName} {user.lastName}</h4>
           {/* TODO: add svg images here */}
           <div className='flex justify-start items-center gap-1 text-gray-20 text-xs'>
             <p>{level}</p>

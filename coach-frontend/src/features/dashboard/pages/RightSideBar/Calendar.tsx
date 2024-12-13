@@ -29,7 +29,6 @@ function Calendar() {
   })
 
   const getPrevMonth = () => {
-    console.log('getting prev month')
     const firstDayOfPrevMonth = add(firstDayOfMonth, { months: -1 })
     setCurrMonth(format(firstDayOfPrevMonth, 'MMM-yyyy'))
   }

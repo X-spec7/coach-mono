@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 
 import ReactApexChart from 'react-apexcharts'
@@ -54,13 +56,13 @@ const FootstepBasicChart = () => {
         xaxis: {
           categories: ['Jan', '8', '9', '10', '11', '12', '13'],
           labels: {
-            show: true, // Ensure labels are enabled
+            show: true,
             style: {
-              colors: ['#BCBEC3'], // Array of colors for each label
+              colors: ['#BCBEC3'],
               fontSize: '12px'
             }
           },
-          tickPlacement: 'on', // Adjust the placement of ticks
+          tickPlacement: 'on',
         }
       },
   })

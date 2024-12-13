@@ -1,12 +1,37 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import ClickOutside from '@/shared/components/ClickOutside'
+import { selectUser } from '@/features/user/userSlice/userSlice'
+import { useSelector } from 'react-redux'
+
+import * as dotenv from 'dotenv'
+
+dotenv.config()
+
+const baseUrl = process.env.BASE_URL
 
 const DropdownUser = () => {
+  const router = useRouter()
+
+  const user = useSelector(selectUser)
+
   const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [isUserLoaded, setIsUserLoaded] = useState(false)
+
+  const onLogout = () => {
+    localStorage.removeItem("access_token")
+    router.push('/signin')
+  }
+
+  useEffect(() => {
+    if (user.firstName !== '') {
+      setIsUserLoaded(true)
+    }
+  }, [user])
 
   return (
     <ClickOutside onClick={() => setDropdownOpen(false)} className='relative'>
@@ -17,21 +42,37 @@ const DropdownUser = () => {
       >
 
         <span className='h-9 w-9 rounded-full'>
-          <Image
-            width={36}
-            height={36}
-            src={'/images/user/user-01.png'}
-            style={{
-              width: 'auto',
-              height: 'auto',
-            }}
-            alt='User'
-          />
+          {!isUserLoaded ? (
+            <div className='h-full w-full bg-gray-300 animate-pulse rounded-full'></div>
+          ) : (user.profilePicture ? (
+            <Image
+              width={36}
+              height={36}
+              src={baseUrl + user.profilePicture}
+              style={{
+                width: 'auto',
+                height: 'auto',
+              }}
+              alt='User'
+              className='rounded-full'
+            />
+          ) : (
+            <Image
+              width={36}
+              height={36}
+              src={'/images/user/user-01.png'}
+              style={{
+                width: 'auto',
+                height: 'auto',
+              }}
+              alt='User'
+            />
+          ))}
         </span>
 
         <span className='hidden text-right lg:block'>
           <span className='block text font-medium text-gray-30'>
-            Mario Rossi
+            {user.firstName} {user.lastName}
           </span>
         </span>
 
@@ -57,7 +98,7 @@ const DropdownUser = () => {
         <div
           className={`absolute right-0 mt-4 flex w-62.5 flex-col rounded-sm border border-stroke bg-white shadow-default z-999`}
         >
-          <ul className='flex flex-col gap-5 border-b border-stroke px-6 py-7.5'>
+          <ul className='flex flex-col gap-5 border-b border-stroke px-6 py-7.5 text-gray-30'>
             <li>
               <Link
                 href='/profile'
@@ -130,7 +171,7 @@ const DropdownUser = () => {
               </Link>
             </li>
           </ul>
-          <button className='flex items-center gap-3.5 px-6 py-4 text-sm text:black font-medium duration-300 ease-in-out hover:text-blue-dark lg:text-base'>
+          <button className='flex items-center gap-3.5 px-6 py-4 text-sm text:black font-medium duration-300 ease-in-out hover:text-blue-dark lg:text-base' onClick={onLogout}>
             <svg
               className='fill-current'
               width='22'

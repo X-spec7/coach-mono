@@ -12,11 +12,11 @@ const dashboardClassDummyData = classDummyData.length > 3 ? classDummyData.slice
 const DashboardContent = () => {
 
   return (
-    <div className='flex gap-4 h-full mt-4'>
-      <div className='flex flex-col flex-1 h-full'>
+    <div className='flex flex-col md:flex-row gap-4 h-full mt-4'>
 
+      <div className='flex flex-col flex-1 h-full'>
         {/* <-- Calorie Heart Rate Steps Chart Part --> */}
-        <div className='grid grid-cols-3 justify-between items-center gap-4 w-full'>
+        <div className='grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 justify-between items-center gap-4 w-full'>
           <div className='flex justify-center items-center h-56 rounded-4xl bg-white'>
             <CaloriesPanel />
           </div>
@@ -31,7 +31,7 @@ const DashboardContent = () => {
         </div>
 
         {/* <-- Activity Chart Part --> */}
-        <div className='flex justify-center items-center h-70 rounded-4xl bg-white mt-4'>
+        <div className='flex justify-center items-center h-70 rounded-4xl bg-yellow-50 xs:bg-red-10 sm:bg-gray-bg md:bg-white mt-4'>
           <ActivityPanel />
         </div>
 
@@ -43,7 +43,6 @@ const DashboardContent = () => {
               See All
             </Link>
           </div>
-
           {
             dashboardClassDummyData.map((classData, index) => (
               <ClassCard
@@ -60,7 +59,7 @@ const DashboardContent = () => {
         </div>
       </div>
 
-      <div className='flex flex-col gap-4 w-65 h-full'>
+      <div className='flex flex-col xs:flex-row md:flex-col max-md:justify-center max-md:gap-4 max-md:w-full gap-4 w-65 h-full'>
         <ProgressPanel />
         <MealPlan />
       </div>

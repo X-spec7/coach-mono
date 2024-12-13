@@ -31,6 +31,25 @@ export function toSnakeCase(obj: Record<string, any>): Record<string, any> {
   return obj
 }
 
+export function toCamelCase(obj: Record<string, any> | Record<string, any>[]): Record<string, any> | Record<string, any>[] {
+  const convertKey = (key: string): string => {
+    return key.replace(/_([a-z])/g, (match, letter) => letter.toUpperCase());
+  };
+
+  if (Array.isArray(obj)) {
+    return obj.map((item) => toCamelCase(item));
+  } else if (obj !== null && obj && typeof obj === 'object') {
+    return Object.keys(obj).reduce((acc: Record<string, any>, key: string) => {
+      const camelKey = convertKey(key);
+      acc[camelKey] = toCamelCase(obj[key]);
+      return acc;
+    }, {});
+  }
+
+  return obj;
+}
+
+
 export function capitalizeFirstLetter(str: string): string {
   if (!str) return "";
   return str.charAt(0).toUpperCase() + str.slice(1);

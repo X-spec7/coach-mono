@@ -67,7 +67,6 @@ const GoalsListPanel = () => {
   return (
     <div className='flex flex-col gap-4 items-center justify-start w-full'>
       <TitleWithEllipsis title='Goals List' />
-      {/* <div className='flex flex-col gap-4 items-center justify-start'></div> */}
       {
         goalDetailDummyData.map((goalDetail, index) => (
           <GoalDetailCard
