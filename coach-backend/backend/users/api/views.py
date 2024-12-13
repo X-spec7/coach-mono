@@ -1,5 +1,7 @@
 import os
 import requests
+import base64
+from django.core.files.base import ContentFile
 from django.contrib.auth import authenticate, login
 from rest_framework import status, permissions
 from rest_framework.decorators import action
@@ -8,10 +10,15 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.permissions import AllowAny
+from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.authentication import JWTAuthentication
 from django_ratelimit.decorators import ratelimit
 
-from backend.users.models import User
+from django.conf import settings
+from rest_framework.parsers import MultiPartParser, FormParser
+
+from backend.users.models import User, Qualification
 
 from .serializers import UserSerializer, LoginSerializer
 
@@ -92,12 +99,12 @@ class UserViewSet(RetrieveModelMixin, ListModelMixin, UpdateModelMixin, GenericV
         serializer = UserSerializer(request.user, context={"request": request})
         return Response(status=status.HTTP_200_OK, data=serializer.data)
 
-# TODO: increate rate limit 
-@ratelimit(key='ip', rate='5/min')
 class RegisterView(APIView):
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = [permissions.AllowAny,]
     authentication_classes = ()
 
+    # TODO: increate rate limit 
+    # @ratelimit(key='ip', rate='5/min')
     def post(self, request):
         try:
             data = request.data
@@ -112,7 +119,7 @@ class RegisterView(APIView):
                     if not User.objects.filter(email=email).exists():
                         user = User.objects.create_user(
                             email=email,
-                            fullname=firstName + " " + lastName,
+                            full_name=firstName + " " + lastName,
                             first_name=firstName,
                             last_name=lastName,
                             user_type=role,
@@ -180,7 +187,7 @@ class MailVerifyView(APIView):
 
 
 class ForgetPasswordView(APIView):
-    permission_classes = (AllowAny,)
+    permission_classes = [AllowAny,]
     authentication_classes = ()
 
     def post(self, request):
@@ -223,7 +230,7 @@ class ResetPasswordView(APIView):
 
 
 class LoginView(APIView):
-    permission_classes = (AllowAny,)
+    permission_classes = [AllowAny,]
     authentication_classes = ()
 
     def post(self, request):
@@ -233,6 +240,7 @@ class LoginView(APIView):
             email = serializer.validated_data["email"]
             password = serializer.validated_data["password"]
             user = authenticate(request, email=email, password=password)
+            userSerializer = UserSerializer(user)
             print("user=====>", user)
             if user is not None:
                 if user.email_verified:
@@ -246,13 +254,7 @@ class LoginView(APIView):
                             },
                             "result": {
                                 "token": str(refresh.access_token),
-                                "user": {
-                                    "firstname": user.first_name,
-                                    "lastname": user.last_name,
-                                    "email": user.email,
-                                    "usertype": user.user_type,
-                                    # Include any other user fields as needed
-                                },
+                                "user": userSerializer.data,
                             },
                             "navigate": "/home",
                         },
@@ -276,32 +278,18 @@ class LoginView(APIView):
 
 
 class GetUserView(APIView):
-    def post(self, request):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [JWTAuthentication]
+
+    def get(self, request):
         user = request.user
-        print(user)
-        find_user = User.objects.get(email=user)
 
-        if find_user:
-            refresh = RefreshToken.for_user(find_user)
-            return Response(
-                {
-                    "result": {
-                        "token": str(refresh.access_token),
-                        "user": {
-                            "username": user.fullname,
-                            "email": user.email,
-                            # Include any other user fields as needed
-                        },
-                    }
-                },
-                status=status.HTTP_200_OK,
-            )
-        else:
-            return Response(
-                {"error": "User does not exist. Please login"},
-                status=status.HTTP_400_BAD_REQUEST,
-            )
-
+        return Response(
+            {
+                "user": UserSerializer(user).data,
+            },
+            status=status.HTTP_200_OK,
+        )
 
 class GetUserInfo(APIView):
     def post(self, request):
@@ -310,14 +298,14 @@ class GetUserInfo(APIView):
 
         # Extract relevant information (username and email) from each user object
         users_info = [
-            {"username": user.fullname, "email": user.email} for user in all_users
+            {"username": user.full_name, "email": user.email} for user in all_users
         ]
 
         return Response({"user": users_info}, status=status.HTTP_200_OK)
 
 
 class loginWithGoogle(APIView):
-    permission_classes = (AllowAny,)
+    permission_classes = [AllowAny,]
     authentication_classes = ()
 
     def post(self, request):
@@ -325,10 +313,101 @@ class loginWithGoogle(APIView):
         email = request.data.get("email")
 
         # Check if the user already exists
-        user, created = User.objects.get_or_create(fullname=name, email=email)
+        user, created = User.objects.get_or_create(full_name=name, email=email)
         if created:
-            user.fullname = name
+            user.full_name = name
             user.mail_verify = True
             user.save()
 
         return Response("User saved successfully", status=status.HTTP_200_OK)
+    
+class UpdateProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [JWTAuthentication]
+    
+    def post(self, request):
+        try:
+            data = request.data
+            user = request.user
+
+            # Update user profile fields if they are not blank
+            if 'phone_number' in data and data['phone_number']:
+                user.phone_number = data['phone_number']
+            if 'address' in data and data['address']:
+                user.address = data['address']
+            if 'years_of_experience' in data and data['years_of_experience'] is not None:
+                user.years_of_experience = data['years_of_experience']
+            if 'specialization' in data and data['specialization']:
+                user.specialization = data['specialization']
+            if 'first_name' in data and data['first_name']:
+                user.first_name = data['first_name']
+            if 'last_name' in data and data['last_name']:
+                user.last_name = data['last_name']
+
+            # Handle qualifications
+            qualifications = data.get('qualifications', [])
+            existing_qualifications = {f"{q['name']} ({q['year']})" for q in qualifications}
+
+            current_qualifications = {f"{q.name} ({q.year})" for q in user.qualifications.all()}
+
+            # Add new qualifications that are not already present
+            for qualification in qualifications:
+                name = qualification.get('name')
+                year = qualification.get('year')
+
+                if name and year:
+                    qualification_str = f"{name} ({year})"
+                    if qualification_str not in current_qualifications:
+                        Qualification.objects.get_or_create(name=name, year=year)
+                        user.qualifications.add(Qualification.objects.get(name=name, year=year))
+            avatar_image_base64 = data.get('avatar_image')
+            if avatar_image_base64:
+                # Decode the Base64 string
+                format, imgstr = avatar_image_base64.split(';base64,')  # Split format and data
+                ext = format.split('/')[-1]  # Extract the image file extension (e.g., jpg, png)
+                file_name = f"{user.id}_avatar.{ext}"
+                file_path = os.path.join(settings.MEDIA_ROOT, 'avatar_images', file_name)
+                os.makedirs(os.path.dirname(file_path), exist_ok=True)  # Ensure the directory exists
+
+                # Save the file
+                with open(file_path, "wb") as f:
+                    f.write(base64.b64decode(imgstr))
+
+                # Save the relative path to the user's profile
+                user.avatar_image = f"avatar_images/{file_name}"
+
+            # Handle Base64-encoded banner image
+            banner_image_base64 = data.get('banner_image')
+            if banner_image_base64:
+                # Decode the Base64 string
+                format, imgstr = banner_image_base64.split(';base64,')  # Split format and data
+                ext = format.split('/')[-1]  # Extract the image file extension
+                file_name = f"{user.id}_banner.{ext}"
+                file_path = os.path.join(settings.MEDIA_ROOT, 'banner_images', file_name)
+                os.makedirs(os.path.dirname(file_path), exist_ok=True)  # Ensure the directory exists
+
+                # Save the file
+                with open(file_path, "wb") as f:
+                    f.write(base64.b64decode(imgstr))
+
+                # Save the relative path to the user's profile
+                user.banner_image = f"banner_images/{file_name}"
+
+            user.save()
+
+            userSerializer = UserSerializer(user)
+            return Response(
+                {
+                    "status": {
+                        "type": "success",
+                        "message": "Profile Updated successfully.",
+                    },
+                    "result": {
+                        "user": userSerializer.data,
+                    },
+                    "navigate": "/home",
+                },
+            )
+
+        except Exception as e:
+            return Response({"error": str(e)}, status=400)

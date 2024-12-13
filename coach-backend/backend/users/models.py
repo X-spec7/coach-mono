@@ -31,6 +31,13 @@ class EncryptedUserManager(BaseUserManager):
 
         return self.create_user(email, password, **extra_fields)
 
+class Qualification(models.Model):
+    """Model to represent a qualification."""
+    name = models.CharField(max_length=255, verbose_name=_("Qualification Name"))
+    year = models.PositiveIntegerField(verbose_name=_("Year Obtained"))
+
+    def __str__(self):
+        return f"{self.name} ({self.year})"    
 
 class User(AbstractUser):
     """Custom User model."""
@@ -40,19 +47,33 @@ class User(AbstractUser):
         ("Client", _("Client")),
     ]
 
-    fullname = CharField(_("Full Name"), max_length=255, default="John Doe")
+    full_name = CharField(_("Full Name"), max_length=255, default="John Doe")
+    first_name = CharField(_("First Name"), max_length=255, default="John")
+    last_name = CharField(_("Last Name"), max_length=255, default="Doe")
     user_type = CharField(_("User Type"), max_length=50, choices=USER_TYPE_CHOICES, default="Client")
     phone_number = models.CharField(_("Phone Number"), max_length=20, blank=True)
+    address = models.CharField(_("Phone Number"), max_length=20, blank=True)
     email = EmailField(_("Email Address"), unique=True)
-    username = None  # Remove the default username field
-    profile_info = models.TextField(_("Profile Information"), blank=True)
-    user_image = models.ImageField(
+    username = None
+    avatar_image = models.ImageField(
         _("User Image"),
         upload_to="user_images/",
         null=True,
         blank=True,
     )
+    banner_image = models.ImageField(
+        _("Banner Image"),
+        upload_to="banner_images/",
+        null=True,
+        blank=True,
+    )
     email_verified = models.BooleanField(_("Email Verified"), default=False)
+    years_of_experience = models.PositiveIntegerField(
+        _("Years of Experience"), null=True, blank=True
+    )
+    specialization = models.CharField(
+        _("Specialization"), max_length=255, blank=True, null=True
+    )
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
@@ -62,7 +83,21 @@ class User(AbstractUser):
     def get_absolute_url(self) -> str:
         """Get URL for user's detail view."""
         return reverse("users:detail", kwargs={"pk": self.id})
+    
+    def qualifications_list(self):
+        return ", ".join([f"{q.name} ({q.year})" for q in self.qualifications.all()])
 
+    def __str__(self):
+        return self.full_name
+    
     class Meta:
         verbose_name = _("User")
         verbose_name_plural = _("Users")
+
+class UserQualification(models.Model):
+    """Through model to establish a many-to-many relationship between User and Qualification."""
+    user = models.ForeignKey(User, related_name='qualifications', on_delete=models.CASCADE)
+    qualification = models.ForeignKey(Qualification, related_name='users', on_delete=models.CASCADE)
+    
+    class Meta:
+        unique_together = ('user', 'qualification')  # Ensures no duplicates for the same qualification-user pair
