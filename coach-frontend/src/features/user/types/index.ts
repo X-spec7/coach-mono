@@ -1,5 +1,5 @@
-export type { LoginPayloadDTO, RegisterPayloadDTO, User } from './auth.types'
-export type { ProfilePayloadDTO, ProfilePayloadType } from './profile.types'
+export type { LoginPayloadDTO, RegisterPayloadDTO, User } from './auth.type'
+export type { ProfilePayloadDTO, ProfilePayloadType } from './profile.type'
 
 export interface UserResponseDTO {
   id: number

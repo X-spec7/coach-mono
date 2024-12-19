@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Tick, AddButton } from '@/shared/components'
-import { Schedule } from '@/shared/types/schedule'
+import { Schedule } from '@/shared/types/schedule.type'
 import { scheduleDummyData } from '@/dev/dummy-data'
 import { formatTimeTo12Hour } from '@/shared/utils'
 import KebabMenu from '@/shared/components/Menu/KebabMenu'

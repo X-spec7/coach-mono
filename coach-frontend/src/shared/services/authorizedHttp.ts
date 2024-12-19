@@ -3,7 +3,7 @@ import * as dotenv from 'dotenv'
 
 dotenv.config()
 
-const baseUrl = process.env.BASE_RUL
+const baseUrl = 'http://5.9.85.28:8080/api'
 
 const authorizedHttpServer = axios.create({
     baseURL: baseUrl,
@@ -19,8 +19,7 @@ authorizedHttpServer.interceptors.request.use(
             // @ts-ignore
             config.headers.Authorization = `Bearer ${token}`;
         }
-
-        console.log('config: ', config)
+        
         return config;
     },
     (error) => {

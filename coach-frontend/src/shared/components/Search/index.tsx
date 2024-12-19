@@ -37,7 +37,7 @@ const SearchField: React.FC<SearchFieldProps> = ({width, height, placeholder, on
       <input
         type="text"
         placeholder={placeholder}
-        className="w-full h-full bg-transparent pl-9 font-regular text-black placeholder:text-gray-20 focus:outline-none"
+        className="w-full h-full bg-transparent pl-9 font-regular text-black placeholder:text-gray-20 placeholder:text-sm focus:outline-none"
       />
     </div>
   )

@@ -1,4 +1,4 @@
-import { LoginResponseDTO, User } from '../types/auth.types'
+import { LoginResponseDTO, User } from '../types/auth.type'
 
 export function convertJsonUserToObject(loginResponse: LoginResponseDTO): User {
   return {

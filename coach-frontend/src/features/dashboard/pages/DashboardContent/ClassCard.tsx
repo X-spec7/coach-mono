@@ -6,8 +6,7 @@ import { UserCircleSvg } from "@/shared/components/Svg"
 
 interface ClassCardProps extends Omit<Class, 'durationPerSession' | 'price'>{}
 
-
-const getColorByLevel = (level: ClassLevel): string => {
+const getColorByLevel = (level?: ClassLevel): string => {
   switch (level) {
     case 'Beginner':
       return 'bg-blue'
@@ -16,6 +15,8 @@ const getColorByLevel = (level: ClassLevel): string => {
     case 'Advanced':
       return 'bg-green'
     case 'All Levels':
+      return 'bg-gray'
+    default:
       return 'bg-gray'
   }
 }
@@ -46,7 +47,7 @@ const ClassCard: React.FC<ClassCardProps> = ({ category, title, tutor, videoNumb
       <div className='flex flex-col items-start justify-center gap-1'>
         <p className='text-black font-medium text-xxs'>{videoNumber} videos</p>
         <p className='text-gray-20 text-xxs'>
-          {sessionRange.minimumDuration}-{sessionRange.maximumDuration} m/session
+          {sessionRange?.minimumDuration}-{sessionRange?.maximumDuration} m/session
         </p>
       </div>
 

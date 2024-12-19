@@ -1,4 +1,4 @@
-import { Schedule } from '@/shared/types/schedule'
+import { Schedule } from '@/shared/types/schedule.type'
 
 export const scheduleDummyData: Schedule[] = [
   {

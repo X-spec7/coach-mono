@@ -26,13 +26,14 @@
         fill: #FFF080 !important;
     }
 
-    /* .chat-height {
-        @apply h-[calc(100vh_-_8.125rem)] lg:h-[calc(100vh_-_5.625rem)];
+    .scrollbar-hidden {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+      }
+      
+    .scrollbar-hidden::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
     }
-
-    .inbox-height {
-        @apply h-[calc(100vh_-_8.125rem)] lg:h-[calc(100vh_-_5.625rem)];
-    } */
 }
 
 [x-cloak] {

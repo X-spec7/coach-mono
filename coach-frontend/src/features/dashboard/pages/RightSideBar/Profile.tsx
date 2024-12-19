@@ -4,14 +4,8 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { TitleWithEllipsis } from '@/shared/components'
-import { selectUser } from '@/features/user/userSlice/userSlice'
+import { selectUser } from '@/features/user/slice/userSlice'
 import { useSelector } from 'react-redux'
-
-import * as dotenv from 'dotenv'
-
-dotenv.config()
-
-const baseUrl = process.env.BASE_URL
 
 interface ProfileProps {
   fullname: string
@@ -53,7 +47,9 @@ const ProfileDetail: React.FC<ProfileDetailProps> = ({ label, value }) => {
   )
 }
 
-const Profile: React.FC<ProfileProps> = ({ level, number, weight, height, age }) => {
+const profileAvatarUrl = '/images/user/user-01.png'
+
+const Profile: React.FC<ProfileProps> = ({ fullname, level, number, weight, height, age }) => {
   const router = useRouter()
 
   const user = useSelector(selectUser)
@@ -90,7 +86,7 @@ const Profile: React.FC<ProfileProps> = ({ level, number, weight, height, age })
           <Image
             width={36}
             height={36}
-            src={baseUrl + user.profilePicture}
+            src={'http://5.9.85.28:8080' + user.profilePicture}
             style={{
               width: 'auto',
               height: 'auto',
@@ -102,7 +98,7 @@ const Profile: React.FC<ProfileProps> = ({ level, number, weight, height, age })
           <Image
             width={36}
             height={36}
-            src={'/images/user/user-01.png'}
+            src={profileAvatarUrl}
             style={{
               width: 'auto',
               height: 'auto',

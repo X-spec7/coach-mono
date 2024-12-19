@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useAppDispatch } from '@/redux/hook'
 
-import { loginAsync } from '../../userSlice/userSlice'
+import { loginAsync } from '../../slice/userSlice'
 
 const SignInPage: React.FC = () => {
   const router = useRouter()

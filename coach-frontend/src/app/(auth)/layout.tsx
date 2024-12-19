@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { LayoutProps } from '@/shared/types/common'
+import { ILayoutProps } from '@/shared/types/common.type'
 
-const Layout: React.FC<LayoutProps> = ({children}) => {
+const Layout: React.FC<ILayoutProps> = ({children}) => {
   return (
     <div className='flex justify-center items-center w-full h-screen'>
       {/* Background image with a blur layer */}

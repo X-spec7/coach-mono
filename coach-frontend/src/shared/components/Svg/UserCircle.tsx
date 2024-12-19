@@ -1,6 +1,6 @@
-import { SvgProps } from '@/shared/types/common'
+import { ISvgProps } from '@/shared/types/common.type'
 
-const UserCircle: React.FC<SvgProps> = ({ width, height, color }) => {
+const UserCircle: React.FC<ISvgProps> = ({ width, height, color }) => {
   return (
     <svg width={width} height={height} viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path

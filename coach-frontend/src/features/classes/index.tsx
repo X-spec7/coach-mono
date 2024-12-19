@@ -1,4 +1,4 @@
-import Calendar from '../dashboard/pages/RightSideBar/Calendar'
+import Calendar from '../../shared/components/Calendar'
 
 const ClassesPage = () => {
   return (

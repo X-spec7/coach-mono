@@ -5,14 +5,8 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import ClickOutside from '@/shared/components/ClickOutside'
-import { selectUser } from '@/features/user/userSlice/userSlice'
+import { selectUser } from '@/features/user/slice/userSlice'
 import { useSelector } from 'react-redux'
-
-import * as dotenv from 'dotenv'
-
-dotenv.config()
-
-const baseUrl = process.env.BASE_URL
 
 const DropdownUser = () => {
   const router = useRouter()
@@ -48,7 +42,7 @@ const DropdownUser = () => {
             <Image
               width={36}
               height={36}
-              src={baseUrl + user.profilePicture}
+              src={'http://5.9.85.28:8080' + user.profilePicture}
               style={{
                 width: 'auto',
                 height: 'auto',

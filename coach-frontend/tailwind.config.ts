@@ -177,13 +177,13 @@ const config: Config = {
         180: "45rem",
         187.5: "46.875rem",
         203: "50.75rem",
-        
         230: "57.5rem",
         242.5: "60.625rem",
       },
       borderRadius: {
         ...defaultTheme.borderRadius,
         '4xl': '1.75rem',
+        '5xl': '2 rem',
         '20': '1.25rem',
       },
       maxWidth: {
@@ -479,6 +479,13 @@ const config: Config = {
         line1: "line 10s infinite linear",
         line2: "line-revert 8s infinite linear",
         line3: "line 7s infinite linear",
+      },
+    },
+    keyframes: {
+      shimmer: {
+        '100%': {
+          transform: 'translateX(100%)',
+        },
       },
     },
   },

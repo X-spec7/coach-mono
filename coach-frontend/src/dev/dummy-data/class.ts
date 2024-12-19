@@ -1,4 +1,4 @@
-import { Class } from "@/shared/types/class"
+import { Class } from "@/shared/types/class.type"
 
 export const classDummyData: Class[] = [
   {
