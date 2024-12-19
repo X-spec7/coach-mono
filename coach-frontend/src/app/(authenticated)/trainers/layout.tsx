@@ -1,12 +1,12 @@
-import { ILayoutProps } from '@/shared/types/common.type'
 import SharedLayout from '@/shared/Layouts/SharedLayout'
+import { ILayoutProps } from '@/shared/types/common.type'
 
 const Layout: React.FC<ILayoutProps> = ({ children }) => {
-
   return (
     <SharedLayout
-      headerTitle='Statistics'
-      headerDescription='Track Your Progress And Achievements'
+      headerTitle='Trainer Detail'
+      headerDescription='Back to Trainer List'
+      isDetailPage
     >
       {children}
     </SharedLayout>

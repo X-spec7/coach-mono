@@ -1,6 +1,5 @@
 import { Suspense } from 'react'
 
-import { Header, Footer } from '@/shared/Layouts'
 import { Pagination } from '@/shared/components'
 import ContentHeader from './content-header'
 import TrainersList from './TrainersList'
@@ -17,15 +16,9 @@ interface ITrainersPageProps {
 const TrainersPage: React.FC<ITrainersPageProps> = async ({ query, expertise, currentPage}) => {
 
   const response = await trainersService.getTotalTrainersCount({query})
+  // TODO: handle response error case
 
   return (
-    <div className='flex flex-col gap-4 p-4'>
-      <Header
-        title='Trainers'
-        description='Meet Your Fitness Experts'
-      />
-
-      {/* <!-- CONTENT AREA --> */}
       <div className='flex flex-col p-4 gap-4 bg-white rounded-4xl'>
         <ContentHeader searchPlaceHolder={query} />
 
@@ -43,9 +36,6 @@ const TrainersPage: React.FC<ITrainersPageProps> = async ({ query, expertise, cu
           totalCounts={response.totalCount}
         />
       </div>
-
-      <Footer />
-    </div>
   )
 }
 
