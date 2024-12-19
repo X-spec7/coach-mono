@@ -8,7 +8,14 @@ interface TrainerDetailPageProps {
   trainer: Trainer
 }
 
-const TrainerDetailPage: React.FC<TrainerDetailPageProps> = ({ trainer }) => {
+const TrainerDetailPage: React.FC<TrainerDetailPageProps> = async ({ trainer }) => {
+
+  if (trainer === undefined) {
+    return (
+      <div>No Trainer Found</div>
+    )
+  }
+
   return (
     <div className='flex justify-center gap-4'>
       <TrainerProfile trainer={trainer}/>

@@ -1,5 +1,7 @@
 import { Metadata } from 'next'
 import TrainersPage from '@/features/trainers/pages/list'
+import { Suspense } from 'react'
+import { Loader } from '@/shared/components'
 
 export const metadata: Metadata = {
   title:
@@ -20,11 +22,13 @@ const Trainers: React.FC = async (props: {
   const currentPage = Number(searchParams?.page) || 1
 
   return (
-    <TrainersPage
-      query={query}
-      currentPage={currentPage}
-      expertise={expertise}
-    />
+    <Suspense fallback={<Loader />}>
+      <TrainersPage
+        query={query}
+        currentPage={currentPage}
+        expertise={expertise}
+      />
+    </Suspense>
   )
 }
 

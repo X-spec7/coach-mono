@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import ReactApexChart from 'react-apexcharts'
 
@@ -9,7 +10,10 @@ const SplineChart = () => {
     options: {
       chart: {
         height: 350,
-        type: 'area' as 'area'
+        type: 'area' as 'area',
+        toolbar: {
+          show: false
+        }
       },
       dataLabels: {
         enabled: false
@@ -68,7 +72,7 @@ const SplineChart = () => {
 
   return (
     <div>
-      <ReactApexChart options={state.options} series={state.series} type='area' height={350} />
+      <ReactApexChart options={state.options} series={state.series} type='area' height={300} />
     </div>
   )
 }

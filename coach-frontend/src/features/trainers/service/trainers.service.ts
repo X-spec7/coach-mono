@@ -2,7 +2,7 @@ import {
   getTrainers,
   getTotalTrainersCount,
   getTrainerById
-} from '@/dev/api/trainers'
+} from '@/dev/api'
 import {
   GetTrainersPayloadDTO,
   GetTrainersResponseDTO,

@@ -1,2 +1,5 @@
-export { getTrainers as getTrainers } from './trainers'
-export { getTrainer as getTrainerById } from './getTrainer'
+export {
+  getTrainers as getTrainers,
+  getTrainerById as getTrainerById,
+  getTotalTrainersCount as getTotalTrainersCount
+} from './trainers'

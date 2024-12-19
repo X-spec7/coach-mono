@@ -1,5 +1,7 @@
-import { getTrainerById } from '@/dev/api'
+import { trainersService } from '@/features/trainers/service'
 import TrainerDetailPage from '@/features/trainers/pages/detail'
+import { Suspense } from 'react'
+import { Loader } from '@/shared/components'
 
 interface Params {
   params: {
@@ -8,7 +10,8 @@ interface Params {
 }
 
 export async function generateMetadata({params: { trainerId }}: Params) {
-  const trainer = await getTrainerById({id: trainerId})
+  const response = await trainersService.getTrainerById({ trainerId })
+  const trainer = response?.trainer
   
   return {
     title: trainer ? `${trainer.name}'s Profile` : 'Trainer Profile',
@@ -18,11 +21,14 @@ export async function generateMetadata({params: { trainerId }}: Params) {
 
 const TrainerDetail = async ({params: { trainerId }}: Params) => {
 
-  console.log('trainer id: ', trainerId)
-  const trainer = await getTrainerById({id: trainerId})
+  const response = await trainersService.getTrainerById({ trainerId })
 
-  if (trainer === null) {
-    return <div>Loading...</div>
+  // TODO: add response error handling
+  const trainer = response?.trainer
+
+  // TODO: replace skeleton
+  if (trainer === null || trainer === undefined) {
+    return <Loader />
   }
   
   return (

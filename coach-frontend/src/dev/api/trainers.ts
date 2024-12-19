@@ -59,11 +59,11 @@ export const getTotalTrainersCount = (
 }
 
 export const getTrainerById = (
-  { id }: GetTrainerByIdPayloadDTO
+  { trainerId }: GetTrainerByIdPayloadDTO
 ): Promise<GetTrainerByIdResponseDTO | null> => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      const trainer = trainersDummyData.find((trainer) => trainer.id === id)
+      const trainer = trainersDummyData.find((trainer) => trainer.id === trainerId)
 
       if (trainer) {
         resolve({ trainer })

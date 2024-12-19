@@ -24,7 +24,7 @@ export interface GetTotalTrainersCountResponseDTO {
 }
 
 export interface GetTrainerByIdPayloadDTO {
-  id: string
+  trainerId: string
 }
 
 export interface GetTrainerByIdResponseDTO {

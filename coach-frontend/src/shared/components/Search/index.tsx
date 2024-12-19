@@ -1,6 +1,7 @@
 'use client'
 
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
+import { useDebouncedCallback } from 'use-debounce'
 
 interface SearchFieldProps {
   width: string
@@ -8,20 +9,23 @@ interface SearchFieldProps {
   placeholder: string
 }
 
-const SearchField: React.FC<SearchFieldProps> = ({width, height, placeholder}) => {
+const SearchField: React.FC<SearchFieldProps> = ({ width, height, placeholder }) => {
   const searchParams = useSearchParams()
   const pathname = usePathname()
   const { replace } = useRouter()
 
-  const handleSearch = (term: string) => {
+  const handleSearch = useDebouncedCallback((term: string) => {
     const params = new URLSearchParams(searchParams)
+
     if (term) {
       params.set('query', term)
     } else {
       params.delete('query')
     }
+    
+    params.delete('page')
     replace(`${pathname}?${params.toString()}`)
-  }
+  }, 300)
   
   return (
     <div className={`relative ${width} ${height} bg-gray-bg rounded-4xl`}>
