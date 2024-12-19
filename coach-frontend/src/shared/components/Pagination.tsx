@@ -1,21 +1,24 @@
+'use client'
+
+import Link from 'next/link'
 import { CaretRightSvg, CaretLeftSvg } from './Svg'
+import { usePathname, useSearchParams } from 'next/navigation'
 
 interface PaginationProps {
-  currentPage: number
-  totalCounts: number
   countPerPage: number
-  onPageChange: (page: number) => void
+  totalCounts: number
 }
 
 const arrowDisableColor = '#BCBEC3'
 const arrowAbleColor = '#212738'
 
 const Pagination: React.FC<PaginationProps> = ({
-  currentPage,
-  totalCounts,
   countPerPage,
-  onPageChange,
+  totalCounts
 }) => {
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+  const currentPage = Number(searchParams.get('page')) || 1
   const totalPages = Math.ceil(totalCounts / countPerPage)
 
   const getPaginationRange = () => {
@@ -26,10 +29,10 @@ const Pagination: React.FC<PaginationProps> = ({
     return range
   }
 
-  const handlePageChange = (page: number) => {
-    if (page !== currentPage && page > 0 && page <= totalPages) {
-      onPageChange(page)
-    }
+  const createPageURL = (pageNumber: number | string) => {
+    const params = new URLSearchParams(searchParams)
+    params.set('page', pageNumber.toString())
+    return `${pathname}?${params.toString()}`
   }
 
   const paginationRange = getPaginationRange()
@@ -47,48 +50,85 @@ const Pagination: React.FC<PaginationProps> = ({
       {/* Pagination Controls */}
       <nav className='flex items-center justify-center space-x-2'>
         {/* Previous Button */}
-        <button
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-          className={`flex justify-center items-center w-10 h-10 rounded-full bg-gray-bg ${
-            currentPage === 1
-              ? 'cursor-not-allowed'
-              : ''
-          }`}
-        >
-          <CaretLeftSvg width='14' height='14' color={currentPage === 1 ? arrowDisableColor : arrowAbleColor}/>
-        </button>
+        <PaginationArrow
+          direction='left'
+          href={createPageURL(currentPage - 1)}
+          isDisabled={currentPage <= 1}
+        />
 
         {/* Page Numbers */}
         {paginationRange.map((page) => (
-          <button
+          <PaginationNumber
             key={page}
-            onClick={() => handlePageChange(page)}
-            className={`flex justify-center items-center w-10 h-10 rounded-full bg-gray-bg ${
-              page === currentPage
-                ? 'bg-green text-gray-30'
-                : 'bg-gray-bg text-gray-30 hover:text-black'
-            }`}
-          >
-            {page}
-          </button>
+            page={page}
+            isActive={currentPage === page}
+            href={createPageURL(page)}
+          />
         ))}
 
         {/* Next Button */}
-        <button
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-          className={`flex justify-center items-center w-10 h-10 rounded-full bg-gray-bg ${
-            currentPage === totalPages
-              ? 'cursor-not-allowed'
-              : ''
-          }`}
-        >
-          <CaretRightSvg width='14' height='14' color={currentPage === totalPages ? arrowDisableColor : arrowAbleColor}/>
-        </button>
+        <PaginationArrow
+          direction='right'
+          href={createPageURL(currentPage + 1)}
+          isDisabled={currentPage >= totalPages}
+        />
       </nav>
     </div>
   )
+}
+
+const PaginationNumber = ({
+  page,
+  href,
+  isActive,
+}: {
+  page: number | string
+  href: string
+  isActive: boolean
+}) => {
+  const className = `flex justify-center items-center w-10 h-10 rounded-full text-gray-30 ${
+    isActive
+      ? 'bg-green'
+      : 'bg-gray-bg hover:text-black'
+  }`
+
+  return isActive ? (
+    <div className={className}>{page}</div>
+  ) : (
+    <Link href={href} className={className}>
+      {page}
+    </Link>
+  )
+}
+
+const PaginationArrow = ({
+  href,
+  direction,
+  isDisabled,
+}: {
+  href: string
+  direction: 'left' | 'right'
+  isDisabled?: boolean
+}) => {
+  const className = `flex justify-center items-center w-10 h-10 rounded-full bg-gray-bg ${
+    isDisabled
+      ? 'cursor-not-allowed pointer-events-none'
+      : ''
+  }`
+  const icon =
+    direction === 'left' ? (
+      <CaretLeftSvg width='14' height='14' color={isDisabled ? arrowDisableColor : arrowAbleColor}/>
+    ) : (
+      <CaretRightSvg width='14' height='14' color={isDisabled ? arrowDisableColor : arrowAbleColor}/>
+    )
+
+    return isDisabled ? (
+      <div className={className}>{icon}</div>
+    ) : (
+      <Link className={className} href={href}>
+        {icon}
+      </Link>
+    )
 }
 
 export default Pagination

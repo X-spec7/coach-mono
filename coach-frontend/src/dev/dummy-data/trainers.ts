@@ -3,6 +3,7 @@ import { Trainer } from '@/shared/types'
 export const trainersDummyData: Trainer[] = [
   {
     name: 'Louis Hansen',
+    expertise: 'Strength Training',
     id: '1',
     avatarUrl: '/images/avatar/default.png',
     bannerUrl: '/images/banner/banner1.png',
@@ -57,6 +58,7 @@ export const trainersDummyData: Trainer[] = [
     id: '2',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner2.png',
+    expertise: 'Strength Training',
     classes: [
       {
         category: 'Strength Training',
@@ -70,6 +72,7 @@ export const trainersDummyData: Trainer[] = [
     id: '3',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner3.png',
+    expertise: 'Cardio',
     classes: [
       {
         category: 'Cardio Workouts',
@@ -83,6 +86,7 @@ export const trainersDummyData: Trainer[] = [
     id: '4',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner4.png',
+    expertise: 'Mind',
     classes: [
       {
         category: 'Mind & Body',
@@ -94,6 +98,7 @@ export const trainersDummyData: Trainer[] = [
   {
     name: 'Chris Williams',
     id: '5',
+    expertise: 'Cardio',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner5.png',
     classes: [
@@ -109,6 +114,7 @@ export const trainersDummyData: Trainer[] = [
     id: '6',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner4.png',
+    expertise: 'Mind',
     classes: [
       {
         category: 'Core Training',
@@ -122,6 +128,7 @@ export const trainersDummyData: Trainer[] = [
     id: '7',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner3.png',
+    expertise: 'Flexibility',
     classes: [
       {
         category: 'Flexibility & Mobility',
@@ -135,6 +142,7 @@ export const trainersDummyData: Trainer[] = [
     id: '8',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner6.png',
+    expertise: 'Strength Training',
     classes: [
       {
         category: 'Strength Training',
@@ -148,6 +156,7 @@ export const trainersDummyData: Trainer[] = [
     id: '9',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner1.png',
+    expertise: 'Cardio',
     classes: [
       {
         category: 'Cardio Workouts',
@@ -161,6 +170,7 @@ export const trainersDummyData: Trainer[] = [
     id: '10',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner7.png',
+    expertise: 'Strength',
     classes: [
       {
         category: 'Strength Training',
@@ -174,6 +184,7 @@ export const trainersDummyData: Trainer[] = [
     id: '11',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner1.png',
+    expertise: 'Cardio',
     classes: [
       {
         category: 'Cardio Workouts',
@@ -187,6 +198,7 @@ export const trainersDummyData: Trainer[] = [
     id: '12',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner2.png',
+    expertise: 'Strength',
     classes: [
       {
         category: 'Strength Training',
@@ -200,6 +212,7 @@ export const trainersDummyData: Trainer[] = [
     id: '13',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner8.png',
+    expertise: 'Flexibility',
     classes: [
       {
         category: 'Flexibility & Mobility',
@@ -213,6 +226,7 @@ export const trainersDummyData: Trainer[] = [
     id: '14',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner6.png',
+    expertise: 'Flexibility',
     classes: [
       {
         category: 'Core Training',
@@ -226,6 +240,7 @@ export const trainersDummyData: Trainer[] = [
     id: '15',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner4.png',
+    expertise: 'Mind',
     classes: [
       {
         category: 'Mind & Body',
@@ -239,6 +254,7 @@ export const trainersDummyData: Trainer[] = [
     id: '16',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner1.png',
+    expertise: 'Flexibility',
     classes: [
       {
         category: 'Flexibility & Mobility',
@@ -252,6 +268,7 @@ export const trainersDummyData: Trainer[] = [
     id: '17',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner3.png',
+    expertise: 'Strength',
     classes: [
       {
         category: 'Strength Training',
@@ -265,6 +282,7 @@ export const trainersDummyData: Trainer[] = [
     id: '18',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner7.png',
+    expertise: 'Cardio',
     classes: [
       {
         category: 'Cardio Workouts',
@@ -278,6 +296,7 @@ export const trainersDummyData: Trainer[] = [
     id: '19',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner5.png',
+    expertise: 'Cardio',
     classes: [
       {
         category: 'Cardio Workouts',
@@ -291,6 +310,7 @@ export const trainersDummyData: Trainer[] = [
     id: '20',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner8.png',
+    expertise: 'Strength',
     classes: [
       {
         category: 'Strength Training',
@@ -304,6 +324,7 @@ export const trainersDummyData: Trainer[] = [
     id: '21',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner2.png',
+    expertise: 'Flexibility',
     classes: [
       {
         category: 'Flexibility & Mobility',
@@ -317,6 +338,7 @@ export const trainersDummyData: Trainer[] = [
     id: '22',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner4.png',
+    expertise: 'Flexibility',
     classes: [
       {
         category: 'Core Training',
@@ -330,6 +352,7 @@ export const trainersDummyData: Trainer[] = [
     id: '23',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner4.png',
+    expertise: 'Mind',
     classes: [
       {
         category: 'Mind & Body',
@@ -343,6 +366,7 @@ export const trainersDummyData: Trainer[] = [
     id: '24',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner1.png',
+    expertise: 'Flexibility',
     classes: [
       {
         category: 'Flexibility & Mobility',
@@ -356,6 +380,7 @@ export const trainersDummyData: Trainer[] = [
     id: '25',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner3.png',
+    expertise: 'Strength',
     classes: [
       {
         category: 'Strength Training',
@@ -369,6 +394,7 @@ export const trainersDummyData: Trainer[] = [
     id: '26',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner7.png',
+    expertise: 'Cardio',
     classes: [
       {
         category: 'Cardio Workouts',
@@ -382,6 +408,7 @@ export const trainersDummyData: Trainer[] = [
     id: '27',
     avatarUrl: '',
     bannerUrl: '/images/banner/banner5.png',
+    expertise: 'Cardio',
     classes: [
       {
         category: 'Cardio Workouts',

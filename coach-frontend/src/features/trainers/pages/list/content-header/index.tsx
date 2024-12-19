@@ -34,11 +34,15 @@ const FadeButton = () => {
   )
 }
 
-const ContentHeader = () => {
+const ContentHeader = ({ searchPlaceHolder } : { searchPlaceHolder: string}) => {
   return (
     <div className='flex justify-between items-center w-full h-7.5'>
       <div className='flex justify-start items-center gap-3'>
-        <SearchField width='w-56' height='h-7.5' placeholder='Search for trainer' onChange={() => {}} />
+        <SearchField
+          width='w-56'
+          height='h-7.5'
+          placeholder={searchPlaceHolder || 'Search for trainer'}
+        />
         <BasicDropdownButton options = {classCategories} />
       </div>
 

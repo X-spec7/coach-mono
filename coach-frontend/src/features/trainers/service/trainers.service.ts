@@ -1,9 +1,36 @@
-import { getTrainers } from '@/dev/api/getTrainers'
-import { GetTrainersPayloadDTO, GetTrainersResponseDTO } from '../types/trainer.type'
+import {
+  getTrainers,
+  getTotalTrainersCount,
+  getTrainerById
+} from '@/dev/api/trainers'
+import {
+  GetTrainersPayloadDTO,
+  GetTrainersResponseDTO,
+  GetTotalTrainersCountPayloadDTO,
+  GetTotalTrainersCountResponseDTO,
+  GetTrainerByIdPayloadDTO,
+  GetTrainerByIdResponseDTO
+} from '../types/trainer.type'
 
 class TrainersService {
-  async getTrainers(payload: GetTrainersPayloadDTO): Promise<GetTrainersResponseDTO> {
+  async getTrainers(
+    payload: GetTrainersPayloadDTO
+  ): Promise<GetTrainersResponseDTO> {
     const response = await getTrainers(payload)
+    return response
+  }
+
+  async getTotalTrainersCount(
+    payload: GetTotalTrainersCountPayloadDTO
+  ): Promise<GetTotalTrainersCountResponseDTO> {
+    const response = await getTotalTrainersCount(payload)
+    return response
+  }
+
+  async getTrainerById(
+    payload: GetTrainerByIdPayloadDTO
+  ): Promise<GetTrainerByIdResponseDTO | null> {
+    const response = await getTrainerById(payload)
     return response
   }
 }

@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import TrainersPage from '@/features/trainers/pages/trainers'
+import TrainersPage from '@/features/trainers/pages/list'
 
 export const metadata: Metadata = {
   title:
@@ -7,9 +7,24 @@ export const metadata: Metadata = {
   description: "This is Trainers for COA-CH",
 }
 
-const Trainers: React.FC = () => {
+const Trainers: React.FC = async (props: {
+  searchParams?: Promise<{
+    query?: string
+    page?: string
+    expertise?: string
+  }>;
+}) => {
+  const searchParams = await props.searchParams
+  const query = searchParams?.query || ''
+  const expertise = searchParams?.expertise || ''
+  const currentPage = Number(searchParams?.page) || 1
+
   return (
-    <TrainersPage />
+    <TrainersPage
+      query={query}
+      currentPage={currentPage}
+      expertise={expertise}
+    />
   )
 }
 

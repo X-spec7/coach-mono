@@ -24,5 +24,6 @@ export interface Trainer {
   classes?: Class[]
   contact?: Contact
   certification?: ICertification[]
+  expertise?: string
   reviews?: IReview[]
 }
