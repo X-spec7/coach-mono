@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { ISvgProps } from '@/shared/types/common.type'
 
 const CalendarSvg: React.FC<ISvgProps> = ({ width, height, color }) => {

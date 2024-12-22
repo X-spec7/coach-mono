@@ -3,3 +3,5 @@ export {
   getTrainerById as getTrainerById,
   getTotalTrainersCount as getTotalTrainersCount
 } from './trainers'
+
+export { getContacts as getContacts } from './chat.contact'

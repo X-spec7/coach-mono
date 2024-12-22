@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
 
-import { Pagination } from '@/shared/components'
+import { Pagination, Loader } from '@/shared/components'
 import ContentHeader from './content-header'
 import TrainersList from './TrainersList'
 import { trainersService } from '../../service'
@@ -15,7 +15,7 @@ interface ITrainersPageProps {
 
 const TrainersPage: React.FC<ITrainersPageProps> = async ({ query, expertise, currentPage}) => {
 
-  const response = await trainersService.getTotalTrainersCount({query})
+  const response = await trainersService.getTotalTrainersCount({ query })
   // TODO: handle response error case
 
   return (
@@ -23,7 +23,7 @@ const TrainersPage: React.FC<ITrainersPageProps> = async ({ query, expertise, cu
         <ContentHeader searchPlaceHolder={query} />
 
         {/* <!-- MAIN CONTENT --> */}
-        <Suspense fallback={<div>Loading ...</div>}>
+        <Suspense fallback={<Loader />}>
           <TrainersList
             query={query}
             expertise={expertise}
