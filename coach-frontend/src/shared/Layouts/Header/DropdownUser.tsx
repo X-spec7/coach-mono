@@ -8,6 +8,12 @@ import ClickOutside from '@/shared/components/ClickOutside'
 import { selectUser } from '@/features/user/slice/userSlice'
 import { useSelector } from 'react-redux'
 
+import * as dotenv from 'dotenv'
+
+dotenv.config()
+
+const backendHostUrl = process.env.NEXT_PUBLIC_BACKEND_HOST_URL
+
 const DropdownUser = () => {
   const router = useRouter()
 
@@ -42,7 +48,7 @@ const DropdownUser = () => {
             <Image
               width={36}
               height={36}
-              src={'http://5.9.85.28:8080' + user.profilePicture}
+              src={backendHostUrl + user.profilePicture}
               style={{
                 width: 'auto',
                 height: 'auto',

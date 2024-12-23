@@ -41,7 +41,7 @@ const ContentHeader: React.FC<ContentHeaderProps> = ({workoutTime, totalWorkouts
       </div>
 
       <div className='flex justify-end gap-2 items-center'>
-        <SearchField width="w-67" height="h-9" placeholder="Search anything" onChange={() => {}} />
+        <SearchField width="w-67" height="h-9" placeholder="Search anything" />
         <TimePeriodSelectButton options={timePeriods} />
       </div>
     </div>

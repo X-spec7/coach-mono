@@ -4,9 +4,8 @@ import { ILayoutProps } from '@/shared/types/common.type'
 const Layout: React.FC<ILayoutProps> = ({ children }) => {
   return (
     <SharedLayout
-      headerTitle='Trainer Detail'
-      headerDescription='Back to Trainer List'
-      isDetailPage
+      headerTitle='Trainers'
+      headerDescription='Meet Your Fitness Experts'
     >
       {children}
     </SharedLayout>

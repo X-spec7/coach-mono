@@ -3,7 +3,7 @@ import * as dotenv from 'dotenv'
 
 dotenv.config()
 
-const baseUrl = 'http://5.9.85.28:8080/api'
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
 
 const authorizedHttpServer = axios.create({
     baseURL: baseUrl,

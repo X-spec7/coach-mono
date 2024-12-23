@@ -4,7 +4,7 @@ export const contactUserDummyData: IContactUser[] = [
   {
     id: '1',
     fullName: 'Alice Johnson',
-    avatarUrl: 'https://example.com/avatar1.jpg',
+    avatarUrl: '/media/avatar_images/7_avatar.webp',
     userType: 'trainer',
     unreadCount: 2,
     lastMessage: {
@@ -18,7 +18,7 @@ export const contactUserDummyData: IContactUser[] = [
   {
     id: '2',
     fullName: 'Bob Smith',
-    avatarUrl: 'https://example.com/avatar2.jpg',
+    avatarUrl: '/media/avatar_images/7_avatar.webp',
     userType: 'client',
     unreadCount: 0,
     lastMessage: {
@@ -32,7 +32,7 @@ export const contactUserDummyData: IContactUser[] = [
   {
     id: '3',
     fullName: 'Charlie Davis',
-    avatarUrl: 'https://example.com/avatar3.jpg',
+    avatarUrl: '/media/avatar_images/7_avatar.webp',
     userType: 'trainer',
     unreadCount: 5,
     lastMessage: {
@@ -46,7 +46,7 @@ export const contactUserDummyData: IContactUser[] = [
   {
     id: '4',
     fullName: 'Dana Lee',
-    avatarUrl: 'https://example.com/avatar4.jpg',
+    avatarUrl: '/media/avatar_images/7_avatar.webp',
     userType: 'client',
     unreadCount: 1,
     lastMessage: {
@@ -60,7 +60,7 @@ export const contactUserDummyData: IContactUser[] = [
   {
     id: '5',
     fullName: 'Eve Martin',
-    avatarUrl: 'https://example.com/avatar5.jpg',
+    avatarUrl: '/media/avatar_images/7_avatar.webp',
     userType: 'trainer',
     unreadCount: 3,
     lastMessage: {
@@ -74,7 +74,7 @@ export const contactUserDummyData: IContactUser[] = [
   {
     id: '6',
     fullName: 'Frank Wilson',
-    avatarUrl: 'https://example.com/avatar6.jpg',
+    avatarUrl: '/media/avatar_images/7_avatar.webp',
     userType: 'client',
     unreadCount: 0,
     lastMessage: {
@@ -88,7 +88,7 @@ export const contactUserDummyData: IContactUser[] = [
   {
     id: '7',
     fullName: 'Grace Thomas',
-    avatarUrl: 'https://example.com/avatar7.jpg',
+    avatarUrl: '/media/avatar_images/7_avatar.webp',
     userType: 'trainer',
     unreadCount: 4,
     lastMessage: {
@@ -102,7 +102,7 @@ export const contactUserDummyData: IContactUser[] = [
   {
     id: '8',
     fullName: 'Henry Carter',
-    avatarUrl: 'https://example.com/avatar8.jpg',
+    avatarUrl: '/media/avatar_images/7_avatar.webp',
     userType: 'client',
     unreadCount: 1,
     lastMessage: {
@@ -116,7 +116,7 @@ export const contactUserDummyData: IContactUser[] = [
   {
     id: '9',
     fullName: 'Ivy Baker',
-    avatarUrl: 'https://example.com/avatar9.jpg',
+    avatarUrl: '/media/avatar_images/7_avatar.webp',
     userType: 'trainer',
     unreadCount: 0,
     lastMessage: {
@@ -130,7 +130,7 @@ export const contactUserDummyData: IContactUser[] = [
   {
     id: '10',
     fullName: 'Jackie Lopez',
-    avatarUrl: 'https://example.com/avatar10.jpg',
+    avatarUrl: '/media/avatar_images/7_avatar.webp',
     userType: 'client',
     unreadCount: 2,
     lastMessage: {
@@ -144,7 +144,7 @@ export const contactUserDummyData: IContactUser[] = [
   {
     id: '11',
     fullName: 'Kyle Peterson',
-    avatarUrl: 'https://example.com/avatar11.jpg',
+    avatarUrl: '/media/avatar_images/7_avatar.webp',
     userType: 'trainer',
     unreadCount: 3,
     lastMessage: {
@@ -158,7 +158,7 @@ export const contactUserDummyData: IContactUser[] = [
   {
     id: '12',
     fullName: 'Liam Reynolds',
-    avatarUrl: 'https://example.com/avatar12.jpg',
+    avatarUrl: '/media/avatar_images/7_avatar.webp',
     userType: 'client',
     unreadCount: 0,
     lastMessage: {
@@ -172,7 +172,7 @@ export const contactUserDummyData: IContactUser[] = [
   {
     id: '13',
     fullName: 'Mia Sanchez',
-    avatarUrl: 'https://example.com/avatar13.jpg',
+    avatarUrl: '/media/avatar_images/7_avatar.webp',
     userType: 'trainer',
     unreadCount: 1,
     lastMessage: {
@@ -186,7 +186,7 @@ export const contactUserDummyData: IContactUser[] = [
   {
     id: '14',
     fullName: 'Nina Collins',
-    avatarUrl: 'https://example.com/avatar14.jpg',
+    avatarUrl: '/media/avatar_images/7_avatar.webp',
     userType: 'client',
     unreadCount: 2,
     lastMessage: {

@@ -5,8 +5,9 @@ const Layout: React.FC<ILayoutProps> = ({ children }) => {
 
   return (
     <SharedLayout
-      headerTitle='Statistics'
-      headerDescription='Track Your Progress And Achievements'
+      headerTitle='TrainerDetail'
+      headerDescription='Back To Trainer List'
+      isDetailPage
     >
       {children}
     </SharedLayout>
