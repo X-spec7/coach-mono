@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { ISvgProps } from '@/shared/types/common.type'
 
 const ChatTeardropDotsSvg: React.FC<ISvgProps> = ({ width, height, color }) => {

@@ -1,11 +1,4 @@
-import React from 'react'
-
-interface PrimaryButtonProps {
-  width?: string
-  height?: string
-  title: string
-  onClick?: () => {}
-}
+import { PrimaryButtonProps } from '@/shared/types/common.type'
 
 const PrimaryButton: React.FC<PrimaryButtonProps> = ({width, height, title, onClick}) => {
   return (

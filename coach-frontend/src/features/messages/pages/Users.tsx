@@ -15,18 +15,22 @@ dotenv.config()
 const backendHostUrl = process.env.NEXT_PUBLIC_BACKEND_HOST_URL
 
 interface IUsers {
-  isShow: boolean,
-  currentChatUser?: IContactUser
-  setCurrentChatUser?: (user: IContactUser) => void
+  isShow: boolean
+  currentChatUserId?: string
+  setCurrentChatUser: (userId: string) => void
 }
 
-const Users: React.FC<IUsers> = ({ isShow, setCurrentChatUser, currentChatUser }) => {
+const Users: React.FC<IUsers> = ({ isShow, setCurrentChatUser, currentChatUserId }) => {
   const searchParams = useSearchParams()
   const query: string | null = searchParams.get('query')
 
   const [contactUsers, setContactUsers] = useState<IContactUser[]>([])
   const [nameSearchResultUsers, setNameSearchResultUsers] = useState<IContactUser[]>([])
   const [chatSearchResultUsers, setChatSearchResultUsers] = useState()
+
+  const onClick = (userId: string) => {
+    setCurrentChatUser(userId)
+  }
 
   useEffect(() => {
     const getContacts = async () => {
@@ -89,8 +93,9 @@ const Users: React.FC<IUsers> = ({ isShow, setCurrentChatUser, currentChatUser }
                   <UserItem
                     key={index}
                     user={user}
-                    isSelected={user.id === currentChatUser?.id}
+                    isSelected={user.id === currentChatUserId}
                     isTodayOrYesterday
+                    onClick={() => onClick(user.id)}
                   />
                   {index < todayUsers.length -1 && (
                     <div className='w-full h-[1px] bg-stroke' />
@@ -109,8 +114,9 @@ const Users: React.FC<IUsers> = ({ isShow, setCurrentChatUser, currentChatUser }
                   <UserItem
                     key={index}
                     user={user}
-                    isSelected={user.id === currentChatUser?.id}
+                    isSelected={user.id === currentChatUserId}
                     isTodayOrYesterday
+                    onClick={() => onClick(user.id)}
                   />
                   {index < yesterdayUsers.length -1 && (
                     <div className='w-full h-[1px] bg-stroke' />
@@ -129,8 +135,9 @@ const Users: React.FC<IUsers> = ({ isShow, setCurrentChatUser, currentChatUser }
                   <UserItem
                     key={index}
                     user={user}
-                    isSelected={user.id === currentChatUser?.id}
+                    isSelected={user.id === currentChatUserId}
                     isTodayOrYesterday
+                    onClick={() => onClick(user.id)}
                   />
                   {index < restUsers.length -1 && (
                     <div className='w-full h-[1px] bg-stroke' />
@@ -151,6 +158,7 @@ interface IUserItemProps {
   user: IContactUser
   isSelected: boolean
   isTodayOrYesterday: boolean
+  onClick: () => void
 }
 
 const UserItem: React.FC<IUserItemProps> = ({

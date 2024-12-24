@@ -13,3 +13,10 @@ export interface Contact {
   phone?: string
   address?: string
 }
+
+export interface PrimaryButtonProps {
+  width?: string
+  height?: string
+  title: string
+  onClick?: () => void
+}
