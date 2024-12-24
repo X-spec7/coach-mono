@@ -26,7 +26,7 @@ interface IChat {
 }
 
 const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
-  const chatRef = useRef(null)
+  const chatRef = useRef<HTMLDivElement | null>(null)
   
   const [loadingMore, setLoadingMore] = useState(false)
   const [showScrollDown, setShowScrollDown] = useState(false)
@@ -52,6 +52,35 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
 
     getData()
   }, [currentChatUserId])
+
+  const handleScroll = () => {
+    const container = chatRef.current
+    if (!container) return
+
+    const { scrollTop, scrollHeight, clientHeight } = container
+
+    setShowScrollDown(scrollTop < scrollHeight - clientHeight - 100)
+
+    if (scrollTop === 0 && !loadingMore) {
+      setLoadingMore(true)
+      console.log('scroll top event')
+      // fetchMoreMessages().finally(() => setLoadingMore(false));
+    }
+  }
+
+  useEffect(() => {
+    if (chatRef.current) {
+      chatRef.current.scrollTop = chatRef.current.scrollHeight;
+    }
+  }, [messages])
+
+  useEffect(() => {
+    const container = chatRef.current;
+    if (container) {
+      container.addEventListener("scroll", handleScroll);
+      return () => container.removeEventListener("scroll", handleScroll);
+    }
+  }, [])
 
   return (
     <div className='relative flex flex-col flex-[2] h-full p-4 bg-gray-bg-subtle rounded-20'>
@@ -102,7 +131,7 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
 
       {/* <!--- MESSAGE CONTENT ---> */}
       <div className='relative flex flex-col w-full h-full px-4 pt-19.5'>
-        <div className='flex flex-1 flex-col gap-4 pb-4 overflow-y-auto no-scrollbar'>
+        <div ref={chatRef} className='flex flex-1 flex-col gap-4 pb-4 overflow-y-auto no-scrollbar'>
           {loadingMore && (
             <div className='text-gray-20 text-xs'>Loading more...</div>
           )}
