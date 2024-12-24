@@ -236,12 +236,10 @@ class LoginView(APIView):
     def post(self, request):
         serializer = LoginSerializer(data=request.data)
         if serializer.is_valid():
-            print("user validated ------------------------>", serializer.validated_data)
             email = serializer.validated_data["email"]
             password = serializer.validated_data["password"]
             user = authenticate(request, email=email, password=password)
             userSerializer = UserSerializer(user)
-            print("user=====>", user)
             if user is not None:
                 if user.email_verified:
                     login(request, user)
