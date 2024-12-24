@@ -29,6 +29,7 @@ const Users: React.FC<IUsers> = ({ isShow, setCurrentChatUser, currentChatUserId
   const [chatSearchResultUsers, setChatSearchResultUsers] = useState()
 
   const onClick = (userId: string) => {
+    console.log('setting chat user: ', userId)
     setCurrentChatUser(userId)
   }
 
@@ -165,6 +166,7 @@ const UserItem: React.FC<IUserItemProps> = ({
   user,
   isSelected,
   isTodayOrYesterday,
+  onClick
 }) => {
   const containerStyle = `flex items-center p-4 gap-4 h-18.5 rounded-20
     ${isSelected ? 'bg-gray-subtle' : 'bg-white'}
@@ -177,7 +179,7 @@ const UserItem: React.FC<IUserItemProps> = ({
   let time: string = getDateFromDateObject(dateObj)
 
   return (
-    <div className={containerStyle}>
+    <div className={containerStyle} onClick={onClick}>
       <div className='flex w-10 h-10 rounded-full'>
         {user.avatarUrl ? (
           <Image

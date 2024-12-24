@@ -18,7 +18,7 @@ dotenv.config()
 
 const backendHostUrl = process.env.NEXT_PUBLIC_BACKEND_HOST_URL
 
-const defaultAvatarUrl = ''
+const defaultAvatarUrl = '/images/avatar/default.png'
 
 interface IChat {
   isShow: boolean
@@ -37,6 +37,8 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
   const [messages, setMessages] = useState<IMessage[]>([])
 
   useEffect(() => {
+    console.log('the other person id: ', currentChatUserId)
+
     const getData = async () => {
       if (!currentChatUserId) {
         return
@@ -49,13 +51,13 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
     }
 
     getData()
-  },[currentChatUserId])
+  }, [currentChatUserId])
 
   return (
-    <div className='relative flex flex-col flex-[2] h-full p-4 bg-gray-bg-subtle rounded-20 border-stroke border-2'>
+    <div className='relative flex flex-col flex-[2] h-full p-4 bg-gray-bg-subtle rounded-20'>
 
       {/* <!--- CONTENT HEADER ---> */}
-      <div className='absolute flex justify-between items-center h-19.5 bg-white rounded-t-20'>
+      <div className='absolute top-0 left-0 right-0 flex justify-between items-center h-19.5 px-4 bg-white border-stroke border-t border-x rounded-t-20 z-10'>
         <div className='flex justify-start items-center gap-3.5'>
           <div className='relative w-11.5 h-11.5 rounded-full'>
             {otherPersonAvatarUrl !== '' ? (
@@ -85,13 +87,13 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
 
         <div className='flex justify-end items-center gap-2.5'>
           <SvgWrapper>
-            <PhoneSvg width='36' height='36' color='#4D5260' />
+            <PhoneSvg width='20' height='20' color='#4D5260' />
           </SvgWrapper>
           <SvgWrapper>
-            <VideoCameraSvg width='36' height='36' color='#4D5260' />
+            <VideoCameraSvg width='20' height='20' color='#4D5260' />
           </SvgWrapper>
           <SvgWrapper>
-            <SidebarSimpleSvg width='36' height='36' color='#4D5260' />
+            <SidebarSimpleSvg width='20' height='20' color='#4D5260' />
           </SvgWrapper>
 
           <EllipsisMenu menus={[]} />
@@ -99,18 +101,20 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
       </div>
 
       {/* <!--- MESSAGE CONTENT ---> */}
-      <div className='relative flex flex-col gap-4 w-full h-full pb-4 px-4 pt-19.5 overflow-y-auto no-scrollbar'>
-        {loadingMore && (
-          <div className='text-gray-20 text-xs'>Loading more...</div>
-        )}
+      <div className='relative flex flex-col w-full h-full px-4 pt-19.5'>
+        <div className='flex flex-1 flex-col gap-4 pb-4 overflow-y-auto no-scrollbar'>
+          {loadingMore && (
+            <div className='text-gray-20 text-xs'>Loading more...</div>
+          )}
 
-        {messages.map((message, index) => {
-          return (
-            <ChatItem key={index} message={message} />
-          )
-        })}
+          {messages.map((message, index) => {
+            return (
+              <ChatItem key={index} message={message} />
+            )
+          })}
+        </div>
 
-        <div className='w-full mt-4'>
+        <div className='flex w-full'>
           <MessageTypeBox />
         </div>
       </div>

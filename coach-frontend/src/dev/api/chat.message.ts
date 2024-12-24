@@ -4,7 +4,7 @@ import { GetMessagesByUserIdRequestDTO } from '@/features/messages/types'
 
 export const getMessagesByUserIdDummyData = {
   userId: '123',
-  otherPersonId: '456',
+  otherPersonId: '1',
   otherPersonFullname: 'Jack Doeson',
   otherPersonAvatarUrl: '/media/avatar_images/7_avatar.webp',
   totalMessageCount: messagesDummyData.length,
