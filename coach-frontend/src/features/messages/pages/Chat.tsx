@@ -37,7 +37,7 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
   const [messages, setMessages] = useState<IMessage[]>([])
 
   let offset: number = 0
-  const limit: number = 30
+  const limit: number = 10
 
   const getInitialData = async () => {
     if (!currentChatUserId) {
@@ -87,7 +87,7 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
 
       const newScrollHeight = container.scrollHeight
       container.scrollTop = newScrollHeight - previousScrollHeight
-      
+
       setLoadingMore(false)
     }
   }
