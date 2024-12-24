@@ -3,9 +3,13 @@ import { GetMessagesByUserIdRequestDTO, GetMessagesByUserIdResponseDTO } from '.
 
 class MessageService {
   async getMessagesByUserId(
-    payload: GetMessagesByUserIdRequestDTO
+    {
+      otherPersonId,
+      offset = 0,
+      limit = 10,
+    }: GetMessagesByUserIdRequestDTO
   ): Promise<GetMessagesByUserIdResponseDTO> {
-    const response = await getMessagesByUserId(payload)
+    const response = await getMessagesByUserId({otherPersonId, offset, limit})
     return response
   }
 }

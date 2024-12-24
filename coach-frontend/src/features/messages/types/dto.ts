@@ -11,4 +11,6 @@ export interface GetMessagesByUserIdResponseDTO {
 
 export interface GetMessagesByUserIdRequestDTO {
   otherPersonId: string
+  offset: number
+  limit: number
 }

@@ -36,24 +36,42 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
   const [otherPersonAvatarUrl, setOtherPersonAvatarUrl] = useState('')
   const [messages, setMessages] = useState<IMessage[]>([])
 
-  useEffect(() => {
-    console.log('the other person id: ', currentChatUserId)
+  let offset: number = 0
+  const limit: number = 30
 
-    const getData = async () => {
-      if (!currentChatUserId) {
-        return
-      }
-
-      const response = await messageService.getMessagesByUserId({otherPersonId: currentChatUserId})
-      setOtherPersonName(response.otherPersonFullname)
-      setOtherPersonAvatarUrl(response.otherPersonAvatarUrl)
-      setMessages(response.messages)
+  const getInitialData = async () => {
+    if (!currentChatUserId) {
+      return
     }
 
-    getData()
+    offset = 0
+
+    const response = await messageService.getMessagesByUserId({otherPersonId: currentChatUserId, offset, limit})
+    setOtherPersonName(response.otherPersonFullname)
+    setOtherPersonAvatarUrl(response.otherPersonAvatarUrl)
+    setMessages(response.messages)
+    setHasMore(response.messages.length !== response.totalMessageCount)
+  }
+
+  const getMoreData = async () => {
+    if (!currentChatUserId) {
+      return
+    }
+
+    offset = messages.length
+
+    const response = await messageService.getMessagesByUserId({otherPersonId: currentChatUserId, offset, limit})
+    setOtherPersonName(response.otherPersonFullname)
+    setOtherPersonAvatarUrl(response.otherPersonAvatarUrl)
+    setHasMore((messages.length + response.messages.length) < response.totalMessageCount)
+    setMessages((prev) => [...prev, ...response.messages])
+  }
+
+  useEffect(() => {
+    getInitialData()
   }, [currentChatUserId])
 
-  const handleScroll = () => {
+  const handleScroll = async () => {
     const container = chatRef.current
     if (!container) return
 
@@ -63,24 +81,30 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
 
     if (scrollTop === 0 && !loadingMore) {
       setLoadingMore(true)
-      console.log('scroll top event')
-      // fetchMoreMessages().finally(() => setLoadingMore(false));
+      const previousScrollHeight = container.scrollHeight
+
+      await getMoreData()
+
+      const newScrollHeight = container.scrollHeight
+      container.scrollTop = newScrollHeight - previousScrollHeight
+      
+      setLoadingMore(false)
     }
   }
 
   useEffect(() => {
     if (chatRef.current) {
-      chatRef.current.scrollTop = chatRef.current.scrollHeight;
+      chatRef.current.scrollTop = chatRef.current.scrollHeight
     }
   }, [messages])
 
   useEffect(() => {
-    const container = chatRef.current;
+    const container = chatRef.current
     if (container) {
-      container.addEventListener("scroll", handleScroll);
-      return () => container.removeEventListener("scroll", handleScroll);
+      container.addEventListener('scroll', handleScroll)
+      return () => container.removeEventListener('scroll', handleScroll)
     }
-  }, [])
+  }, [messages, loadingMore, hasMore])
 
   return (
     <div className='relative flex flex-col flex-[2] h-full p-4 bg-gray-bg-subtle rounded-20'>
@@ -160,3 +184,7 @@ const SvgWrapper: React.FC<ILayoutProps> = ({ children }) => {
 }
 
 export default Chat
+
+// Here, how to remain current scroll position when refreshing?
+// The main focus is
+// When I scroll to top, there fetches more messages and add
