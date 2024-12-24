@@ -5,8 +5,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useAppDispatch } from '@/redux/hook'
 
-import { registerAsync } from '../../userSlice/userSlice'
-import { RegisterPayloadDTO } from '../../types/auth.types'
+import { registerAsync } from '../../slice/userSlice'
+import { RegisterPayloadDTO } from '../../types/auth.type'
 
 const SignUpPage: React.FC = () => {
   const dispatch = useAppDispatch()

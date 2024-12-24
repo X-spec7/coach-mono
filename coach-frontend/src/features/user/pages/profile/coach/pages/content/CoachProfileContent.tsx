@@ -3,7 +3,7 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useAppDispatch } from '@/redux/hook'
-import { getProfileAsync, updateProfileAsync } from '@/features/user/userSlice/userSlice'
+import { getProfileAsync, updateProfileAsync } from '@/features/user/slice/userSlice'
 import { ProfilePayloadDTO } from '@/features/user/types'
 
 const CoachProfileContent = () => {

@@ -3,7 +3,7 @@
 import { Header, Footer } from '@/shared/Layouts'
 import CoachProfileContent from './content/CoachProfileContent'
 import { useSelector } from 'react-redux'
-import { selectUser } from '@/features/user/userSlice/userSlice'
+import { selectUser } from '@/features/user/slice/userSlice'
 
 const CoachProfilePage = () => {
 

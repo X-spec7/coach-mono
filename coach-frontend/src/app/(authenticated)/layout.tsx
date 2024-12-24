@@ -1,15 +1,15 @@
-"use client"
+'use client'
 
-import { useEffect, useState } from "react"
-import { useRouter } from "next/navigation"
-import { DefaultLayout } from "@/shared/Layouts"
-import Loader from "@/shared/components/Loader"
-import { LayoutProps } from "@/shared/types/common"
-import { getProfileAsync, selectUser } from "@/features/user/userSlice/userSlice"
-import { useSelector } from "react-redux"
-import { useAppDispatch } from "@/redux/hook"
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { DefaultLayout } from '@/shared/Layouts'
+import Loader from '@/shared/components/Loader'
+import { ILayoutProps } from '@/shared/types/common.type'
+import { getProfileAsync, selectUser } from '@/features/user/slice/userSlice'
+import { useSelector } from 'react-redux'
+import { useAppDispatch } from '@/redux/hook'
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<ILayoutProps> = ({ children }) => {
   const router = useRouter()
   const user = useSelector(selectUser)
   
@@ -17,7 +17,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   useEffect(() => {
     dispatch(getProfileAsync())
-  }, [])
+  }, [dispatch])
 
   const [isUserProfileLoaded, setIsUserProfileLoaded] = useState(() => !!(user && user.firstName !== ''))
 
@@ -28,11 +28,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [token, setToken] = useState<string | null>()
 
   useEffect(() => {
-    const token = localStorage.getItem("access_token")
+    const token = localStorage.getItem('access_token')
     setToken(token)
     if (!token) {
       // Redirect to SignIn page if there's no token
-      router.push("/signin")
+      router.push('/signin')
     }
   }, [router])
 

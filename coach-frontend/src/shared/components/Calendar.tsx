@@ -64,7 +64,7 @@ function Calendar() {
         <div className='grid grid-cols-7 place-items-center'>
           {days.map((day, idx) => {
             return (
-              <div key={idx} className='text-gray-20 font-medium h-8.5'>
+              <div key={idx} className='text-gray-20 font-medium h-10'>
                 {capitalizeFirstLetter(day)}
               </div>
             )
@@ -73,7 +73,7 @@ function Calendar() {
         <div className='grid grid-cols-7 place-items-center'>
           {daysInMonth.map((day, idx) => {
             return (
-              <div key={idx} className='flex justify-center items-center w-11 h-8.5'>
+              <div key={idx} className='flex justify-center items-center w-11 h-10'>
                 <p
                   className={`cursor-pointer flex items-center justify-center font-semibold h-8.5 w-8.5 rounded-full ${
                     isSameMonth(day, firstDayOfMonth) ? 'text-gray-30' : 'text-gray-10'

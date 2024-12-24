@@ -1,12 +1,15 @@
 'use client'
 
 import Link from 'next/link'
-import DropdownNotification from './DropdownNotification'
-import DropdownUser from './DropdownUser'
-import Image from 'next/image'
-import { SearchField } from '@/shared/components'
-import { toggleSidebar, selectIsSidebarOpen } from '@/redux/globalAppSlice'
+import { useCallback } from 'react'
+import { useRouter } from 'next/navigation'
 import { useDispatch, useSelector } from 'react-redux'
+
+import DropdownUser from './DropdownUser'
+import DropdownNotification from './DropdownNotification'
+import { SearchField } from '@/shared/components'
+import { BackButton } from '@/shared/components/Button'
+import { toggleSidebar, selectIsSidebarOpen } from '@/redux/globalAppSlice'
 
 interface HeaderProps {
   isDashboard?: boolean
@@ -19,6 +22,11 @@ const Header = (props: HeaderProps) => {
   const isSidebarOpen = useSelector(selectIsSidebarOpen)
 
   const dispatch = useDispatch()
+  const router = useRouter()
+
+  const handleBack = useCallback(() => {
+    router.back()
+  }, [router])
   
   const handleToggleSidebar = () => {
     dispatch(toggleSidebar())
@@ -72,20 +80,22 @@ const Header = (props: HeaderProps) => {
           </button>
           {/* <!-- Hamburger Toggle BTN --> */}
 
+          {/* LOGO */}
           <Link className='block flex-shrink-0 lg:hidden' href='/dashboard'>
             <div className='bg-red-30 w-7 h-7 rounded-full'></div>
-            {/* <Image
-              width={32}
-              height={32}
-              src={'/images/logo/logo-icon.svg'}
-              alt='Logo'
-            /> */}
           </Link>
         </div>
 
         <div className='flex flex-col justify-between items-start max-md:hidden'>
+          {
+            props.isDetailPage &&
+            <BackButton buttonTitle={props.description} handleBack={handleBack} />
+          }
           <h3 className='text-black text-2xl'>{props.title}</h3>
-          <p className='text-gray-20 text-xs'>{props.description}</p>
+          {
+            !props.isDetailPage &&
+            <p className='text-gray-20 text-xs'>{props.description}</p>
+          }
         </div>
 
         <div className='flex flex-center gap-2 p-2 bg-white rounded-4xl'>

@@ -1,7 +1,7 @@
 import Profile from './Profile'
 import MySchedule from './MySchedule'
 import RecentActivity from './RecentActivity'
-import Calendar from './Calendar'
+import { Calendar } from '@/shared/components'
 
 const profileDummyData = {
   fullname: 'Mario Rossi',

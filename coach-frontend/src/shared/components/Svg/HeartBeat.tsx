@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { SvgProps } from '@/shared/types/common'
+import { ISvgProps } from '@/shared/types/common.type'
 
-const HeartBeatSvg: React.FC<SvgProps> = ({width, height, color}) => {
+const HeartBeatSvg: React.FC<ISvgProps> = ({width, height, color}) => {
   return (
     <svg width={width} height={height} viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path

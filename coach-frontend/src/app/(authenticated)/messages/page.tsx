@@ -1,6 +1,6 @@
 import React from 'react'
 import { Metadata } from 'next'
-import MessagesPage from '@/features/messages'
+import MessagesPage from '@/features/messages/pages'
 
 export const metadata: Metadata = {
   title:

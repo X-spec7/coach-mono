@@ -1,6 +1,6 @@
 'use client'
 
-import { selectUser } from '@/features/user/userSlice/userSlice'
+import { selectUser } from '@/features/user/slice/userSlice'
 
 import { Header, Footer } from '../../../shared/Layouts'
 import RightSideBar from './RightSideBar'

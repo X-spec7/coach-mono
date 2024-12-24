@@ -9,9 +9,9 @@ import 'flatpickr/dist/flatpickr.min.css'
 import '../shared/css/style.css'
 import '../shared/css/satoshi.css'
 
-import { LayoutProps } from '@/shared/types/common'
+import { ILayoutProps } from '@/shared/types/common.type'
 
-const RootLayout: React.FC<LayoutProps> = ({ children }) => {
+const RootLayout: React.FC<ILayoutProps> = ({ children }) => {
   const store = createStore()
 
   return (

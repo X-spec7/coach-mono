@@ -12,7 +12,6 @@ class ProfileService {
   }
 
   async getProfile() {
-    console.log('getting profile')
     return authorizedHttpServer
       .get('/authentication/profile/get/')
       .then((response) => {

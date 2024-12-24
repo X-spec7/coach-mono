@@ -1,4 +1,4 @@
-import { EllipsisMenu } from "./Menu"
+import { EllipsisMenu } from './Menu'
 
 interface TitleWithEllipsisProps {
   title: string
