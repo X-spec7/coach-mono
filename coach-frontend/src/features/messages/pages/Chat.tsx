@@ -17,7 +17,6 @@ import * as dotenv from 'dotenv'
 dotenv.config()
 
 const backendHostUrl = process.env.NEXT_PUBLIC_BACKEND_HOST_URL
-
 const defaultAvatarUrl = '/images/avatar/default.png'
 
 interface IChat {
@@ -27,26 +26,29 @@ interface IChat {
 
 const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
   const chatRef = useRef<HTMLDivElement | null>(null)
-  
-  const [loadingMore, setLoadingMore] = useState(false)
+
   const [showScrollDown, setShowScrollDown] = useState(false)
   const [hasMore, setHasMore] = useState(false)
-  
   const [otherPersonName, setOtherPersonName] = useState('')
   const [otherPersonAvatarUrl, setOtherPersonAvatarUrl] = useState('')
   const [messages, setMessages] = useState<IMessage[]>([])
 
-  let offset: number = 0
-  const limit: number = 30
+  const offsetRef = useRef(0)
+  const previousScrollHeightRef = useRef(0)
+  const isLoadingMoreRef = useRef(false)
+  const limit = 10
 
   const getInitialData = async () => {
-    if (!currentChatUserId) {
-      return
-    }
+    if (!currentChatUserId) return
 
-    offset = 0
+    offsetRef.current = 0
 
-    const response = await messageService.getMessagesByUserId({otherPersonId: currentChatUserId, offset, limit})
+    const response = await messageService.getMessagesByUserId({
+      otherPersonId: currentChatUserId,
+      offset: offsetRef.current,
+      limit,
+    })
+
     setOtherPersonName(response.otherPersonFullname)
     setOtherPersonAvatarUrl(response.otherPersonAvatarUrl)
     setMessages(response.messages)
@@ -54,21 +56,28 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
   }
 
   const getMoreData = async () => {
-    if (!currentChatUserId) {
-      return
-    }
+    if (!currentChatUserId || isLoadingMoreRef.current) return
 
-    offset = messages.length
+    isLoadingMoreRef.current = true
+    offsetRef.current = messages.length
 
-    const response = await messageService.getMessagesByUserId({otherPersonId: currentChatUserId, offset, limit})
-    setOtherPersonName(response.otherPersonFullname)
-    setOtherPersonAvatarUrl(response.otherPersonAvatarUrl)
+    const response = await messageService.getMessagesByUserId({
+      otherPersonId: currentChatUserId,
+      offset: offsetRef.current,
+      limit,
+    })
+
+    setMessages((prev) => [...response.messages, ...prev])
     setHasMore((messages.length + response.messages.length) < response.totalMessageCount)
-    setMessages((prev) => [...prev, ...response.messages])
+    isLoadingMoreRef.current = false
   }
 
   useEffect(() => {
+    const container = chatRef.current
+    if (!container) return
+
     getInitialData()
+    previousScrollHeightRef.current = container.scrollHeight
   }, [currentChatUserId])
 
   const handleScroll = async () => {
@@ -76,25 +85,22 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
     if (!container) return
 
     const { scrollTop, scrollHeight, clientHeight } = container
-
     setShowScrollDown(scrollTop < scrollHeight - clientHeight - 100)
 
-    if (scrollTop === 0 && !loadingMore) {
-      setLoadingMore(true)
-      const previousScrollHeight = container.scrollHeight
-
+    if (scrollTop === 0 && hasMore && !isLoadingMoreRef.current) {
+      previousScrollHeightRef.current = scrollHeight
       await getMoreData()
-
-      const newScrollHeight = container.scrollHeight
-      container.scrollTop = newScrollHeight - previousScrollHeight
-      
-      setLoadingMore(false)
     }
   }
 
   useEffect(() => {
-    if (chatRef.current) {
-      chatRef.current.scrollTop = chatRef.current.scrollHeight
+    const container = chatRef.current
+    if (!container) return
+
+    if (messages.length > 0 && hasMore) {
+      container.scrollTop = container.scrollHeight - previousScrollHeightRef.current
+    } else if (messages.length <= 10) {
+      container.scrollTop = container.scrollHeight
     }
   }, [messages])
 
@@ -104,40 +110,39 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
       container.addEventListener('scroll', handleScroll)
       return () => container.removeEventListener('scroll', handleScroll)
     }
-  }, [messages, loadingMore, hasMore])
+  }, [messages, hasMore])
 
   return (
     <div className='relative flex flex-col flex-[2] h-full p-4 bg-gray-bg-subtle rounded-20'>
-
-      {/* <!--- CONTENT HEADER ---> */}
+      {/* CONTENT HEADER */}
       <div className='absolute top-0 left-0 right-0 flex justify-between items-center h-19.5 px-4 bg-white border-stroke border-t border-x rounded-t-20 z-10'>
         <div className='flex justify-start items-center gap-3.5'>
           <div className='relative w-11.5 h-11.5 rounded-full'>
-            {otherPersonAvatarUrl !== '' ? (
-              <Image
-                src={backendHostUrl + otherPersonAvatarUrl}
-                alt={`${otherPersonName} avatar`}
-                width={46}
-                height={46}
-                className='w-full h-full rounded-full'
-              />
-            ) : (
-              <Image
-                src={defaultAvatarUrl}
-                alt={`${otherPersonName} avatar`}
-                width={46}
-                height={46}
-                className='w-full h-full rounded-full'
-              />
-            )}
+            {
+              otherPersonAvatarUrl !== '' ? (
+                <Image
+                  src={backendHostUrl + otherPersonAvatarUrl}
+                  alt={`${otherPersonName} avatar`}
+                  width={46}
+                  height={46}
+                  className='w-full h-full rounded-full'
+                />
+              ) : (
+                <Image
+                  src={defaultAvatarUrl}
+                  alt={`${otherPersonName} avatar`}
+                  width={46}
+                  height={46}
+                  className='w-full h-full rounded-full'
+                />
+              )
+            }
           </div>
-
           <div className='flex flex-col items-start'>
             <p className='text-black font-medium'>{otherPersonName}</p>
             <p className='text-gray-20 text-sm'>last seen recently</p>
           </div>
         </div>
-
         <div className='flex justify-end items-center gap-2.5'>
           <SvgWrapper>
             <PhoneSvg width='20' height='20' color='#4D5260' />
@@ -148,25 +153,20 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
           <SvgWrapper>
             <SidebarSimpleSvg width='20' height='20' color='#4D5260' />
           </SvgWrapper>
-
           <EllipsisMenu menus={[]} />
         </div>
       </div>
 
-      {/* <!--- MESSAGE CONTENT ---> */}
+      {/* MESSAGE CONTENT */}
       <div className='relative flex flex-col w-full h-full px-4 pt-19.5'>
         <div ref={chatRef} className='flex flex-1 flex-col gap-4 pb-4 overflow-y-auto no-scrollbar'>
-          {loadingMore && (
-            <div className='text-gray-20 text-xs'>Loading more...</div>
+          {isLoadingMoreRef.current && (
+            <div className="text-gray-20 text-xs text-center">Loading more...</div>
           )}
-
-          {messages.map((message, index) => {
-            return (
-              <ChatItem key={index} message={message} />
-            )
-          })}
+          {messages.map((message, index) => (
+            <ChatItem key={index} message={message} />
+          ))}
         </div>
-
         <div className='flex w-full'>
           <MessageTypeBox />
         </div>
@@ -184,7 +184,3 @@ const SvgWrapper: React.FC<ILayoutProps> = ({ children }) => {
 }
 
 export default Chat
-
-// Here, how to remain current scroll position when refreshing?
-// The main focus is
-// When I scroll to top, there fetches more messages and add
