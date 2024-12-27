@@ -137,7 +137,6 @@ const Users: React.FC<IUsers> = ({ isShow, setCurrentChatUser, currentChatUserId
                     key={index}
                     user={user}
                     isSelected={user.id === currentChatUserId}
-                    isTodayOrYesterday
                     onClick={() => onClick(user.id)}
                   />
                   {index < restUsers.length -1 && (
@@ -158,7 +157,7 @@ export default Users
 interface IUserItemProps {
   user: IContactUser
   isSelected: boolean
-  isTodayOrYesterday: boolean
+  isTodayOrYesterday?: boolean
   onClick: () => void
 }
 
@@ -175,8 +174,8 @@ const UserItem: React.FC<IUserItemProps> = ({
   // !type assertion
   const dateObj = new Date(user.lastMessage?.sentDate!)
 
-  let date: string = get12HourTimeFromDateObject(dateObj)
-  let time: string = getDateFromDateObject(dateObj)
+  let time: string = get12HourTimeFromDateObject(dateObj)
+  let date: string = getDateFromDateObject(dateObj)
 
   return (
     <div className={containerStyle} onClick={onClick}>

@@ -112,6 +112,18 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
     }
   }, [messages, hasMore])
 
+  if (!currentChatUserId) {
+    return (
+      <div className='relative flex flex-[2] flex-col justify-center items-center h-full bg-gray-bg-subtle rounded-20'>
+        <h2 className='text-5xl font-semibold text-black mb-6 z-10'><span className='text-gray-30'>Hello, </span>COA-CH!</h2>
+        <p className='text-gray-30 text-2xl mb-14 z-10'>Start chatting now with your connections and enjoy seamless conversations.</p>
+        <button className='px-6 py-2 bg-green text-black rounded-full hover:bg-green-400 transition z-10'>
+          Find someone to chat with
+        </button>
+      </div>
+    )
+  }
+
   return (
     <div className='relative flex flex-col flex-[2] h-full p-4 bg-gray-bg-subtle rounded-20'>
       {/* CONTENT HEADER */}
