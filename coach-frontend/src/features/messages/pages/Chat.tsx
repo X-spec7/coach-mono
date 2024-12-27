@@ -33,6 +33,7 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
   const [otherPersonAvatarUrl, setOtherPersonAvatarUrl] = useState('')
   const [messages, setMessages] = useState<IMessage[]>([])
 
+
   const offsetRef = useRef(0)
   const previousScrollHeightRef = useRef(0)
   const isLoadingMoreRef = useRef(false)
