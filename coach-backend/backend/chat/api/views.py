@@ -1,10 +1,4 @@
-import os
-import requests
-import base64
-from django.core.files.base import ContentFile
-from django.contrib.auth import authenticate, login
 from django.db.models import Q, Max, Count
-from rest_framework import status, permissions
 from rest_framework.decorators import action
 from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, UpdateModelMixin
 from rest_framework.response import Response
@@ -18,11 +12,10 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from django_ratelimit.decorators import ratelimit
 
 from django.conf import settings
-from rest_framework.parsers import MultiPartParser, FormParser
 
-from backend.chat.models import Chat
+from backend.chat.models import ChatMessage
 from backend.users.models import User
-from .serializers import ChatSerializer
+from .serializers import ChatMessageSerializer
 
 class GetContactView(APIView):
   permission_classes = [IsAuthenticated]
@@ -93,19 +86,19 @@ class GetContactView(APIView):
 
     return Response(contacts)
   
-class ChatView(APIView, LimitOffsetPagination):
+class ChatMessageView(APIView, LimitOffsetPagination):
   permission_classes = [IsAuthenticated]
 
   def get(self, request, contact_id):
     user = request.user
 
-    messages = Chat.objects.filter(
+    messages = ChatMessage.objects.filter(
       Q(sender=user, recipient_id=contact_id)
       | Q(sender_id=contact_id, recipient=user)
     ).order_by("-timestamp")
 
     paginated_messages = self.paginate_queryset(messages, request, view=self)
-    serialized_messages = ChatSerializer(paginated_messages, many=True).data
+    serialized_messages = ChatMessageSerializer(paginated_messages, many=True).data
 
     total_count = messages.count()
 
