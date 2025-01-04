@@ -88,27 +88,38 @@ const Header = (props: HeaderProps) => {
 
         <div className='flex flex-col justify-between items-start max-md:hidden'>
           {
-            props.isDetailPage &&
-            <BackButton buttonTitle={props.description} handleBack={handleBack} />
+            props.isDetailPage && (
+              <BackButton buttonTitle={props.description} handleBack={handleBack} />
+            )
           }
           <h3 className='text-black text-2xl'>{props.title}</h3>
           {
-            !props.isDetailPage &&
-            <p className='text-gray-20 text-xs'>{props.description}</p>
+            !props.isDetailPage && (
+              <p className='text-gray-20 text-xs'>{props.description}</p>
+            )
           }
         </div>
 
         <div className='flex flex-center gap-2 p-2 bg-white rounded-4xl'>
           {
-            props.isDashboard && <div className='max-md:hidden'><SearchField width='w-67' height='h-9' placeholder='Search anything' onChange={() => {}} /></div>
-            
+            props.isDashboard && (
+              <div className='max-md:hidden'>
+                <SearchField width='w-67' height='h-9' placeholder='Search anything'/>
+              </div>
+            )
           }
           <DropdownNotification />
           {
-            !props.isDashboard && <DropdownUser />
+            !props.isDashboard && (
+              <DropdownUser />
+            )
           }
           {
-            props.isDashboard && <div className='md:hidden'><DropdownUser /></div>
+            props.isDashboard && (
+              <div className='md:hidden'>
+                <DropdownUser />
+              </div>
+            )
           }
         </div>
       </div>

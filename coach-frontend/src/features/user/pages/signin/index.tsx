@@ -33,13 +33,12 @@ const SignInPage: React.FC = () => {
       dispatch(loginAsync({ email, password }))
         .unwrap()
         .then((result) => {
-          setLoading(false)
           router.push('/dashboard')
         })
-      
     } catch (err) {
       console.error('Login error:', err)
       setError('Invalid email or password. Please try again.')
+    } finally {
       setLoading(false)
     }
   }
