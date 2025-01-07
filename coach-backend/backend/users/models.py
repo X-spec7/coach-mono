@@ -40,7 +40,11 @@ class Qualification(models.Model):
         app_label = 'users'
 
     def __str__(self):
-        return f"{self.name} ({self.year})"    
+        return f"{self.name} ({self.year})"  
+    
+    class Meta:
+        app_label = 'users'
+
 
 class User(AbstractUser):
     """Custom User model."""

@@ -66,6 +66,7 @@ DJANGO_APPS = [
     "django.contrib.sessions",
     "django.contrib.sites",
     "django.contrib.messages",
+    "daphne",
     "django.contrib.staticfiles",
     # "django.contrib.humanize", # Handy template tags
     "django.contrib.admin",
@@ -80,6 +81,7 @@ THIRD_PARTY_APPS = [
     "allauth.socialaccount",
     # "django_celery_beat",
     "rest_framework",
+    "channels",
     "rest_framework.authtoken",
     "corsheaders",
     "drf_spectacular",
@@ -88,7 +90,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "backend.users",
-    "backend.chat",
+    "chat",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -338,4 +340,14 @@ SIMPLE_JWT = {
     # 'REFRESH_TOKEN_ROTATE_REFRESH_TOKENS': False,
     # 'REFRESH_TOKEN_BLACKLIST_AFTER_ROTATION': False,
     # 'UPDATE_LAST_LOGIN': False,
+}
+
+ASGI_APPLICATION = "config.asgi.application"
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
 }
