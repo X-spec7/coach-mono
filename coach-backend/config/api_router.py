@@ -14,7 +14,7 @@ router.register("users", UserViewSet)
 
 sub_urls = [
     path('authentication/', include('users.api.urls')),
-    path('chat/', include('chat.api.urls')),
+    path("conversations/", include('chat.urls')),
 ]
 
 app_name = "api"

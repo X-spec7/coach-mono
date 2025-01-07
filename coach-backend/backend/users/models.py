@@ -37,7 +37,11 @@ class Qualification(models.Model):
     year = models.PositiveIntegerField(verbose_name=_("Year Obtained"))
 
     def __str__(self):
-        return f"{self.name} ({self.year})"    
+        return f"{self.name} ({self.year})"  
+    
+    class Meta:
+        app_label = 'users'
+
 
 class User(AbstractUser):
     """Custom User model."""
