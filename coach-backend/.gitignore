@@ -22,6 +22,8 @@ sdist/
 var/
 wheels/
 *.egg-info/
+.env/
+env/
 .installed.cfg
 *.egg
 
@@ -69,6 +71,7 @@ celerybeat-schedule
 .venv
 venv/
 ENV/
+env/
 
 # Rope project settings
 .ropeproject
