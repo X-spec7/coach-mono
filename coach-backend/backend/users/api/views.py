@@ -9,8 +9,7 @@ from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, UpdateMode
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import GenericViewSet
-from rest_framework.permissions import AllowAny
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from django_ratelimit.decorators import ratelimit
@@ -103,7 +102,7 @@ class RegisterView(APIView):
     permission_classes = [permissions.AllowAny,]
     authentication_classes = ()
 
-    # TODO: increate rate limit 
+    # TODO: increase rate limit 
     # @ratelimit(key='ip', rate='5/min')
     def post(self, request):
         try:
