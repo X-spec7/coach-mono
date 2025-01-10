@@ -1,5 +1,4 @@
 from typing import ClassVar
-
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db.models import CharField, EmailField
 from django.db import models
@@ -10,7 +9,6 @@ from .managers import UserManager
 
 
 class EncryptedUserManager(BaseUserManager):
-    """Custom manager for the User model."""
     def create_user(self, email, password=None, **extra_fields):
         if not email:
             raise ValueError("The Email field must be set")
@@ -32,12 +30,8 @@ class EncryptedUserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
 
 class Qualification(models.Model):
-    """Model to represent a qualification."""
     name = models.CharField(max_length=255, verbose_name=_("Qualification Name"))
     year = models.PositiveIntegerField(verbose_name=_("Year Obtained"))
-
-    class Meta:
-        app_label = 'users'
 
     def __str__(self):
         return f"{self.name} ({self.year})"  
@@ -47,7 +41,6 @@ class Qualification(models.Model):
 
 
 class User(AbstractUser):
-    """Custom User model."""
 
     USER_TYPE_CHOICES = [
         ("User", _("Coach")),
@@ -88,7 +81,6 @@ class User(AbstractUser):
     objects: ClassVar[UserManager] = UserManager()
 
     def get_absolute_url(self) -> str:
-        """Get URL for user's detail view."""
         return reverse("users:detail", kwargs={"pk": self.id})
     
     def qualifications_list(self):
@@ -102,9 +94,8 @@ class User(AbstractUser):
         verbose_name_plural = _("Users")
 
 class UserQualification(models.Model):
-    """Through model to establish a many-to-many relationship between User and Qualification."""
     user = models.ForeignKey(User, related_name='qualifications', on_delete=models.CASCADE)
     qualification = models.ForeignKey(Qualification, related_name='users', on_delete=models.CASCADE)
     
     class Meta:
-        unique_together = ('user', 'qualification')  # Ensures no duplicates for the same qualification-user pair
+        unique_together = ('user', 'qualification')
