@@ -4,7 +4,6 @@ from backend.users.models import User
 
 from django.conf import settings
 
-
 class UserSerializer(serializers.ModelSerializer):
     avatar_image_url = serializers.SerializerMethodField()
     banner_image_url = serializers.SerializerMethodField()
@@ -22,7 +21,6 @@ class UserSerializer(serializers.ModelSerializer):
         if obj.banner_image:
             return f"{settings.MEDIA_URL}{obj.banner_image}"
         return None
-
 
 class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField()

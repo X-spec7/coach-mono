@@ -36,6 +36,9 @@ class Qualification(models.Model):
     name = models.CharField(max_length=255, verbose_name=_("Qualification Name"))
     year = models.PositiveIntegerField(verbose_name=_("Year Obtained"))
 
+    class Meta:
+        app_label = 'users'
+
     def __str__(self):
         return f"{self.name} ({self.year})"  
     
