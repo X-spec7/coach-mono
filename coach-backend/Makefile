@@ -1,5 +1,11 @@
 DB_URL=postgresql://root:secret@localhost:5432/coach?sslmode=disable
 
+pip-install-base:
+	pip3 install -r requirements/base.txt
+
+pip-install-local:
+	pip3 install -r requirements/local.txt
+
 run-postgres:
 	docker run --name postgres15 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:15.10-alpine
 
