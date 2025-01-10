@@ -1,22 +1,22 @@
 DB_URL=postgresql://root:secret@localhost:5432/coach?sslmode=disable
 
 run-postgres:
-	docker run --name postgres14 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:14-alpine
+	docker run --name postgres15 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:15.10-alpine
 
 start-postgres:
-	docker start postgres14
+	docker start postgres15
 
 stop-postgres:
-	docker stop postgres14
+	docker stop postgres15
 
 remove-postgres:
-	docker rm -f postgres14
+	docker rm -f postgres15
 
 create-database:
-	docker exec -it postgres14 createdb --username=root --owner=root coach
+	docker exec -it postgres15 createdb --username=root --owner=root coach
 
 drop-database:
-	docker exec -it postgres14 dropdb coach
+	docker exec -it postgres15 dropdb coach
 
 make-migrations:
 	python3 manage.py makemigrations
