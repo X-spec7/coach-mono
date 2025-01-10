@@ -90,6 +90,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "backend.users",
+    "backend.meetapp",
     "chat",
     # Your stuff: custom apps go here
 ]
