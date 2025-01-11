@@ -1,16 +1,22 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { useSelector } from 'react-redux'
 import Image from 'next/image'
 
 import ChatItem from './ChatItem'
 import MessageTypeBox from './MessageTypeBox'
 
-import { messageService } from '../service'
-import { IMessage } from '../types'
-import { ILayoutProps } from '@/shared/types/common.type'
+import { messageService, zoomService } from '../service'
+import { AuthorizeMeetingRequestDTO, IMessage } from '../types'
 import { EllipsisMenu } from '@/shared/components'
 import { PhoneSvg, VideoCameraSvg, SidebarSimpleSvg } from '@/shared/components/Svg'
+import { selectUser } from '@/features/user/slice/userSlice'
+
+import { ZoomMtg } from "@zoom/meetingsdk"
+
+ZoomMtg.preLoadWasm();
+ZoomMtg.prepareWebSDK();
 
 import * as dotenv from 'dotenv'
 
@@ -26,6 +32,8 @@ interface IChat {
 
 const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
   const chatRef = useRef<HTMLDivElement | null>(null)
+
+  const user = useSelector(selectUser)
 
   const [showScrollDown, setShowScrollDown] = useState(false)
   const [hasMore, setHasMore] = useState(false)
@@ -125,6 +133,63 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
     )
   }
 
+  const onPhoneClick = async () => {
+    const createZoomRes = await zoomService.createInstantMeeting({recipientId: currentChatUserId})
+    const meetingNumber = createZoomRes.data.id
+    const password = createZoomRes.data.encrypted_password
+
+    const authorizeMeetingRequestDTO: AuthorizeMeetingRequestDTO = {
+      meetingNumber: meetingNumber,
+      role: 1,
+    }
+    const authMeetingRes = await zoomService.authorizeMeeting(authorizeMeetingRequestDTO)
+    const signature = authMeetingRes.signature as string
+    const sdkKey = authMeetingRes.sdkKey as string
+    startMeeting(signature, meetingNumber, sdkKey, password)
+  }
+
+  const leaveUrl = `http://localhost:3000/messages?currentChatUserId=${currentChatUserId}`
+
+  function startMeeting(
+    signature: string,
+    meetingNumber: string,
+    sdkKey: string,
+    password: string,
+  ) {
+    document.getElementById("zmmtg-root")!.style.display = "block";
+
+    console.log("signature", signature)
+
+    ZoomMtg.init({
+      leaveUrl: leaveUrl,
+      patchJsMedia: true,
+      leaveOnPageUnload: true,
+      success: (success: unknown) => {
+        console.log(success);
+        // can this be async?
+        ZoomMtg.join({
+          signature: signature,
+          sdkKey: sdkKey,
+          meetingNumber: meetingNumber,
+          passWord: password,
+          userName: user.firstName,
+          userEmail: user.email,
+          tk: "",
+          zak: "",
+          success: (success: unknown) => {
+            console.log(success);
+          },
+          error: (error: unknown) => {
+            console.log(error);
+          },
+        });
+      },
+      error: (error: unknown) => {
+        console.log(error);
+      },
+    });
+  }
+
   return (
     <div className='relative flex flex-col flex-[2] h-full p-4 bg-gray-bg-subtle rounded-20'>
       {/* CONTENT HEADER */}
@@ -157,7 +222,7 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
           </div>
         </div>
         <div className='flex justify-end items-center gap-2.5'>
-          <SvgWrapper>
+          <SvgWrapper onClick={onPhoneClick}>
             <PhoneSvg width='20' height='20' color='#4D5260' />
           </SvgWrapper>
           <SvgWrapper>
@@ -184,13 +249,25 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
           <MessageTypeBox />
         </div>
       </div>
+
+      <div id="zoom-container">
+        <div id="zmmtg-root" />
+      </div>
     </div>
   )
 }
 
-const SvgWrapper: React.FC<ILayoutProps> = ({ children }) => {
+interface ISvgWrapperProps {
+  children: React.ReactNode
+  onClick?: () => void
+}
+
+const SvgWrapper: React.FC<ISvgWrapperProps> = ({ children, onClick }) => {
   return (
-    <div className='flex justify-center items-center w-9 h-9 bg-gray-bg-subtle rounded-full'>
+    <div
+      className='flex justify-center items-center w-9 h-9 bg-gray-bg-subtle rounded-full cursor-pointer'
+      onClick={onClick}
+    >
       {children}
     </div>
   )

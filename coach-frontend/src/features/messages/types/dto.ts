@@ -14,3 +14,12 @@ export interface GetMessagesByUserIdRequestDTO {
   offset: number
   limit: number
 }
+
+export interface CreateInstantMeetingRequestDTO {
+  recipientId: string
+}
+
+export interface AuthorizeMeetingRequestDTO {
+  meetingNumber: string
+  role: number
+}

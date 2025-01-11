@@ -1,6 +1,6 @@
 'use client'
 
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams, usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
@@ -17,11 +17,13 @@ const backendHostUrl = process.env.NEXT_PUBLIC_BACKEND_HOST_URL
 interface IUsers {
   isShow: boolean
   currentChatUserId?: string
-  setCurrentChatUser: (userId: string) => void
 }
 
-const Users: React.FC<IUsers> = ({ isShow, setCurrentChatUser, currentChatUserId }) => {
+const Users: React.FC<IUsers> = ({ isShow, currentChatUserId }) => {
   const searchParams = useSearchParams()
+  const pathname = usePathname()
+  const { replace } = useRouter()
+
   const query: string | null = searchParams.get('query')
 
   const [contactUsers, setContactUsers] = useState<IContactUser[]>([])
@@ -30,7 +32,13 @@ const Users: React.FC<IUsers> = ({ isShow, setCurrentChatUser, currentChatUserId
 
   const onClick = (userId: string) => {
     console.log('setting chat user: ', userId)
-    setCurrentChatUser(userId)
+    const params = new URLSearchParams(searchParams)
+
+    if(userId) {
+      params.set('currentChatUserId', userId)
+    }
+
+    replace(`${pathname}?${params.toString()}`)
   }
 
   useEffect(() => {
