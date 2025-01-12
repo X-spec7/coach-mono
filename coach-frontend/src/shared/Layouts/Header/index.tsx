@@ -33,9 +33,9 @@ const Header = (props: HeaderProps) => {
   }
 
   return (
-    <header className='flex w-full'>
-      <div className='flex flex-grow items-center justify-between'>
-        <div className='flex items-center gap-2 sm:gap-4 lg:hidden'>
+    <header className='tw-flex tw-w-full'>
+      <div className='tw-flex tw-flex-grow tw-items-center tw-justify-between'>
+        <div className='tw-flex tw-items-center tw-gap-2 tw-sm:tw-gap-4 tw-lg:tw-hidden'>
 
           {/* <!-- Hamburger Toggle BTN --> */}
           <button
@@ -44,35 +44,35 @@ const Header = (props: HeaderProps) => {
               e.stopPropagation()
               handleToggleSidebar()
             }}
-            className='z-999 block rounded-sm border border-stroke bg-white p-1.5 shadow-sm dark:border-strokedark dark:bg-boxdark lg:hidden'
+            className='tw-z-999 tw-block tw-rounded-sm tw-border tw-border-stroke tw-bg-white tw-p-1.5 tw-shadow-sm'
           >
-            <span className='relative block h-5.5 w-5.5 cursor-pointer'>
-              <span className='du-block absolute right-0 h-full w-full'>
+            <span className='tw-relative tw-block tw-h-5.5 tw-w-5.5 tw-cursor-pointer'>
+              <span className='tw-du-block tw-absolute tw-right-0 tw-h-full tw-w-full'>
                 <span
-                  className={`relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-black delay-[0] duration-200 ease-in-out dark:bg-white ${
-                    !isSidebarOpen && '!w-full delay-300'
+                  className={`tw-relative tw-left-0 tw-top-0 tw-my-1 tw-block tw-h-0.5 tw-w-0 tw-rounded-sm tw-bg-black tw-delay-[0] tw-duration-200 tw-ease-in-out ${
+                    !isSidebarOpen && '!tw-w-full tw-delay-300'
                   }`}
                 ></span>
                 <span
-                  className={`relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-black delay-150 duration-200 ease-in-out dark:bg-white ${
-                    !isSidebarOpen && 'delay-400 !w-full'
+                  className={`tw-relative tw-left-0 tw-top-0 tw-my-1 tw-block tw-h-0.5 tw-w-0 tw-rounded-sm tw-bg-black tw-delay-150 tw-duration-200 tw-ease-in-out ${
+                    !isSidebarOpen && 'tw-delay-400 !tw-w-full'
                   }`}
                 ></span>
                 <span
-                  className={`relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-black delay-200 duration-200 ease-in-out dark:bg-white ${
-                    !isSidebarOpen && '!w-full delay-500'
+                  className={`tw-relative tw-left-0 tw-top-0 tw-my-1 tw-block tw-h-0.5 tw-w-0 tw-rounded-sm tw-bg-black tw-delay-200 tw-duration-200 tw-ease-in-out ${
+                    !isSidebarOpen && '!tw-w-full tw-delay-500'
                   }`}
                 ></span>
               </span>
-              <span className='absolute right-0 h-full w-full rotate-45'>
+              <span className='tw-absolute tw-right-0 tw-h-full tw-w-full tw-rotate-45'>
                 <span
-                  className={`absolute left-2.5 top-0 block h-full w-0.5 rounded-sm bg-black delay-300 duration-200 ease-in-out dark:bg-white ${
-                    !isSidebarOpen && '!h-0 !delay-[0]'
+                  className={`tw-absolute tw-left-2.5 tw-top-0 tw-block tw-h-full tw-w-0.5 tw-rounded-sm tw-bg-black tw-delay-300 tw-duration-200 tw-ease-in-out ${
+                    !isSidebarOpen && '!tw-h-0 !tw-delay-[0]'
                   }`}
                 ></span>
                 <span
-                  className={`delay-400 absolute left-0 top-2.5 block h-0.5 w-full rounded-sm bg-black duration-200 ease-in-out dark:bg-white ${
-                    !isSidebarOpen && '!h-0 !delay-200'
+                  className={`tw-delay-400 tw-absolute tw-left-0 tw-top-2.5 tw-block tw-h-0.5 tw-w-full tw-rounded-sm tw-bg-black tw-duration-200 tw-ease-in-out ${
+                    !isSidebarOpen && '!tw-h-0 !tw-delay-200'
                   }`}
                 ></span>
               </span>
@@ -81,30 +81,30 @@ const Header = (props: HeaderProps) => {
           {/* <!-- Hamburger Toggle BTN --> */}
 
           {/* LOGO */}
-          <Link className='block flex-shrink-0 lg:hidden' href='/dashboard'>
-            <div className='bg-red-30 w-7 h-7 rounded-full'></div>
+          <Link className='tw-block tw-flex-shrink-0 tw-lg:tw-hidden' href='/dashboard'>
+            <div className='tw-bg-red-30 tw-w-7 tw-h-7 tw-rounded-full'></div>
           </Link>
         </div>
 
-        <div className='flex flex-col justify-between items-start max-md:hidden'>
+        <div className='tw-flex tw-flex-col tw-justify-between tw-items-start tw-max-md:tw-hidden'>
           {
             props.isDetailPage && (
               <BackButton buttonTitle={props.description} handleBack={handleBack} />
             )
           }
-          <h3 className='text-black text-2xl'>{props.title}</h3>
+          <h3 className='tw-text-black tw-text-2xl'>{props.title}</h3>
           {
             !props.isDetailPage && (
-              <p className='text-gray-20 text-xs'>{props.description}</p>
+              <p className='tw-text-gray-20 tw-text-xs'>{props.description}</p>
             )
           }
         </div>
 
-        <div className='flex flex-center gap-2 p-2 bg-white rounded-4xl'>
+        <div className='tw-flex tw-flex-center tw-gap-2 tw-p-2 tw-bg-white tw-rounded-4xl'>
           {
             props.isDashboard && (
-              <div className='max-md:hidden'>
-                <SearchField width='w-67' height='h-9' placeholder='Search anything'/>
+              <div className='tw-max-md:tw-hidden'>
+                <SearchField width='tw-w-67' height='tw-h-9' placeholder='Search anything'/>
               </div>
             )
           }
@@ -116,7 +116,7 @@ const Header = (props: HeaderProps) => {
           }
           {
             props.isDashboard && (
-              <div className='md:hidden'>
+              <div className='md:tw-hidden'>
                 <DropdownUser />
               </div>
             )

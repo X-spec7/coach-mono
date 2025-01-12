@@ -17,10 +17,10 @@ const TrainerDetailPage: React.FC<TrainerDetailPageProps> = async ({ trainer }) 
   }
 
   return (
-    <div className='flex justify-center gap-4'>
+    <div className='tw-flex tw-justify-center tw-gap-4'>
       <TrainerProfile trainer={trainer}/>
 
-      <div className='flex flex-[3] flex-col gap-4'>
+      <div className='tw-flex tw-flex-[3] tw-flex-col tw-gap-4'>
         <TrainingActivity />
         <TrainerSchedule />
         <Reviews reviews={trainer.reviews} />

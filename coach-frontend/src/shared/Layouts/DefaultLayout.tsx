@@ -8,17 +8,17 @@ export default function DefaultLayout({
 
   return (
     <>
-      <div className='flex w-full min-h-screen bg-gray-bg'>
+      <div className='tw-flex tw-w-full tw-min-h-screen tw-bg-gray-bg'>
         {/* <!-- ===== Sidebar Start ===== --> */}
         <Sidebar />
         {/* <!-- ===== Sidebar End ===== --> */}
 
         {/* <!-- ===== Content Area Start ===== --> */}
-        <div className='relative flex-1'>
+        <div className='tw-relative tw-flex-1'>
 
-          {/* <main className='h-[calc(100%-32px)]'> */}
-          <main className='h-full'>
-            <div className='mx-auto h-full'>
+          {/* <main className='tw-h-[calc(100%-32px)]'> */}
+          <main className='tw-h-full'>
+            <div className='tw-mx-auto tw-h-full'>
               {children}
             </div>
           </main>

@@ -71,7 +71,7 @@ const FootstepBasicChart = () => {
 
   return (
     <div>
-      <div className='w-full'>
+      <div className='tw-w-full'>
         <ReactApexChart options={state.options} series={state.series} type='line' height={110} />
       </div>
     </div>

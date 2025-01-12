@@ -10,7 +10,7 @@ const CoachProfilePage = () => {
   const user = useSelector(selectUser)
   
   return (
-    <div className='flex flex-col items-center gap-4 w-full h-full p-4'>
+    <div className='tw-flex tw-flex-col tw-items-center tw-gap-4 tw-w-full tw-h-full tw-p-4'>
       <Header
         title={`Hello, ${user.firstName} ${user.lastName}!  👋`}
         description='Let’s complete your wonderful today!'

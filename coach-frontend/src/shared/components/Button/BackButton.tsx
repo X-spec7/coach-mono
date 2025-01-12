@@ -14,7 +14,7 @@ const BackButton: React.FC<BackButtonProps> = ({ buttonTitle, handleBack }) => {
   return (
     <button
       onClick={handleBackClick}
-      className='flex justify-start items-center gap-2 text-xs text-gray-20 cursor-pointer'
+      className='tw-flex tw-justify-start tw-items-center tw-gap-2 tw-text-xs tw-text-gray-20 tw-cursor-pointer'
     >
       <ArrowLeftSvg width='16' height='16' color='#878A94' />
       <p>{buttonTitle}</p>

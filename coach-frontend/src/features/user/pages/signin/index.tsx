@@ -44,66 +44,66 @@ const SignInPage: React.FC = () => {
   }
 
   return (
-    <div className='rounded-20 border border-stroke bg-white shadow-default max-w-screen-md'>
-      <div className='flex flex-wrap items-center'>
-        <div className='w-full'>
-          <div className='w-full p-4 sm:p-12.5 xl:p-17.5'>
-            <span className='mb-1.5 block font-medium'>Start for free</span>
-            <h2 className='mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl'>
+    <div className='tw-rounded-20 tw-border tw-border-stroke tw-bg-white tw-shadowdefault tw-max-w-screen-md'>
+      <div className='tw-flex tw-flex-wrap tw-items-center'>
+        <div className='tw-w-full'>
+          <div className='tw-w-full tw-p-4 tw-sm:tw-p-12.5 tw-xl:tw-p-17.5'>
+            <span className='tw-mb-1.5 tw-block tw-font-medium'>Start for free</span>
+            <h2 className='tw-mb-9 tw-text-2xl tw-font-bold tw-text-black tw-sm:tw-text-title-xl'>
               Sign In to COA-CH
             </h2>
 
             <form onSubmit={handleSubmit}>
-              <div className='mb-4'>
-                <label className='mb-2.5 block font-medium text-black dark:text-white'>
+              <div className='tw-mb-4'>
+                <label className='tw-mb-2.5 tw-block tw-font-medium tw-text-black'>
                   Email
                 </label>
-                <div className='relative'>
+                <div className='tw-relative'>
                   <input
                     type='email'
                     value={email}
                     onChange={handleEmailChange}
                     placeholder='Enter your email'
-                    className='w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary'
+                    className='tw-w-full tw-rounded-lg tw-border tw-border-stroke tw-bg-transparent tw-py-4 tw-pl-6 tw-pr-10 tw-text-black tw-outline-none tw-focus:tw-border-primary focus-visible:tw-shadownone'
                   />
                 </div>
               </div>
 
-              <div className='mb-6'>
-                <label className='mb-2.5 block font-medium text-black dark:text-white'>
+              <div className='tw-mb-6'>
+                <label className='tw-mb-2.5 tw-block tw-font-medium tw-text-black'>
                   Password
                 </label>
-                <div className='relative'>
+                <div className='tw-relative'>
                   <input
                     type='password'
                     value={password}
                     onChange={handlePasswordChange}
                     placeholder='6+ Characters, 1 Capital letter'
-                    className='w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary'
+                    className='tw-w-full tw-rounded-lg tw-border tw-border-stroke tw-bg-transparent tw-py-4 tw-pl-6 tw-pr-10 tw-text-black tw-outline-none tw-focus:tw-border-primary focus-visible:tw-shadownone'
                   />
                 </div>
               </div>
 
               {error && (
-                <div className='mb-4 text-red-500'>
+                <div className='tw-mb-4 tw-text-red-500'>
                   {error}
                 </div>
               )}
 
-              <div className='mb-5'>
+              <div className='tw-mb-5'>
                 <button
                   type='submit'
                   disabled={loading}
-                  className='w-full cursor-pointer rounded-lg border border-green bg-green p-4 text-black text-xl font-medium transition hover:bg-opacity-90'
+                  className='tw-w-full tw-cursor-pointer tw-rounded-lg tw-border tw-border-green tw-bg-green tw-p-4 tw-text-black tw-text-xl tw-font-medium tw-transition tw-hover:tw-bg-opacity-90'
                 >
                   {loading ? 'Signing In...' : 'Sign In'}
                 </button>
               </div>
 
-              <div className='mt-6 text-center'>
+              <div className='tw-mt-6 tw-text-center'>
                 <p>
                   Don’t have any account?{' '}
-                  <Link href='/signup' className='text-primary'>
+                  <Link href='/signup' className='tw-text-primary'>
                     Sign Up
                   </Link>
                 </p>

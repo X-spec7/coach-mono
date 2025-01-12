@@ -72,18 +72,18 @@ const Sidebar = () => {
     <ClickOutside onClick={() => handleToggleSidebar()}>
       <aside
         className={`
-          max-lg:fixed max-lg:top-0 max-lg:left-0 max-lg:z-99999
-          flex flex-col justify-between
-          h-[calc(100%-32px)] box-border my-4 ml-4 px-4 py-8 w-55 lg:translate-x-0
-          bg-white rounded-4xl max-lg:border-stroke max-lg:border-2
-          duration-200 ease-linear ${ isSidebarOpen ? "-translate-x-2" : "-translate-x-60"}`}
+          tw-max-lg:fixed tw-max-lg:tw-top-0 tw-max-lg:tw-left-0 tw-max-lg:tw-z-99999
+          tw-flex tw-flex-col tw-justify-between
+          tw-h-[calc(100%-32px)] tw-box-border my-4 ml-4 tw-px-4 tw-py-8 tw-w-55 tw-lg:translate-x-0
+          tw-bg-white tw-rounded-4xl tw-max-lg:tw-border-stroke tw-max-lg:tw-border-2
+          tw-duration-200 ease-linear ${ isSidebarOpen ? "tw--translate-x-2" : "tw--translate-x-60"}`}
       >
         <div>
           {/* <!-- SIDEBAR HEADER --> */}
-          <div className='flex items-center gap-2 pl-3'>
-            <div className='bg-red-30 w-7 h-7 rounded-full'></div>
+          <div className='tw-flex tw-items-center tw-gap-2 tw-pl-3'>
+            <div className='tw-bg-red-30 tw-w-7 tw-h-7 tw-rounded-full'></div>
             <Link href='/dashboard'>
-              <h2 className='text-black text-2xl font-semibold'>
+              <h2 className='tw-text-black tw-text-2xl tw-font-semibold'>
                 COA-CH
               </h2>
             </Link>
@@ -91,10 +91,10 @@ const Sidebar = () => {
             <button
               onClick={() => handleToggleSidebar()}
               aria-controls='sidebar'
-              className='block lg:hidden'
+              className='tw-block tw-lg:tw-hidden'
             >
               <svg
-                className='fill-current'
+                className='tw-fill-current'
                 width='20'
                 height='18'
                 viewBox='0 0 20 18'
@@ -110,12 +110,12 @@ const Sidebar = () => {
           </div>
 
           {/* <!-- SIDEBAR MENU --> */}
-          <div className='no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear'>
+          <div className='no-scrollbar tw-flex tw-flex-col tw-overflow-y-auto tw-duration-300 ease-linear'>
             {/* <!-- Sidebar Menu --> */}
-            <nav className='mt-5 lg:mt-6'>
+            <nav className='tw-mt-5 tw-lg:tw-mt-6'>
               {menuGroups.map((group, groupIndex) => (
                 <div key={groupIndex}>
-                  <ul className='mb-8 flex flex-col gap-2'>
+                  <ul className='tw-mb-8 tw-flex tw-flex-col tw-gap-2'>
                     {group.menuItems.map((menuItem, menuIndex) => (
                       <SidebarItem
                         key={menuIndex}
@@ -133,26 +133,26 @@ const Sidebar = () => {
         </div>
         
         <div>
-          <div className='lg:flex lg:flex-col gap-4 p-4 bg-blue rounded-20 hidden'>
-            <div className='h-8'>
-              <div className='bg-red-30 w-8 h-8 rounded-full'></div>
+          <div className='tw-lg:tw-flex tw-lg:tw-flex-col tw-gap-4 tw-p-4 tw-bg-blue tw-rounded-20 tw-hidden'>
+            <div className='tw-h-8'>
+              <div className='tw-bg-red-30 w-8 tw-h-8 tw-rounded-full'></div>
             </div>
 
-            <p className='text-black text-2xl font-medium'>
+            <p className='tw-text-black tw-text-2xl tw-font-medium'>
               Track.<br />Analyze.<br />Succeed.
             </p>
 
             <p>Monitor progress, set goals, and achieve results faster!</p>
 
-            <div className='flex justify-center items-center py-3 bg-green rounded-20 text-black text-xs font-medium'>AI integrated</div>
+            <div className='tw-flex tw-justify-center tw-items-center tw-py-3 tw-bg-green tw-rounded-20 tw-text-black tw-text-xs tw-font-medium'>AI integrated</div>
           </div>
 
           <button
-            className='flex items-center gap-3 pl-4 py-2.5 mt-6 transition-colors duration-200'
+            className='tw-flex tw-items-center tw-gap-3 tw-pl-4 tw-py-2.5 tw-mt-6 tw-transition-colors tw-duration-200'
             onClick={onLogout}
           >
             <LogoutSvg />
-            <p className='text-gray-20 hover:text-black text-sm font-medium'>Logout</p>
+            <p className='tw-text-gray-20 tw-hover:tw-text-black tw-text-sm tw-font-medium'>Logout</p>
           </button>
         </div>
       </aside>

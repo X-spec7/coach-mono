@@ -8,22 +8,22 @@ const yesterdayFootprintCount = 978;
 
 const FootStepsPanel = () => {
   return (
-    <div className='flex flex-col p-4 xl:p-6'>
-      <div className='flex justify-start items-center gap-2'>
+    <div className='tw-flex tw-flex-col tw-p-4 tw-xl:tw-p-6'>
+      <div className='tw-flex tw-justify-start tw-items-center tw-gap-2'>
         <FootPrintSvg width='16' height='16' color='#212738' />
-        <h3 className='text-gray-30 text-sm font-medium'>Steps</h3>
+        <h3 className='tw-text-gray-30 tw-text-sm tw-font-medium'>Steps</h3>
       </div>
 
       <FootstepChart />
 
-      <div className='flex items-end justify-start gap-0.5 mb-2'>
-        <p className='text-gray-30 text-xl font-bold'>{todayFootprintCount.toLocaleString()}</p>
-        <p className='text-gray-30 text-sm font-medium'>steps</p>
+      <div className='tw-flex tw-items-end tw-justify-start tw-gap-0.5 tw-mb-2'>
+        <p className='tw-text-gray-30 tw-text-xl tw-font-bold'>{todayFootprintCount.toLocaleString()}</p>
+        <p className='tw-text-gray-30 tw-text-sm tw-font-medium'>steps</p>
       </div>
 
-      <div className='flex justify-start items-center gap-1.5 text-gray-20 text-xxs2'>
+      <div className='tw-flex tw-justify-start tw-items-center tw-gap-1.5 tw-text-gray-20 tw-text-xxs2'>
         <label>Yesterday:</label>
-        <p className='font-medium'>{yesterdayFootprintCount.toLocaleString()} steps</p>
+        <p className='tw-font-medium'>{yesterdayFootprintCount.toLocaleString()} steps</p>
       </div>
     </div>
   )

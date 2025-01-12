@@ -39,21 +39,21 @@ function Calendar() {
   }
 
   return (
-    <div className='w-full flex items-center justify-center bg-white'>
-      <div className='w-full'>
-        <div className='flex items-center justify-between mb-4 px-1'>
-          <p className='font-medium text-black'>
+    <div className='tw-w-full tw-flex tw-items-center tw-justify-center tw-bg-white'>
+      <div className='tw-w-full'>
+        <div className='tw-flex tw-items-center tw-justify-between tw-mb-4 tw-px-1'>
+          <p className='tw-font-medium tw-text-black'>
             {format(firstDayOfMonth, 'MMMM yyyy')}
           </p>
-          <div className='flex items-center justify-end gap-2'>
+          <div className='tw-flex tw-items-center tw-justify-end tw-gap-2'>
             <button
-              className='flex justify-center items-center w-7.5 h-7.5 bg-gray-bg rounded-full'
+              className='tw-flex tw-justify-center tw-items-center tw-w-7.5 tw-h-7.5 tw-bg-gray-bg tw-rounded-full'
               onClick={() => getPrevMonth()}
             >
               <CaretLeftSvg width='18' height='18' color='#212738' />
             </button>
             <button
-              className='flex justify-center items-center w-7.5 h-7.5 bg-gray-bg rounded-full'
+              className='tw-flex tw-justify-center tw-items-center tw-w-7.5 tw-h-7.5 tw-bg-gray-bg tw-rounded-full'
               onClick={() => getNextMonth()}
             >
               <CaretRightSvg width='18' height='18' color='#212738' />
@@ -61,24 +61,24 @@ function Calendar() {
           </div>
         </div>
 
-        <div className='grid grid-cols-7 place-items-center'>
+        <div className='tw-grid tw-grid-cols-7 tw-place-items-center'>
           {days.map((day, idx) => {
             return (
-              <div key={idx} className='text-gray-20 font-medium h-10'>
+              <div key={idx} className='tw-text-gray-20 tw-font-medium tw-h-10'>
                 {capitalizeFirstLetter(day)}
               </div>
             )
           })}
         </div>
-        <div className='grid grid-cols-7 place-items-center'>
+        <div className='tw-grid tw-grid-cols-7 tw-place-items-center'>
           {daysInMonth.map((day, idx) => {
             return (
-              <div key={idx} className='flex justify-center items-center w-11 h-10'>
+              <div key={idx} className='tw-flex tw-justify-center tw-items-center tw-w-11 tw-h-10'>
                 <p
-                  className={`cursor-pointer flex items-center justify-center font-semibold h-8.5 w-8.5 rounded-full ${
-                    isSameMonth(day, firstDayOfMonth) ? 'text-gray-30' : 'text-gray-10'
-                  } ${!isToday(day) && 'hover:bg-blue'} ${
-                    isToday(day) && 'bg-yellow text-black'
+                  className={`tw-cursor-pointer tw-flex tw-items-center tw-justify-center tw-font-semibold tw-h-8.5 tw-w-8.5 tw-rounded-full ${
+                    isSameMonth(day, firstDayOfMonth) ? 'tw-text-gray-30' : 'tw-text-gray-10'
+                  } ${!isToday(day) && 'tw-hover:tw-bg-blue'} ${
+                    isToday(day) && 'tw-bg-yellow tw-text-black'
                   }`}
                 >
                   {format(day, 'd')}

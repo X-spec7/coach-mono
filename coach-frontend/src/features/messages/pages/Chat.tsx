@@ -123,10 +123,10 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
 
   if (!currentChatUserId) {
     return (
-      <div className='relative flex flex-[2] flex-col justify-center items-center h-full bg-gray-bg-subtle rounded-20'>
-        <h2 className='text-5xl font-semibold text-black mb-6 z-10'><span className='text-gray-30'>Hello, </span>COA-CH!</h2>
-        <p className='text-gray-30 text-2xl mb-14 z-10'>Start chatting now with your connections and enjoy seamless conversations.</p>
-        <button className='px-6 py-2 bg-green text-black rounded-full hover:bg-green-400 transition z-10'>
+      <div className='tw-relative tw-flex tw-flex-[2] tw-flex-col tw-justify-center tw-items-center tw-h-full tw-bg-gray-bg-subtle tw-rounded-20'>
+        <h2 className='tw-text-5xl tw-font-semibold tw-text-black tw-mb-6 tw-z-10'><span className='tw-text-gray-30'>Hello, </span>COA-CH!</h2>
+        <p className='tw-text-gray-30 tw-text-2xl tw-mb-14 tw-z-10'>Start chatting now with your connections and enjoy seamless conversations.</p>
+        <button className='tw-px-6 tw-py-2 tw-bg-green tw-text-black tw-rounded-full tw-hover:tw-bg-green-400 tw-transition tw-z-10'>
           Find someone to chat with
         </button>
       </div>
@@ -156,7 +156,7 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
     sdkKey: string,
     password: string,
   ) {
-    document.getElementById("zmmtg-root")!.style.display = "block";
+    document.getElementById("zmmtg-root")!.style.display = "tw-block";
 
     console.log("signature", signature)
 
@@ -191,11 +191,11 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
   }
 
   return (
-    <div className='relative flex flex-col flex-[2] h-full p-4 bg-gray-bg-subtle rounded-20'>
+    <div className='tw-relative tw-flex tw-flex-col tw-flex-[2] tw-h-full tw-p-4 tw-bg-gray-bg-subtle tw-rounded-20'>
       {/* CONTENT HEADER */}
-      <div className='absolute top-0 left-0 right-0 flex justify-between items-center h-19.5 px-4 bg-white border-stroke border-t border-x rounded-t-20 z-10'>
-        <div className='flex justify-start items-center gap-3.5'>
-          <div className='relative w-11.5 h-11.5 rounded-full'>
+      <div className='tw-absolute tw-top-0 tw-left-0 tw-right-0 tw-flex tw-justify-between tw-items-center tw-h-19.5 tw-px-4 tw-bg-white tw-border-stroke tw-border-t tw-border-x tw-rounded-t-20 tw-z-10'>
+        <div className='tw-flex tw-justify-start tw-items-center tw-gap-3.5'>
+          <div className='tw-relative tw-w-11.5 tw-h-11.5 tw-rounded-full'>
             {
               otherPersonAvatarUrl !== '' ? (
                 <Image
@@ -203,7 +203,7 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
                   alt={`${otherPersonName} avatar`}
                   width={46}
                   height={46}
-                  className='w-full h-full rounded-full'
+                  className='tw-w-full tw-h-full tw-rounded-full'
                 />
               ) : (
                 <Image
@@ -211,17 +211,17 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
                   alt={`${otherPersonName} avatar`}
                   width={46}
                   height={46}
-                  className='w-full h-full rounded-full'
+                  className='tw-w-full tw-h-full tw-rounded-full'
                 />
               )
             }
           </div>
-          <div className='flex flex-col items-start'>
-            <p className='text-black font-medium'>{otherPersonName}</p>
-            <p className='text-gray-20 text-sm'>last seen recently</p>
+          <div className='tw-flex tw-flex-col tw-items-start'>
+            <p className='tw-text-black tw-font-medium'>{otherPersonName}</p>
+            <p className='tw-text-gray-20 tw-text-sm'>last seen recently</p>
           </div>
         </div>
-        <div className='flex justify-end items-center gap-2.5'>
+        <div className='tw-flex tw-justify-end tw-items-center tw-gap-2.5'>
           <SvgWrapper onClick={onPhoneClick}>
             <PhoneSvg width='20' height='20' color='#4D5260' />
           </SvgWrapper>
@@ -236,16 +236,16 @@ const Chat: React.FC<IChat> = ({ isShow, currentChatUserId }) => {
       </div>
 
       {/* MESSAGE CONTENT */}
-      <div className='relative flex flex-col w-full h-full px-4 pt-19.5'>
-        <div ref={chatRef} className='flex flex-1 flex-col gap-4 pb-4 overflow-y-auto no-scrollbar'>
+      <div className='tw-relative tw-flex tw-flex-col tw-w-full tw-h-full tw-px-4 tw-pt-19.5'>
+        <div ref={chatRef} className='tw-flex tw-flex-1 tw-flex-col tw-gap-4 tw-pb-4 tw-overflow-y-auto no-scrollbar'>
           {isLoadingMoreRef.current && (
-            <div className="text-gray-20 text-xs text-center">Loading more...</div>
+            <div className="tw-text-gray-20 tw-text-xs tw-text-center">Loading more...</div>
           )}
           {messages.map((message, index) => (
             <ChatItem key={index} message={message} />
           ))}
         </div>
-        <div className='flex w-full'>
+        <div className='tw-flex tw-w-full'>
           <MessageTypeBox />
         </div>
       </div>
@@ -265,7 +265,7 @@ interface ISvgWrapperProps {
 const SvgWrapper: React.FC<ISvgWrapperProps> = ({ children, onClick }) => {
   return (
     <div
-      className='flex justify-center items-center w-9 h-9 bg-gray-bg-subtle rounded-full cursor-pointer'
+      className='tw-flex tw-justify-center tw-items-center tw-w-9 tw-h-9 tw-bg-gray-bg-subtle tw-rounded-full tw-cursor-pointer'
       onClick={onClick}
     >
       {children}

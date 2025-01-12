@@ -14,7 +14,7 @@ const profileDummyData = {
 
 const RightSideBar = () => {
   return (
-    <div className='flex flex-col gap-5 px-3.5 pt-4 pb-4.5 w-85 bg-white rounded-4xl'>
+    <div className='tw-flex tw-flex-col tw-gap-5 tw-px-3.5 tw-pt-4 tw-pb-4.5 tw-w-85 tw-bg-white tw-rounded-4xl'>
       <Profile
         fullname={profileDummyData.fullname}
         level={profileDummyData.level}

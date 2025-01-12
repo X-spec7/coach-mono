@@ -29,14 +29,14 @@ const SidebarItem = ({ item, pageName, setPageName }: any) => {
         <Link
           href={item.route}
           onClick={handleClick}
-          className={`${isItemActive ? "bg-green text-black" : "text-gray-20"} group relative flex items-center gap-2.5 rounded-[20px] px-6 h-10 text-sm  font-medium duration-300 ease-in-out hover:bg-graydark`}
+          className={`${isItemActive ? "tw-bg-green tw-text-black" : "tw-text-gray-20"} tw-group tw-relative tw-flex tw-items-center tw-gap-2.5 tw-rounded-[20px] tw-px-6 tw-h-10 tw-text-sm  tw-font-medium tw-duration-300 tw-ease-in-out tw-hover:tw-bg-graydark`}
         >      
             <NavbarSvg route={item.route} isItemActive={isItemActive } />
             {item.label}
             {item.children && (
               <svg
-                className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${
-                  pageName === item.label.toLowerCase() && "rotate-180"
+                className={`tw-absolute tw-right-4 tw-top-1/2 tw--translate-y-1/2 tw-fill-current ${
+                  pageName === item.label.toLowerCase() && "tw-rotate-180"
                 }`}
                 width="20"
                 height="20"
@@ -56,8 +56,8 @@ const SidebarItem = ({ item, pageName, setPageName }: any) => {
 
         {item.children && (
           <div
-            className={`translate transform overflow-hidden ${
-              pageName !== item.label.toLowerCase() && "hidden"
+            className={`tw-translate tw-transform tw-overflow-hidden ${
+              pageName !== item.label.toLowerCase() && "tw-hidden"
             }`}
           >
             <SidebarDropdown item={item.children} />

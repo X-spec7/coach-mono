@@ -9,15 +9,15 @@ interface ClassCardProps extends Omit<Class, 'durationPerSession' | 'price'>{}
 const getColorByLevel = (level?: ClassLevel): string => {
   switch (level) {
     case 'Beginner':
-      return 'bg-blue'
+      return 'tw-bg-blue'
     case 'Intermediate':
-      return 'bg-yellow'
+      return 'tw-bg-yellow'
     case 'Advanced':
-      return 'bg-green'
+      return 'tw-bg-green'
     case 'All Levels':
-      return 'bg-gray'
+      return 'tw-bg-gray'
     default:
-      return 'bg-gray'
+      return 'tw-bg-gray'
   }
 }
 
@@ -25,34 +25,34 @@ const ClassCard: React.FC<ClassCardProps> = ({ category, title, tutor, videoNumb
   const color = getColorByLevel(level)
   
   return (
-    <div className='flex justify-between items-center p-4 bg-white rounded-20'>
-      <div className='flex items-center justify-start gap-3 w-52'>
-        <div className='flex justify-center items-center w-10 h-10 bg-blue rounded-full'>
+    <div className='tw-flex tw-justify-between tw-items-center tw-p-4 tw-bg-white tw-rounded-20'>
+      <div className='tw-flex tw-items-center tw-justify-start tw-gap-3 tw-w-52'>
+        <div className='tw-flex tw-justify-center tw-items-center tw-w-10 tw-h-10 tw-bg-blue tw-rounded-full'>
           <HeartBeatSvg width="26" height="29" color="#4D5260"/>
         </div>
-        <div className='flex flex-col items-start justify-center gap-1'>
-          <span className='px-[6px] pb-[2px] pt-[3px] bg-blue-subtle text-xxs2'>
+        <div className='tw-flex tw-flex-col tw-items-start tw-justify-center tw-gap-1'>
+          <span className='tw-px-[6px] tw-pb-[2px] tw-pt-[3px] tw-bg-blue-subtle tw-text-xxs2'>
             {category} Training
           </span>
-          <h3 className='text-black text-xs font-bold'>
+          <h3 className='tw-text-black tw-text-xs tw-font-bold'>
             {title}
           </h3>
-          <div className='flex justify-start gap-1 items-center text-gray-20 text-[11px]'>
+          <div className='tw-flex tw-justify-start tw-gap-1 tw-items-center tw-text-gray-20 tw-text-[11px]'>
             <UserCircleSvg width="14" height="14" color="#878A94"/>
             {tutor}
           </div>
         </div>
       </div>
 
-      <div className='flex flex-col items-start justify-center gap-1'>
-        <p className='text-black font-medium text-xxs'>{videoNumber} videos</p>
-        <p className='text-gray-20 text-xxs'>
+      <div className='tw-flex tw-flex-col tw-items-start tw-justify-center tw-gap-1'>
+        <p className='tw-text-black tw-font-medium tw-text-xxs'>{videoNumber} videos</p>
+        <p className='tw-text-gray-20 tw-text-xxs'>
           {sessionRange?.minimumDuration}-{sessionRange?.maximumDuration} m/session
         </p>
       </div>
 
-      <div className='w-21'>
-        <span className={`px-2 py-1 rounded-lg text-black text-xxs ${color}`}>{level}</span>
+      <div className='tw-w-21'>
+        <span className={`tw-px-2 tw-py-1 tw-rounded-lg tw-text-black tw-text-xxs ${color}`}>{level}</span>
       </div>
 
       <KebabMenu />

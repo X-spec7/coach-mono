@@ -98,7 +98,7 @@ const CaloriesChart = () => {
     }
   )
   return (
-    <div className='w-full apexcharts-bar-area'>
+    <div className='tw-w-full apexcharts-bar-area'>
       <ReactApexChart
         options={chartState.options}
         type='bar'

@@ -28,10 +28,10 @@ const SearchField: React.FC<SearchFieldProps> = ({ width, height, placeholder })
   }, 300)
   
   return (
-    <div className={`relative ${width} ${height} bg-gray-bg rounded-4xl`}>
-      <button className='absolute left-3 top-1/2 -translate-y-1/2'>
+    <div className={`tw-relative ${width} ${height} tw-bg-gray-bg tw-rounded-4xl`}>
+      <button className='tw-absolute tw-left-3 tw-top-1/2 tw--translate-y-1/2'>
         <svg
-          className='fill-body hover:fill-primary dark:fill-bodydark dark:hover:fill-primary'
+          className='fill-body tw-hover:fill-primary'
           width='20'
           height='20'
           viewBox='0 0 20 20'
@@ -56,7 +56,7 @@ const SearchField: React.FC<SearchFieldProps> = ({ width, height, placeholder })
       <input
         type='text'
         placeholder={placeholder}
-        className='w-full h-full bg-transparent pl-9 font-regular text-black placeholder:text-gray-20 placeholder:text-sm focus:outline-none'
+        className='tw-w-full tw-h-full tw-bg-transparent tw-pl-9 tw-font-regular tw-text-black placeholder:tw-text-gray-20 placeholder:tw-text-sm tw-focus:tw-outline-none'
         onChange={(e) => {
           handleSearch(e.target.value)
         }}

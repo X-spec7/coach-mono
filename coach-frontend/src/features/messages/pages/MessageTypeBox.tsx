@@ -38,8 +38,8 @@ const MessageTypeBox = () => {
   }
 
   return (
-    <div className='flex justify-between items-end w-full p-2.5 bg-white rounded-20'>
-      <div className='flex flex-1 justify-start items-end gap-2 bg-[#FFFFFF] p-4'>
+    <div className='tw-flex tw-justify-between tw-items-end tw-w-full tw-p-2.5 tw-bg-white tw-rounded-20'>
+      <div className='tw-flex tw-flex-1 tw-justify-start tw-items-end tw-gap-2 tw-bg-[#FFFFFF] tw-p-4'>
         <EmotiSmileSvg
           width='24'
           height='24'
@@ -47,7 +47,7 @@ const MessageTypeBox = () => {
         />
         <textarea
           ref={textareaRef}
-          className='flex-1 resize-none border-none outline-none rounded-lg px-3 text-sm focus:outline-none focus:border-transparent overflow-hidden'
+          className='tw-flex-1 tw-resize-none tw-border-none tw-outline-none tw-rounded-lg tw-px-3 tw-text-sm tw-focus:tw-outline-none tw-focus:tw-border-transparent tw-overflow-hidden'
           rows={1}
           placeholder='Type a message...'
           value={message}
@@ -61,11 +61,11 @@ const MessageTypeBox = () => {
         />
       </div>
 
-      <div className='mb-2'>
+      <div className='tw-mb-2'>
         <SendButton
           title='Send'
           width='w-24'
-          height='h-9.5'
+          height='tw-h-9.5'
           onClick={onClick}
         />
       </div>

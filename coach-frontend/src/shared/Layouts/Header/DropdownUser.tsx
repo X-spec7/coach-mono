@@ -34,16 +34,16 @@ const DropdownUser = () => {
   }, [user])
 
   return (
-    <ClickOutside onClick={() => setDropdownOpen(false)} className='relative'>
+    <ClickOutside onClick={() => setDropdownOpen(false)} className='tw-relative'>
       <Link
         onClick={() => setDropdownOpen(!dropdownOpen)}
-        className='flex items-center gap-4 pr-2'
+        className='tw-flex tw-items-center tw-gap-4 tw-pr-2'
         href='#'
       >
 
-        <span className='h-9 w-9 rounded-full'>
+        <span className='tw-h-9 tw-w-9 tw-rounded-full'>
           {!isUserLoaded ? (
-            <div className='h-full w-full bg-gray-300 animate-pulse rounded-full'></div>
+            <div className='tw-h-full tw-w-full tw-bg-gray-300 tw-animate-pulse tw-rounded-full'></div>
           ) : (user.profilePicture ? (
             <Image
               width={36}
@@ -54,7 +54,7 @@ const DropdownUser = () => {
                 height: 'auto',
               }}
               alt='User'
-              className='rounded-full'
+              className='tw-rounded-full'
             />
           ) : (
             <Image
@@ -70,14 +70,14 @@ const DropdownUser = () => {
           ))}
         </span>
 
-        <span className='hidden text-right lg:block'>
-          <span className='block text font-medium text-gray-30'>
+        <span className='tw-hidden tw-text-right tw-lg:tw-block'>
+          <span className='tw-block tw-font-medium tw-text-gray-30'>
             {user.firstName} {user.lastName}
           </span>
         </span>
 
         <svg
-          className='hidden fill-current sm:block'
+          className='tw-hidden tw-fill-current tw-sm:tw-block'
           width='12'
           height='8'
           viewBox='0 0 12 8'
@@ -96,16 +96,16 @@ const DropdownUser = () => {
       {/* <!-- Dropdown Start --> */}
       {dropdownOpen && (
         <div
-          className={`absolute right-0 mt-4 flex w-62.5 flex-col rounded-sm border border-stroke bg-white shadow-default z-999`}
+          className={`tw-absolute tw-right-0 tw-mt-4 tw-flex w-62.5 tw-flex-col tw-rounded-sm tw-border tw-border-stroke tw-bg-white tw-shadowdefault tw-z-999`}
         >
-          <ul className='flex flex-col gap-5 border-b border-stroke px-6 py-7.5 text-gray-30'>
+          <ul className='tw-flex tw-flex-col tw-gap-5 tw-border-b tw-border-stroke tw-px-6 tw-py-7.5 tw-text-gray-30'>
             <li>
               <Link
                 href='/profile'
-                className='flex items-center gap-3.5 text-sm text-black font-medium duration-300 ease-in-out hover:text-blue-dark lg:text-base'
+                className='tw-flex tw-items-center tw-gap-3.5 tw-text-sm tw-text-black tw-font-medium tw-duration-300 tw-ease-in-out tw-hover:tw-text-blue-dark tw-lg:tw-text-base'
               >
                 <svg
-                  className='fill-current'
+                  className='tw-fill-current'
                   width='22'
                   height='22'
                   viewBox='0 0 22 22'
@@ -127,10 +127,10 @@ const DropdownUser = () => {
             <li>
               <Link
                 href='#'
-                className='flex items-center gap-3.5 text-sm text-black font-medium duration-300 ease-in-out hover:text-blue-dark lg:text-base'
+                className='tw-flex tw-items-center tw-gap-3.5 tw-text-sm tw-text-black tw-font-medium tw-duration-300 tw-ease-in-out tw-hover:tw-text-blue-dark tw-lg:tw-text-base'
               >
                 <svg
-                  className='fill-current'
+                  className='tw-fill-current'
                   width='22'
                   height='22'
                   viewBox='0 0 22 22'
@@ -148,10 +148,10 @@ const DropdownUser = () => {
             <li>
               <Link
                 href='/profile'
-                className='flex items-center gap-3.5 text-sm text black font-medium duration-300 ease-in-out hover:text-blue-dark lg:text-base'
+                className='tw-flex tw-items-center tw-gap-3.5 tw-text-sm black tw-font-medium tw-duration-300 tw-ease-in-out tw-hover:tw-text-blue-dark tw-lg:tw-text-base'
               >
                 <svg
-                  className='fill-current'
+                  className='tw-fill-current'
                   width='22'
                   height='22'
                   viewBox='0 0 22 22'
@@ -171,9 +171,9 @@ const DropdownUser = () => {
               </Link>
             </li>
           </ul>
-          <button className='flex items-center gap-3.5 px-6 py-4 text-sm text:black font-medium duration-300 ease-in-out hover:text-blue-dark lg:text-base' onClick={onLogout}>
+          <button className='tw-flex tw-items-center tw-gap-3.5 tw-px-6 tw-py-4 tw-text-sm text:black tw-font-medium tw-duration-300 tw-ease-in-out tw-hover:tw-text-blue-dark tw-lg:tw-text-base' onClick={onLogout}>
             <svg
-              className='fill-current'
+              className='tw-fill-current'
               width='22'
               height='22'
               viewBox='0 0 22 22'

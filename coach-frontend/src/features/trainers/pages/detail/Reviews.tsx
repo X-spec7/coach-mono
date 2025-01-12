@@ -9,9 +9,9 @@ interface IReviewsProps {
 
 const ReviewCard = ({review}: {review: IReview}) => {
   return (
-    <div className='flex flex-col gap-4 w-full p-4 bg-white rounded-20'>
-      <div className='flex justify-start items-center gap-4'>
-        <div className='relative w-9 h-9'>
+    <div className='tw-flex tw-flex-col tw-gap-4 tw-w-full tw-p-4 tw-bg-white tw-rounded-20'>
+      <div className='tw-flex tw-justify-start tw-items-center tw-gap-4'>
+        <div className='tw-relative tw-w-9 tw-h-9'>
           <Image
             src={review.avatarUrl}
             width={36}
@@ -20,28 +20,28 @@ const ReviewCard = ({review}: {review: IReview}) => {
           />
         </div>
 
-        <div className='flex flex-col justify-start items-start'>
-          <p className='text-black text-sm font-medium'>{review.name}</p>
-          <div className='flex justify-start items-center gap-1'>
+        <div className='tw-flex tw-flex-col tw-justify-start tw-items-start'>
+          <p className='tw-text-black tw-text-sm tw-font-medium'>{review.name}</p>
+          <div className='tw-flex tw-justify-start tw-items-center tw-gap-1'>
             <StarSvg width='14' height='14' color='#FFF080' />
-            <p className='text-gray-30 text-xs'>{review.rating}/5</p>
+            <p className='tw-text-gray-30 tw-text-xs'>{review.rating}/5</p>
           </div>
         </div>
       </div>
 
       {/* DIVIDER */}
-      <div className='w-full h-0.5 bg-stroke' />
+      <div className='tw-w-full tw-h-0.5 tw-bg-stroke' />
 
-      <article className='text-gray-30 text-sm break-words'>{review.review}</article>
+      <article className='tw-text-gray-30 tw-text-sm break-words'>{review.review}</article>
     </div>
   )
 }
 
 const Reviews: React.FC<IReviewsProps> = ({ reviews }) => {
   return (
-    <div className='flex flex-col gap-4'>
-      <h3 className='text-black font-medium'>Reviews</h3>
-      <div className='grid grid-cols-3 gap-6'>
+    <div className='tw-flex tw-flex-col tw-gap-4'>
+      <h3 className='tw-text-black tw-font-medium'>Reviews</h3>
+      <div className='tw-grid tw-grid-cols-3 tw-gap-6'>
         {
           reviews?.map((review, index) => (
             <ReviewCard key={index} review={review} />

@@ -41,14 +41,14 @@ const Pagination: React.FC<PaginationProps> = ({
   const showingEnd = totalCounts !== 0 ? Math.min(currentPage * countPerPage, totalCounts) : 0
 
   return (
-    <div className='flex flex-col md:flex-row items-center justify-between w-full mt-4 space-y-2 md:space-y-0'>
+    <div className='tw-flex tw-flex-col md:tw-flex-row tw-items-center tw-justify-between tw-w-full tw-mt-4 space-y-2 md:space-y-0'>
       {/* Showing Text */}
-      <span className='text-gray-20 text-xs'>
-        Showing <span className='text-gray-30 p-2 bg-gray-bg rounded-20'>{showingStart} - {showingEnd}</span> out of {totalCounts}
+      <span className='tw-text-gray-20 tw-text-xs'>
+        Showing <span className='tw-text-gray-30 tw-p-2 tw-bg-gray-bg tw-rounded-20'>{showingStart} - {showingEnd}</span> out of {totalCounts}
       </span>
 
       {/* Pagination Controls */}
-      <nav className='flex items-center justify-center space-x-2'>
+      <nav className='tw-flex tw-items-center tw-justify-center space-x-2'>
         {/* Previous Button */}
         <PaginationArrow
           direction='left'
@@ -86,10 +86,10 @@ const PaginationNumber = ({
   href: string
   isActive: boolean
 }) => {
-  const className = `flex justify-center items-center w-10 h-10 rounded-full text-gray-30 ${
+  const className = `tw-flex tw-justify-center tw-items-center tw-w-10 tw-h-10 tw-rounded-full tw-text-gray-30 ${
     isActive
-      ? 'bg-green'
-      : 'bg-gray-bg hover:text-black'
+      ? 'tw-bg-green'
+      : 'tw-bg-gray-bg tw-hover:tw-text-black'
   }`
 
   return isActive ? (
@@ -110,7 +110,7 @@ const PaginationArrow = ({
   direction: 'left' | 'right'
   isDisabled?: boolean
 }) => {
-  const className = `flex justify-center items-center w-10 h-10 rounded-full bg-gray-bg ${
+  const className = `tw-flex tw-justify-center tw-items-center tw-w-10 tw-h-10 tw-rounded-full tw-bg-gray-bg ${
     isDisabled
       ? 'cursor-not-allowed pointer-events-none'
       : ''

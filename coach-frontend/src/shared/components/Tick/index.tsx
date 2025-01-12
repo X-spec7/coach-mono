@@ -2,8 +2,8 @@
 export const Tick: React.FC<{ticked: boolean}> = ({ ticked }) => {
 
   return (
-    <div className={`flex justify-center items-center w-6 h-6 rounded-lg
-      ${ticked ? 'bg-blue' : 'bg-gray-bg border-stroke border-2'}
+    <div className={`tw-flex tw-justify-center tw-items-center w-6 tw-h-6 tw-rounded-lg
+      ${ticked ? 'tw-bg-blue' : 'tw-bg-gray-bg tw-border-stroke tw-border-2'}
     `}>
       {
         ticked &&

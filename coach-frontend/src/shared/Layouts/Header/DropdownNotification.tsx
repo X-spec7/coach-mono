@@ -9,23 +9,23 @@ const DropdownNotification = () => {
   const [notifying, setNotifying] = useState(true)
 
   return (
-    <ClickOutside onClick={() => setDropdownOpen(false)} className='relative'>
+    <ClickOutside onClick={() => setDropdownOpen(false)} className='tw-relative'>
       <Link
         onClick={() => {
           setNotifying(false)
           setDropdownOpen(!dropdownOpen)
         }}
         href='#'
-        className='relative flex h-8.5 w-8.5 items-center justify-center rounded-full border-[0.5px] bg-green border-stroke bg-gray hover:text-primary'
+        className='tw-relative tw-flex tw-h-8.5 tw-w-8.5 tw-items-center tw-justify-center tw-rounded-full tw-border-[0.5px] tw-bg-green tw-border-stroke tw-bg-gray tw-hover:tw-text-primary'
       >
         <span
-          className={`absolute -top-0.5 right-0 z-1 h-2 w-2 rounded-full bg-red-30 ${notifying === false ? 'hidden' : 'inline'
+          className={`tw-absolute -tw-top-0.5 tw-right-0 tw-z-1 tw-h-2 tw-w-2 tw-rounded-full tw-bg-red-30 ${notifying === false ? 'tw-hidden' : 'tw-inline'
             }`}
         >
-          <span className='absolute -z-1 inline-flex h-full w-full animate-ping rounded-full bg-red-30 opacity-75'></span>
+          <span className='tw-absolute -tw-z-1 tw-inline-flex tw-h-full tw-w-full animate-ping tw-rounded-full tw-bg-red-30 tw-opacity-75'></span>
         </span>
         <svg
-          className='duration-300 ease-in-out'
+          className='tw-duration-300 tw-ease-in-out'
           width='20'
           height='20'
           viewBox='0 0 24 24'
@@ -38,76 +38,76 @@ const DropdownNotification = () => {
 
       {dropdownOpen && (
         <div
-          className={`absolute z-999 -right-27 mt-2.5 flex h-90 w-75 flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark sm:right-0 sm:w-80`}
+          className={`tw-absolute tw-z-999 -tw-right-27 tw-mt-2.5 tw-flex tw-h-90 w-75 tw-flex-col tw-rounded-sm tw-border tw-border-stroke tw-bg-white tw-shadowdefault tw-sm:tw-right-0 tw-sm:w-80`}
         >
-          <div className='px-4.5 py-3'>
-            <h5 className='text-sm font-medium text-bodydark2'>
+          <div className='tw-px-4.5 tw-py-3'>
+            <h5 className='tw-text-sm tw-font-medium tw-text-bodydark2'>
               Notification
             </h5>
           </div>
 
-          <ul className='flex h-auto flex-col overflow-y-auto'>
+          <ul className='tw-flex tw-h-auto tw-flex-col tw-overflow-y-auto'>
             <li>
               <Link
-                className='flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4'
+                className='tw-flex tw-flex-col tw-gap-2.5 tw-border-t tw-border-stroke tw-px-4.5 tw-py-3 tw-hover:tw-bg-gray-2 '
                 href='#'
               >
-                <p className='text-sm'>
-                  <span className='text-black dark:text-white'>
+                <p className='tw-text-sm'>
+                  <span className='tw-text-black '>
                     Edit your information in a swipe
                   </span>{' '}
                   Sint occaecat cupidatat non proident, sunt in culpa qui
                   officia deserunt mollit anim.
                 </p>
 
-                <p className='text-xs'>12 May, 2025</p>
+                <p className='tw-text-xs'>12 May, 2025</p>
               </Link>
             </li>
             <li>
               <Link
-                className='flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4'
+                className='tw-flex tw-flex-col tw-gap-2.5 tw-border-t tw-border-stroke tw-px-4.5 tw-py-3 tw-hover:tw-bg-gray-2'
                 href='#'
               >
-                <p className='text-sm'>
-                  <span className='text-black dark:text-white'>
+                <p className='tw-text-sm'>
+                  <span className='tw-text-black '>
                     It is a long established fact
                   </span>{' '}
                   that a reader will be distracted by the readable.
                 </p>
 
-                <p className='text-xs'>24 Feb, 2025</p>
+                <p className='tw-text-xs'>24 Feb, 2025</p>
               </Link>
             </li>
             <li>
               <Link
-                className='flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4'
+                className='tw-flex tw-flex-col tw-gap-2.5 tw-border-t tw-border-stroke tw-px-4.5 tw-py-3 tw-hover:tw-bg-gray-2'
                 href='#'
               >
-                <p className='text-sm'>
-                  <span className='text-black dark:text-white'>
+                <p className='tw-text-sm'>
+                  <span className='tw-text-black '>
                     There are many variations
                   </span>{' '}
                   of passages of Lorem Ipsum available, but the majority have
                   suffered
                 </p>
 
-                <p className='text-xs'>04 Jan, 2025</p>
+                <p className='tw-text-xs'>04 Jan, 2025</p>
               </Link>
             </li>
             <li>
               <Link
-                className='flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4'
+                className='tw-flex tw-flex-col tw-gap-2.5 tw-border-t tw-border-stroke tw-px-4.5 tw-py-3 tw-hover:tw-bg-gray-2'
                 href='#'
               >
-                <p className='text-sm'>
-                  <span className='text-black dark:text-white'>
+                <p className='tw-text-sm'>
+                  <span className='tw-text-black '>
                     There are many variations
                   </span>{' '}
                   of passages of Lorem Ipsum available, but the majority have
                   suffered
                 </p>
 
-                <p className='text-xs'>01 Dec, 2024</p>
+                <p className='tw-text-xs'>01 Dec, 2024</p>
               </Link>
             </li>
           </ul>

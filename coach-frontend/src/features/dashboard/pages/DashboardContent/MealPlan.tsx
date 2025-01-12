@@ -22,13 +22,13 @@ const getImageUrlByMealTitle = (mealName: string): string => {
 const getBgColorByMealTime = (mealTime: MealTime): string => {
   switch (mealTime) {
     case 'Breakfast':
-      return 'bg-blue'
+      return 'tw-bg-blue'
     case 'Lunch':
-      return 'bg-yellow'
+      return 'tw-bg-yellow'
     case 'Dinner':
-      return 'bg-green'
+      return 'tw-bg-green'
     default:
-      return 'bg-blue'
+      return 'tw-bg-blue'
   }
 }
 
@@ -37,31 +37,31 @@ const MealPlanCard: React.FC<MealPlanCardProps> = ({mealTime, mealTitle, difficu
   const mealImageUrl = getImageUrlByMealTitle(mealTitle)
 
   return (
-    <div className={`flex flex-col p-4 ${bgColor} rounded-20`}>
-      <div className='flex justify-start items-center gap-3 mb-4'>
+    <div className={`tw-flex tw-flex-col tw-p-4 ${bgColor} tw-rounded-20`}>
+      <div className='tw-flex tw-justify-start tw-items-center tw-gap-3 tw-mb-4'>
         <Image
           width={84}
           height={84}
           src={mealImageUrl}
           alt={mealTitle}
-          className='rounded-xl'
+          className='tw-rounded-xl'
         />
 
-        <div className='flex flex-col gap-[6px] text-gray-30'>
+        <div className='tw-flex tw-flex-col tw-gap-[6px] tw-text-gray-30'>
           <div>
-            <span className='py-[2px] px-[6px] bg-white rounded-md text-xxs2'>
+            <span className='tw-py-[2px] tw-px-[6px] tw-bg-white tw-rounded-md tw-text-xxs2'>
               {mealTime}
             </span>
           </div>
-          <h3 className='text-black font-medium text-xs'>{mealTitle}</h3>
-          <p className='text-xxs'>Medium</p>
-          <p className='text-xxs'>{calory.toLocaleString()} Cal</p>
+          <h3 className='tw-text-black tw-font-medium tw-text-xs'>{mealTitle}</h3>
+          <p className='tw-text-xxs'>Medium</p>
+          <p className='tw-text-xxs'>{calory.toLocaleString()} Cal</p>
         </div>
       </div>
 
-      <div className='w-full h-[2px] bg-white mr-3 mb-3'></div>
+      <div className='tw-w-full tw-h-[2px] tw-bg-white mr-3 tw-mb-3'></div>
 
-      <p className='text-xxs text-gray-30 break-words'>{description}</p>
+      <p className='tw-text-xxs tw-text-gray-30 break-words'>{description}</p>
     </div>
   )
 }
@@ -70,10 +70,10 @@ const mealPlanDummyData = mealDummyData.length > 3 ? mealDummyData.slice(0, 2) :
 
 const MealPlan = () => {
   return (
-    <div className='flex flex-col gap-4 min-w-60'>
-      <div className='flex justify-between items-center'>
-        <h3 className='text-black font-medium'>Meal Plan</h3>
-        <p className='text-black'>...</p>
+    <div className='tw-flex tw-flex-col tw-gap-4 tw-min-w-60'>
+      <div className='tw-flex tw-justify-between tw-items-center'>
+        <h3 className='tw-text-black tw-font-medium'>Meal Plan</h3>
+        <p className='tw-text-black'>...</p>
       </div>
 
       {

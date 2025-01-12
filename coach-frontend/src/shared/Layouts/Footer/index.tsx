@@ -4,10 +4,10 @@ import Socials from './Socials'
 
 const Footer = () => {
   return (
-    <div className='flex justify-between items-center w-full mt-4'>
-      <div className='flex items-center text-sm'>
-        <h2 className='text-gray-20 font-medium mr-6'>Copyright © 2024 Coa-ch</h2>
-        <div className='flex justify-start items-center gap-4 text-gray-10'>
+    <div className='tw-flex tw-justify-between tw-items-center tw-w-full tw-mt-4'>
+      <div className='tw-flex tw-items-center tw-text-sm'>
+        <h2 className='tw-text-gray-20 tw-font-medium mr-6'>Copyright © 2024 Coa-ch</h2>
+        <div className='tw-flex tw-justify-start tw-items-center tw-gap-4 tw-text-gray-10'>
           <Link href="#">Privacy Policy</Link>
           <Link href="#">Term and conditions</Link>
           <Link href="#">Contact</Link>

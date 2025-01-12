@@ -4,7 +4,7 @@ import { PrimaryButtonProps } from '@/shared/types/common.type'
 const SendButton: React.FC<PrimaryButtonProps> = ({width, height, title, onClick}) => {
   return (
     <button
-      className={`flex justify-center items-center rounded-20 gap-2 bg-green text-gray-30 font-medium ${width} ${height}`}
+      className={`tw-flex tw-justify-center tw-items-center tw-rounded-20 tw-gap-2 tw-bg-green tw-text-gray-30 tw-font-medium ${width} ${height}`}
       onClick={onClick}
     >
       <h3>{title}</h3>

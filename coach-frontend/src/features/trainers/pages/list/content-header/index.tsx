@@ -19,18 +19,18 @@ const handleAddTrainerButtonClick = () => {
 const AddTrainerButton = () => {
   return (
     <button
-      className='flex justify-center items-center gap-0.5 py-1.5 px-2.5 bg-green rounded-20'
+      className='tw-flex tw-justify-center tw-items-center tw-gap-0.5 tw-py-1.5 tw-px-2.5 tw-bg-green tw-rounded-20'
       onClick={handleAddTrainerButtonClick}
     >
       <PlusSvg width='14' height='18' color='#4D5260' />
-      <p className='text-gray-30 text-xxs font-medium'>Add Trainer</p>
+      <p className='tw-text-gray-30 tw-text-xxs tw-font-medium'>Add Trainer</p>
     </button>
   )
 }
 
 const FadeButton = () => {
   return (
-    <div className='flex justify-center items-center w-7.5 h-7.5 rounded-20 bg-gray-bg'>
+    <div className='tw-flex tw-justify-center tw-items-center tw-w-7.5 tw-h-7.5 tw-rounded-20 tw-bg-gray-bg'>
       <FadersHorizontalSvg width='18' height='18' color='#212738' />
     </div>
   )
@@ -38,17 +38,17 @@ const FadeButton = () => {
 
 const ContentHeader = ({ searchPlaceHolder } : { searchPlaceHolder: string}) => {
   return (
-    <div className='flex justify-between items-center w-full h-7.5'>
-      <div className='flex justify-start items-center gap-3'>
+    <div className='tw-flex tw-justify-between tw-items-center tw-w-full tw-h-7.5'>
+      <div className='tw-flex tw-justify-start tw-items-center tw-gap-3'>
         <SearchField
           width='w-56'
-          height='h-7.5'
+          height='tw-h-7.5'
           placeholder={searchPlaceHolder || 'Search for trainer'}
         />
         <BasicDropdownButton options = {classCategories} />
       </div>
 
-      <div className='flex justify-end items-center gap-3'>
+      <div className='tw-flex tw-justify-end tw-items-center tw-gap-3'>
         <FadeButton />
         <AddTrainerButton />
       </div>

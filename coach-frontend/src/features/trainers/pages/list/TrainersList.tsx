@@ -19,7 +19,7 @@ const TrainersList: React.FC<ITrainersListProps> = async ({ query, currentPage, 
   const trainers = response.trainers
 
   return (
-    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-y-4 justify-content-between justify-items-center align-items-center w-full min-h-150'>
+    <div className='tw-grid tw-grid-cols-1 tw-sm:tw-grid-cols-2 md:tw-grid-cols-3 tw-xl:tw-grid-cols-4 tw-2xl:tw-grid-cols-5 tw-gap-y-4 tw-justify-content-between tw-justify-items-center tw-align-items-center tw-w-full tw-min-h-150'>
       {
         trainers.map((trainer, index) => (
           // TODO: update url param in future

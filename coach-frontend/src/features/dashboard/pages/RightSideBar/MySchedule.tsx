@@ -15,12 +15,12 @@ const ScheduleOverview:React.FC<ScheduleOverviewProps> = ({title, description, t
   const timeIn12HourFormat = formatTimeTo12Hour(time)
 
   return (
-    <div className='flex justify-between items-center pl-1'>
+    <div className='tw-flex tw-justify-between tw-items-center tw-pl-1'>
       <Tick ticked={completed}/>
-      <div className='flex flex-col justify-center w-54'>
-        <p className='text-gray-20 text-xxs'>{timeIn12HourFormat}</p>
-        <h4 className='text-black font-medium'>{title}</h4>
-        <p className='text-gray-20 text-xs max-w-54 break-words'>{description}</p>
+      <div className='tw-flex tw-flex-col tw-justify-center tw-w-54'>
+        <p className='tw-text-gray-20 tw-text-xxs'>{timeIn12HourFormat}</p>
+        <h4 className='tw-text-black tw-font-medium'>{title}</h4>
+        <p className='tw-text-gray-20 tw-text-xs tw-max-w-54 tw-break-words'>{description}</p>
       </div>
       <KebabMenu />
     </div>
@@ -29,16 +29,16 @@ const ScheduleOverview:React.FC<ScheduleOverviewProps> = ({title, description, t
 
 const MySchedule = () => {
   return (
-    <div className='px-1.5'>
-      <div className='flex justify-between items-center'>
+    <div className='tw-px-1.5'>
+      <div className='tw-flex tw-justify-between tw-items-center'>
         <div>
-          <h3 className='text-black font-medium'>My Schedule</h3>
-          <p className='text-[#868F9B] text-xs font-medium'>Thursday, 13 Aug 28</p>
+          <h3 className='tw-text-black tw-font-medium'>My Schedule</h3>
+          <p className='tw-text-[#868F9B] tw-text-xs tw-font-medium'>Thursday, 13 Aug 28</p>
         </div>
         <AddButton />
       </div>
 
-      <div className='flex flex-col gap-5 mt-7'>
+      <div className='tw-flex tw-flex-col tw-gap-5 tw-mt-7'>
         {
           scheduleOverviewDummyData.map((scheduleData, index) => (
             <ScheduleOverview

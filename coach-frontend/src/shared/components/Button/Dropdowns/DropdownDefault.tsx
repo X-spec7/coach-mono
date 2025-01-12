@@ -33,14 +33,14 @@ const DropdownDefault = () => {
   });
 
   return (
-    <div className="relative flex">
+    <div className="tw-relative tw-flex">
       <button
-        className="text-[#98A6AD] hover:text-body"
+        className="tw-text-[#98A6AD] tw-hover:tw-text-body"
         ref={trigger}
         onClick={() => setDropdownOpen(!dropdownOpen)}
       >
         <svg
-          className="fill-current"
+          className="tw-fill-current"
           width="18"
           height="18"
           viewBox="0 0 18 18"
@@ -65,13 +65,13 @@ const DropdownDefault = () => {
         ref={dropdown}
         onFocus={() => setDropdownOpen(true)}
         onBlur={() => setDropdownOpen(false)}
-        className={`absolute right-0 top-full z-40 w-40 space-y-1 rounded-sm border border-stroke bg-white p-1.5 shadow-default dark:border-strokedark dark:bg-boxdark ${
-          dropdownOpen === true ? "block" : "hidden"
+        className={`tw-absolute tw-right-0 tw-top-full tw-z-40 w-40 space-y-1 tw-rounded-sm tw-border tw-border-stroke tw-bg-white tw-p-1.5 tw-shadowdefault ${
+          dropdownOpen === true ? "tw-block" : "tw-hidden"
         }`}
       >
-        <button className="flex w-full items-center gap-2 rounded-sm px-4 py-1.5 text-left text-sm hover:bg-gray dark:hover:bg-meta-4">
+        <button className="tw-flex tw-w-full tw-items-center tw-gap-2 tw-rounded-sm tw-px-4 tw-py-1.5 tw-text-left tw-text-sm tw-hover:tw-bg-gray">
           <svg
-            className="fill-current"
+            className="tw-fill-current"
             width="16"
             height="16"
             viewBox="0 0 16 16"
@@ -92,9 +92,9 @@ const DropdownDefault = () => {
           </svg>
           Edit
         </button>
-        <button className="flex w-full items-center gap-2 rounded-sm px-4 py-1.5 text-left text-sm hover:bg-gray dark:hover:bg-meta-4">
+        <button className="tw-flex tw-w-full tw-items-center tw-gap-2 tw-rounded-sm tw-px-4 tw-py-1.5 tw-text-left tw-text-sm tw-hover:tw-bg-gray">
           <svg
-            className="fill-current"
+            className="tw-fill-current"
             width="16"
             height="16"
             viewBox="0 0 16 16"
