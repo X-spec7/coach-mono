@@ -40,7 +40,7 @@ class CreateInstantMeetingView(APIView):
             response = create_zoom_meeting(data)
 
             return Response(
-                {"message": "Meeting scheduled", 'res': response},
+                {"message": "Meeting scheduled", 'data': response},
                 status.HTTP_201_CREATED
             )
         except Exception as e:
@@ -95,11 +95,11 @@ class MeetingAuthorizationView(APIView):
                 )
             
             validated_data = serializer.validated_data
-            zoom_id = validated_data["meeting_id"]
+            meeting_number = validated_data["meeting_id"]
             role = validated_data["role"]
 
-            response = create_auth_signature(zoom_id, role)
-            response["zoom_id"] = zoom_id
+            response = create_auth_signature(meeting_number, role)
+            response["meeting_number"] = meeting_number
             
             return Response(response, status.HTTP_200_OK)
         

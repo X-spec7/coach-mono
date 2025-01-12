@@ -13,7 +13,7 @@ def create_zoom_meeting(payload):
     response = client.meeting.create(**payload)
     return response.json()
 
-def create_auth_signature(zoom_id, role):
+def create_auth_signature(meeting_number, role):
     ZOOM_SDK_CLIENT_ID = os.environ.get("ZOOM_SDK_ACC_ID", "")
     ZOOM_SDK_CLIENT_SECRET = os.environ.get("ZOOM_SDK_ACC_SECRET", "")
     iat = time()
@@ -22,7 +22,7 @@ def create_auth_signature(zoom_id, role):
     oPayload = {
         "sdkKey": ZOOM_SDK_CLIENT_ID,
         # The Zoom meeting or webinar number.
-        "mn": int(zoom_id),
+        "mn": int(meeting_number),
         # The user role. 0 to specify participant, 1 to specify host.
         "role": role,
         "iat": iat,
