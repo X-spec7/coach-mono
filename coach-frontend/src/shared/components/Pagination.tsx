@@ -41,7 +41,7 @@ const Pagination: React.FC<PaginationProps> = ({
   const showingEnd = totalCounts !== 0 ? Math.min(currentPage * countPerPage, totalCounts) : 0
 
   return (
-    <div className='tw-flex tw-flex-col md:tw-flex-row tw-items-center tw-justify-between tw-w-full tw-mt-4 space-y-2 md:space-y-0'>
+    <div className='tw-flex tw-flex-col tw-md:tw-flex-row tw-items-center tw-justify-between tw-w-full tw-mt-4 space-y-2 tw-md:space-y-0'>
       {/* Showing Text */}
       <span className='tw-text-gray-20 tw-text-xs'>
         Showing <span className='tw-text-gray-30 tw-p-2 tw-bg-gray-bg tw-rounded-20'>{showingStart} - {showingEnd}</span> out of {totalCounts}

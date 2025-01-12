@@ -22,7 +22,7 @@ const WorkoutGoalsPanel = () => {
         </div>
       </div>
 
-      <p className='tw-flex tw-justify-center tw-items-center break-words tw-text-gray-30 tw-text-xs'>Almost there! Keep pushing to reach your goal!</p>
+      <p className='tw-flex tw-justify-center tw-items-center tw-break-words tw-text-gray-30 tw-text-xs'>Almost there! Keep pushing to reach your goal!</p>
     </div>
   )
 }

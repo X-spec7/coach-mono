@@ -20,7 +20,7 @@ const ScheduleOverview:React.FC<ScheduleOverviewProps> = ({title, description, t
       <div className='tw-flex tw-flex-col tw-justify-center tw-w-54'>
         <p className='tw-text-gray-20 tw-text-xxs'>{timeIn12HourFormat}</p>
         <h4 className='tw-text-black tw-font-medium'>{title}</h4>
-        <p className='tw-text-gray-20 tw-text-xs tw-max-w-54 tw-break-words'>{description}</p>
+        <p className='tw-text-gray-20 tw-text-xs tw-max-w-54 tw-tw-break-words'>{description}</p>
       </div>
       <KebabMenu />
     </div>

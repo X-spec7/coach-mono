@@ -20,7 +20,7 @@ const ContentHeader: React.FC<ContentHeaderProps> = ({workoutTime, totalWorkouts
       <div className='tw-flex tw-justify-start tw-items-center tw-text-gray-20 tw-rounded-20'>
         <p className='tw-text-xxs leading-4'>Workout<br />Time</p>
 
-        <div className='tw-bg-gray-bg ml-5 mr-16 tw-px-4 tw-py-1 tw-rounded-20'>
+        <div className='tw-bg-gray-bg tw-ml-5 tw-mr-16 tw-px-4 tw-py-1 tw-rounded-20'>
           <div className=' tw-flex tw-justify-start tw-gap-2 tw-items-end'>
             <p className='tw-text-black tw-text-xl tw-font-medium'>{workoutTime.hour}</p>
             <p className='tw-text-xs tw-pb-1'>Hours</p>
@@ -31,7 +31,7 @@ const ContentHeader: React.FC<ContentHeaderProps> = ({workoutTime, totalWorkouts
 
         <p className='tw-text-xxs leading-4'>Total <br /> Workout</p>
 
-        <div className='tw-bg-gray-bg ml-3 tw-px-4 tw-py-1 tw-rounded-20'>
+        <div className='tw-bg-gray-bg tw-ml-3 tw-px-4 tw-py-1 tw-rounded-20'>
           <div className='tw-flex tw-justify-start tw-gap-2 tw-items-end'>
             <p className='tw-text-black tw-text-xl tw-font-medium'>{totalWorkouts}</p>
             <p className='tw-text-xs tw-pb-1'>Exercises</p>

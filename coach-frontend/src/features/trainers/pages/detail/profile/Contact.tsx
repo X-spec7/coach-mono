@@ -33,7 +33,7 @@ const ContactDetailText: React.FC<IContactDetailText> = ({ title, content }) => 
   return (
     <div className='tw-flex-1'>
       <p className='tw-text-gray-20 tw-text-xs'>{title}</p>
-      <p className='tw-text-black tw-text-sm break-words'>{content}</p> 
+      <p className='tw-text-black tw-text-sm tw-break-words'>{content}</p> 
     </div>
   )
 }

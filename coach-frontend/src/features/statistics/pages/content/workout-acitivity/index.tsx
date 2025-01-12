@@ -48,7 +48,7 @@ const VerticalProgressBar: React.FC<WorkoutActivity> = ({ xaxis, label, percent 
   return (
     <div className='tw-flex tw-w-20 tw-flex-col tw-justify-between tw-gap-2 tw-items-center tw-h-full'>
       <div className='tw-flex tw-w-full tw-flex-col tw-justify-end tw-gap-2 tw-items-center tw-flex-1 tw-bg-gray-bg-subtle tw-rounded-20 tw-p-1.5'>
-        <p className='tw-text-gray-20 tw-text-xxs2 tw-font-medium break-words tw-text-center'>{label}</p>
+        <p className='tw-text-gray-20 tw-text-xxs2 tw-font-medium tw-break-words tw-text-center'>{label}</p>
         <div
           className="tw-bg-blue tw-rounded-20 tw-w-full"
           style={{ height: `${percent}%` }}

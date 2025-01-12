@@ -81,9 +81,9 @@ const CaloriesStatistics = () => {
       <TitleWithEllipsis title='Calories Statistics' />
 
       <div className='tw-flex tw-justify-start tw-items-center tw-w-full tw-text-gray-20 tw-text-xxs'>
-        <div className='tw-bg-blue tw-w-2.5 tw-h-2.5 tw-rounded-sm mr-1.5' />
+        <div className='tw-bg-blue tw-w-2.5 tw-h-2.5 tw-rounded-sm tw-mr-1.5' />
         <p>Active Calories</p>
-        <div className='tw-bg-gray-20 tw-w-2.5 tw-h-2.5 tw-rounded-sm ml-4 mr-1.5' />
+        <div className='tw-bg-gray-20 tw-w-2.5 tw-h-2.5 tw-rounded-sm tw-ml-4 tw-mr-1.5' />
         <p>Resting Calories</p>
       </div>
 

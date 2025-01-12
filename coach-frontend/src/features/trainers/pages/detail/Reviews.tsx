@@ -32,7 +32,7 @@ const ReviewCard = ({review}: {review: IReview}) => {
       {/* DIVIDER */}
       <div className='tw-w-full tw-h-0.5 tw-bg-stroke' />
 
-      <article className='tw-text-gray-30 tw-text-sm break-words'>{review.review}</article>
+      <article className='tw-text-gray-30 tw-text-sm tw-break-words'>{review.review}</article>
     </div>
   )
 }

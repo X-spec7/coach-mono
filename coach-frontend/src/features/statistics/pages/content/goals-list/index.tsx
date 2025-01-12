@@ -41,7 +41,7 @@ const GoalDetailCard: React.FC<GoalDetail> = ({ title, tag, desc, percent, total
 
       <div className='tw-mt-3 tw-w-full'>
         <span className='tw-px-1.5 tw-py-0.5 tw-text-gray-30 tw-text-xxs tw-bg-gray-bg tw-rounded-md'>{tag}</span>
-        <span className='ml-1.5 tw-text-gray-20 tw-text-xxs'>{desc}</span>
+        <span className='tw-ml-1.5 tw-text-gray-20 tw-text-xxs'>{desc}</span>
       </div>
 
       <div className='tw-flex tw-justify-between tw-items-center tw-w-full tw-mt-5'>
