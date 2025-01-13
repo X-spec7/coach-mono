@@ -16,25 +16,25 @@ interface ITrainerScheduleItemProps {
 
 const TrainerScheduleItem: React.FC<ITrainerScheduleItemProps> = ({ trainerSchedule }) => {
   return (
-    <div className='tw-flex tw-justify-between tw-items-center tw-p-2'>
-      <div className='tw-flex tw-justify-start tw-items-center tw-gap-4'>
-        <div className='tw-flex tw-flex-col tw-justify-center tw-items-start tw-gap-1'>
-          <p className='tw-text-gray-20 tw-text-xxs'>{trainerSchedule.date}</p>
-          <p className='tw-text-black tw-text-xs tw-font-medium'>{trainerSchedule.time}</p>
+    <div className='flex justify-between items-center p-2'>
+      <div className='flex justify-start items-center gap-4'>
+        <div className='flex flex-col justify-center items-start gap-1'>
+          <p className='text-gray-20 text-xxs'>{trainerSchedule.date}</p>
+          <p className='text-black text-xs font-medium'>{trainerSchedule.time}</p>
         </div>
 
-        <div className='tw-w-0.5 tw-bg-stroke tw-h-full' />
-        <p className='tw-text-black tw-font-medium'>{trainerSchedule.title}</p>
+        <div className='w-0.5 bg-stroke h-full' />
+        <p className='text-black font-medium'>{trainerSchedule.title}</p>
       </div>
 
-      <div className='tw-flex tw-flex-col tw-items-start tw-justify-center tw-gap-1'>
-        <div className='tw-flex tw-justify-start tw-items-center tw-gap-1'>
+      <div className='flex flex-col items-start justify-center gap-1'>
+        <div className='flex justify-start items-center gap-1'>
           <ClockSvg width='12' height='12' color='#878A94' />
-          <p className='tw-text-gray-20 tw-text-xxs'>{trainerSchedule.duration} min</p>
+          <p className='text-gray-20 text-xxs'>{trainerSchedule.duration} min</p>
         </div>
-        <div className='tw-flex tw-justify-start tw-items-center tw-gap-1'>
+        <div className='flex justify-start items-center gap-1'>
           <TwoPeopleSvg width='12' height='12' color='#878A94' />
-          <p className='tw-text-gray-20 tw-text-xxs'>{trainerSchedule.participants} participants</p>
+          <p className='text-gray-20 text-xxs'>{trainerSchedule.participants} participants</p>
         </div>
       </div>
     </div>
@@ -81,24 +81,24 @@ const trainerScheduleDummyData: ITrainerSchedule[] = [
 
 const TrainerSchedule = () => {
   return (
-    <div className='tw-flex tw-justify-start tw-items-start tw-p-4 tw-gap-4 tw-bg-white tw-rounded-4xl tw-max-h-90'>
-      <div className='w-100 tw-h-100 tw-pt-4'>
+    <div className='flex justify-start items-start p-4 gap-4 bg-white rounded-4xl max-h-90'>
+      <div className='w-100 h-100 pt-4'>
         <Calendar />
       </div>
 
-      <div className='tw-flex tw-flex-1 tw-flex-col tw-gap-2 tw-h-full tw-overflow-y-auto no-scrollbar'>
-        <div className='tw-flex tw-justify-between tw-items-center'>
-          <h3 className='tw-text-black tw-font-medium'>The Trainer Schedule</h3>
+      <div className='flex flex-1 flex-col gap-2 h-full overflow-y-auto no-scrollbar'>
+        <div className='flex justify-between items-center'>
+          <h3 className='text-black font-medium'>The Trainer Schedule</h3>
           <TimePeriodSelectButton options={['This Week', 'Today', 'This Month']} />
         </div>
 
         {
           trainerScheduleDummyData.map((trainerSchedule, index) => (
-            <div key={index} className='tw-w-full'>
+            <div key={index} className='w-full'>
               <TrainerScheduleItem trainerSchedule={trainerSchedule} />
 
               {index < trainerScheduleDummyData.length - 1 && (
-                <div className='tw-w-full tw-h-px tw-bg-gray-200 tw-my-1' />
+                <div className='w-full h-px bg-gray-200 my-1' />
               )}
             </div>
           ))

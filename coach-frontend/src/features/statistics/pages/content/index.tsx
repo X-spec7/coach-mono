@@ -7,20 +7,20 @@ import WeightDataPanel from './weight-data'
 
 const StatisticsContent = () => {
   return (
-    <div className='tw-grid tw-grid-cols-2 tw-gap-4 tw-w-full'>
-      <div className='tw-grid tw-grid-cols-1 tw-xl:tw-grid-cols-2 tw-gap-4 tw-h-full'>
-        <div className='tw-flex tw-flex-col tw-gap-4'>
+    <div className='grid grid-cols-2 gap-4 w-full'>
+      <div className='grid grid-cols-1 xl:grid-cols-2 gap-4 h-full'>
+        <div className='flex flex-col gap-4'>
           <HealthScorePanel percent={70} tag='Very Healthy' />
           <WeightDataPanel />
         </div>
 
-        <div className='tw-flex tw-flex-col tw-gap-5 tw-justify-start tw-items-center'>
+        <div className='flex flex-col gap-5 justify-start items-center'>
           <WorkoutGoalsPanel />
           <GoalsListPanel />
         </div>
       </div>
 
-      <div className='tw-flex tw-flex-col tw-gap-4 tw-bg-white tw-h-full'>
+      <div className='flex flex-col gap-4 bg-white h-full'>
         <WorkoutActivityPanel />
         <CaloriesStatistics />
       </div>

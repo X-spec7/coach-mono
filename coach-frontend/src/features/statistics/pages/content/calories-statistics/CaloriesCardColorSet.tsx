@@ -2,26 +2,26 @@ import { ColorSet } from '@/features/statistics/types'
 
 export class CaloriesCardColorSet {
   static calories: ColorSet = {
-    bgColor: 'tw-bg-gray-bg',
-    progressBgColor: 'tw-bg-white',
-    progressColor: 'tw-bg-gray-10',
+    bgColor: 'bg-gray-bg',
+    progressBgColor: 'bg-white',
+    progressColor: 'bg-gray-10',
   }
 
   static protein: ColorSet = {
-    bgColor: 'tw-bg-blue',
-    progressBgColor: 'tw-bg-blue-subtle',
-    progressColor: 'tw-bg-blue-dark',
+    bgColor: 'bg-blue',
+    progressBgColor: 'bg-blue-subtle',
+    progressColor: 'bg-blue-dark',
   }
 
   static carbs: ColorSet = {
-    bgColor: 'tw-bg-yellow',
-    progressBgColor: 'tw-bg-yellow-subtle',
-    progressColor: 'tw-bg-yellow-dark',
+    bgColor: 'bg-yellow',
+    progressBgColor: 'bg-yellow-subtle',
+    progressColor: 'bg-yellow-dark',
   }
 
   static fats: ColorSet = {
-    bgColor: 'tw-bg-green',
-    progressBgColor: 'tw-bg-green-subtle',
-    progressColor: 'tw-bg-green-dark',
+    bgColor: 'bg-green',
+    progressBgColor: 'bg-green-subtle',
+    progressColor: 'bg-green-dark',
   }
 }

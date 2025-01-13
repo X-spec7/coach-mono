@@ -85,20 +85,20 @@ const Users: React.FC<IUsers> = ({ isShow, currentChatUserId }) => {
   const { todayUsers, yesterdayUsers, restUsers } = groupUsersByDate(contactUsers)
 
   return (
-    <div className='tw-flex tw-flex-col tw-gap-4'>
+    <div className='flex flex-col gap-4'>
       <SearchField
-        width='tw-w-full'
-        height='tw-h-14'
+        width='w-full'
+        height='h-14'
         placeholder={query ?? 'Search name, chat, etc'}
       />
 
-      <div className='tw-flex tw-flex-col tw-gap-4 tw-overflow-y-auto no-scrollbar'>
+      <div className='flex flex-col gap-4 overflow-y-auto no-scrollbar'>
         {todayUsers.length > 0 && (
-          <div className='tw-flex tw-flex-col tw-gap-4'>
-            <h3 className='tw-text-black tw-text-sm tw-font-medium'>Today</h3>
-            <div className='tw-flex tw-flex-col tw-rounded-20 tw-border-stroke tw-border'>
+          <div className='flex flex-col gap-4'>
+            <h3 className='text-black text-sm font-medium'>Today</h3>
+            <div className='flex flex-col rounded-20 border-stroke border'>
               {todayUsers.map((user, index) => (
-                <div key={index} className='tw-w-full'>
+                <div key={index} className='w-full'>
                   <UserItem
                     key={index}
                     user={user}
@@ -107,7 +107,7 @@ const Users: React.FC<IUsers> = ({ isShow, currentChatUserId }) => {
                     onClick={() => onClick(user.id)}
                   />
                   {index < todayUsers.length -1 && (
-                    <div className='tw-w-full tw-h-[1px] tw-bg-stroke' />
+                    <div className='w-full h-[1px] bg-stroke' />
                   )}
                 </div>
               ))}
@@ -115,11 +115,11 @@ const Users: React.FC<IUsers> = ({ isShow, currentChatUserId }) => {
           </div>
         )}
         {yesterdayUsers.length > 0 && (
-          <div className='tw-flex tw-flex-col tw-gap-4'>
-            <h3 className='tw-text-black tw-text-sm tw-font-medium'>Yesterday</h3>
-            <div className='tw-flex tw-flex-col tw-rounded-20 tw-border-stroke tw-border'>
+          <div className='flex flex-col gap-4'>
+            <h3 className='text-black text-sm font-medium'>Yesterday</h3>
+            <div className='flex flex-col rounded-20 border-stroke border'>
               {yesterdayUsers.map((user, index) => (
-                <div key={index} className='tw-w-full'>
+                <div key={index} className='w-full'>
                   <UserItem
                     key={index}
                     user={user}
@@ -128,7 +128,7 @@ const Users: React.FC<IUsers> = ({ isShow, currentChatUserId }) => {
                     onClick={() => onClick(user.id)}
                   />
                   {index < yesterdayUsers.length -1 && (
-                    <div className='tw-w-full tw-h-[1px] tw-bg-stroke' />
+                    <div className='w-full h-[1px] bg-stroke' />
                   )}
                 </div>
               ))}
@@ -136,11 +136,11 @@ const Users: React.FC<IUsers> = ({ isShow, currentChatUserId }) => {
           </div>
         )}
         {restUsers.length > 0 && (
-          <div className='tw-flex tw-flex-col tw-gap-4'>
-            <h3 className='tw-text-black tw-text-sm tw-font-medium'>The Past</h3>
-            <div className='tw-flex tw-flex-col tw-rounded-20 tw-border-stroke tw-border'>
+          <div className='flex flex-col gap-4'>
+            <h3 className='text-black text-sm font-medium'>The Past</h3>
+            <div className='flex flex-col rounded-20 border-stroke border'>
               {restUsers.map((user, index) => (
-                <div key={index} className='tw-w-full'>
+                <div key={index} className='w-full'>
                   <UserItem
                     key={index}
                     user={user}
@@ -148,7 +148,7 @@ const Users: React.FC<IUsers> = ({ isShow, currentChatUserId }) => {
                     onClick={() => onClick(user.id)}
                   />
                   {index < restUsers.length -1 && (
-                    <div className='tw-w-full tw-h-[1px] tw-bg-stroke' />
+                    <div className='w-full h-[1px] bg-stroke' />
                   )}
                 </div>
               ))}
@@ -175,8 +175,8 @@ const UserItem: React.FC<IUserItemProps> = ({
   isTodayOrYesterday,
   onClick
 }) => {
-  const containerStyle = `tw-flex tw-items-center tw-p-4 tw-gap-4 tw-h-18.5 tw-rounded-20
-    ${isSelected ? 'tw-bg-gray-subtle' : 'tw-bg-white'}
+  const containerStyle = `flex items-center p-4 gap-4 h-18.5 rounded-20
+    ${isSelected ? 'bg-gray-subtle' : 'bg-white'}
     `
 
   // !type assertion
@@ -187,14 +187,14 @@ const UserItem: React.FC<IUserItemProps> = ({
 
   return (
     <div className={containerStyle} onClick={onClick}>
-      <div className='tw-flex tw-w-10 tw-h-10 tw-rounded-full'>
+      <div className='flex w-10 h-10 rounded-full'>
         {user.avatarUrl ? (
           <Image
             src={backendHostUrl + user.avatarUrl}
             width={40}
             height={40}
             alt=''
-            className='tw-rounded-full'
+            className='rounded-full'
           />
         ) : (
           <Image
@@ -202,34 +202,34 @@ const UserItem: React.FC<IUserItemProps> = ({
             width={40}
             height={40}
             alt=''
-            className='tw-rounded-full'
+            className='rounded-full'
           />
         )}
       </div>
 
-      <div className='tw-flex tw-flex-1 tw-flex-col'>
-        <div className='tw-flex tw-justify-between tw-items-center'>
+      <div className='flex flex-1 flex-col'>
+        <div className='flex justify-between items-center'>
           {/* Name and Label */}
-          <div className='tw-flex tw-justify-start tw-items-center tw-gap-0.5'>
-            <p className='tw-text-black tw-font-medium'>{user.fullName}</p>
+          <div className='flex justify-start items-center gap-0.5'>
+            <p className='text-black font-medium'>{user.fullName}</p>
             {user.userType === 'Trainer' && (
-              <div className='tw-flex tw-justify-center tw-items-center tw-bg-blue w-12 tw-h-5 tw-text-black tw-text-xxs'>Trainer</div>
+              <div className='flex justify-center items-center bg-blue w-12 h-5 text-black text-xxs'>Trainer</div>
             )}
           </div>
 
           {/* Time */}
           {isTodayOrYesterday ? (
-            <p className={`tw-text-xxs ${isSelected ? 'tw-text-gray-20' : 'tw-text-black'}`}>{time}</p>
+            <p className={`text-xxs ${isSelected ? 'text-gray-20' : 'text-black'}`}>{time}</p>
           ) : (
-            <p className='tw-text-gray-20 tw-text-xxs'>{date}</p>
+            <p className='text-gray-20 text-xxs'>{date}</p>
           )}
         </div>
 
         {/* Chat content and unread message */}
-        <div className='tw-flex tw-justify-start tw-items-center tw-gap-4'>
-          <article className='tw-flex-1 tw-text-xxs tw-text-gray-30 tw-text-medium'>{user.lastMessage?.content}</article>
+        <div className='flex justify-start items-center gap-4'>
+          <article className='flex-1 text-xxs text-gray-30 text-medium'>{user.lastMessage?.content}</article>
           {user.unreadCount > 0 && (
-            <div className='tw-flex tw-justify-center tw-items-center w-5 tw-h-5 tw-rounded-full tw-bg-yellow tw-text-black tw-text-xxs tw-font-medium'>
+            <div className='flex justify-center items-center w-5 h-5 rounded-full bg-yellow text-black text-xxs font-medium'>
               {user.unreadCount}
             </div>
           )}

@@ -8,8 +8,8 @@ interface TitleWithEllipsisProps {
 
 const TitleWithEllipsis: React.FC<TitleWithEllipsisProps> = ({ title, menus, onClick }) => {
   return (
-    <div className='tw-flex tw-justify-between tw-items-center tw-w-full'>
-      <h3 className='tw-text-black tw-font-medium'>{title}</h3>
+    <div className='flex justify-between items-center w-full'>
+      <h3 className='text-black font-medium'>{title}</h3>
       <EllipsisMenu menus={menus ?? []} onClick={onClick} />
     </div>
   )

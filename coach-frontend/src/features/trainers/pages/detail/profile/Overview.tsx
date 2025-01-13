@@ -7,16 +7,16 @@ interface IOverview {
 // TODO: undefined data case
 const Overview: React.FC<IOverview> = ({ experience, members, rating }) => {
   return (
-    <div className='tw-flex tw-justify-between tw-items-center tw-bg-blue tw-rounded-20 tw-px-4 tw-py-3.5'>
+    <div className='flex justify-between items-center bg-blue rounded-20 px-4 py-3.5'>
       {/* EXPERIENCE */}
-      <div className='tw-flex tw-flex-col tw-items-center tw-justify-center'>
-        <p className='tw-text-black tw-text-lg tw-font-bold'>{experience} <span className='tw-text-xs tw-text-black tw-font-medium'>yrs</span></p>
-        <p className='tw-text-gray-30 tw-text-xs'>Experience</p>
+      <div className='flex flex-col items-center justify-center'>
+        <p className='text-black text-lg font-bold'>{experience} <span className='text-xs text-black font-medium'>yrs</span></p>
+        <p className='text-gray-30 text-xs'>Experience</p>
       </div>
 
       {/* MEMBERS */}
-      <div className='tw-flex tw-flex-col tw-items-center tw-justify-center'>
-        <p className='tw-text-black tw-text-lg tw-font-bold'>
+      <div className='flex flex-col items-center justify-center'>
+        <p className='text-black text-lg font-bold'>
           {
             members && (
               members < 100
@@ -25,16 +25,16 @@ const Overview: React.FC<IOverview> = ({ experience, members, rating }) => {
             )
           }
         </p>
-        <p className='tw-text-gray-30 tw-text-xs'>Members</p>
+        <p className='text-gray-30 text-xs'>Members</p>
       </div>
 
       {/* RAITING */}
-      <div className='tw-flex tw-flex-col tw-items-center tw-justify-center'>
-        <p className='tw-text-black tw-text-lg tw-font-bold'>
+      <div className='flex flex-col items-center justify-center'>
+        <p className='text-black text-lg font-bold'>
           {rating}
-          <span className='tw-text-xs tw-text-black tw-font-medium'>/5.0</span>
+          <span className='text-xs text-black font-medium'>/5.0</span>
         </p>
-        <p className='tw-text-gray-30 tw-text-xs'>Rating</p>
+        <p className='text-gray-30 text-xs'>Rating</p>
       </div>
     </div>
   )

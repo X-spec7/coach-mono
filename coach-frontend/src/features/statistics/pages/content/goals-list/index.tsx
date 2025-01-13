@@ -34,30 +34,30 @@ const goalDetailDummyData: GoalDetail[] = [
 
 const GoalDetailCard: React.FC<GoalDetail> = ({ title, tag, desc, percent, total, value, unit }) => {
   return (
-    <div className='tw-flex tw-flex-col tw-justify-start tw-items-center tw-w-full tw-border-stroke tw-border tw-rounded-20 tw-p-4'>
-      <h3 className='tw-text-black tw-text-sm tw-font-medium tw-w-full'>
+    <div className='flex flex-col justify-start items-center w-full border-stroke border rounded-20 p-4'>
+      <h3 className='text-black text-sm font-medium w-full'>
         {title}
       </h3>
 
-      <div className='tw-mt-3 tw-w-full'>
-        <span className='tw-px-1.5 tw-py-0.5 tw-text-gray-30 tw-text-xxs tw-bg-gray-bg tw-rounded-md'>{tag}</span>
-        <span className='ml-1.5 tw-text-gray-20 tw-text-xxs'>{desc}</span>
+      <div className='mt-3 w-full'>
+        <span className='px-1.5 py-0.5 text-gray-30 text-xxs bg-gray-bg rounded-md'>{tag}</span>
+        <span className='ml-1.5 text-gray-20 text-xxs'>{desc}</span>
       </div>
 
-      <div className='tw-flex tw-justify-between tw-items-center tw-w-full tw-mt-5'>
-        <p className='tw-text-black tw-text-xs tw-font-medium'>{percent}%</p>
-        <p className='tw-text-gray-20 tw-text-xxs'>
+      <div className='flex justify-between items-center w-full mt-5'>
+        <p className='text-black text-xs font-medium'>{percent}%</p>
+        <p className='text-gray-20 text-xxs'>
           {value}/{total} {unit}
         </p>
       </div>
 
       {/* Progress Bar */}
-      <div className="tw-flex tw-gap-2 tw-w-full tw-h-2 tw-rounded-full tw-mt-3 tw-overflow-hidden">
+      <div className="flex gap-2 w-full h-2 rounded-full mt-3 overflow-hidden">
         <div
-          className="tw-flex tw-h-full tw-bg-green tw-rounded-full tw-transition-all tw-duration-300"
+          className="flex h-full bg-green rounded-full transition-all duration-300"
           style={{ width: `${percent}%` }}
         />
-        <div className='tw-flex-1 tw-bg-gray-bg tw-h-gull' />
+        <div className='flex-1 bg-gray-bg h-gull' />
       </div>
     </div>
   )
@@ -65,7 +65,7 @@ const GoalDetailCard: React.FC<GoalDetail> = ({ title, tag, desc, percent, total
 
 const GoalsListPanel = () => {
   return (
-    <div className='tw-flex tw-flex-col tw-gap-4 tw-items-center tw-justify-start tw-w-full'>
+    <div className='flex flex-col gap-4 items-center justify-start w-full'>
       <TitleWithEllipsis title='Goals List' />
       {
         goalDetailDummyData.map((goalDetail, index) => (

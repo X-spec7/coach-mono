@@ -46,25 +46,25 @@ const workoutActivityDummy = [
 
 const VerticalProgressBar: React.FC<WorkoutActivity> = ({ xaxis, label, percent }) => {
   return (
-    <div className='tw-flex tw-w-20 tw-flex-col tw-justify-between tw-gap-2 tw-items-center tw-h-full'>
-      <div className='tw-flex tw-w-full tw-flex-col tw-justify-end tw-gap-2 tw-items-center tw-flex-1 tw-bg-gray-bg-subtle tw-rounded-20 tw-p-1.5'>
-        <p className='tw-text-gray-20 tw-text-xxs2 tw-font-medium break-words tw-text-center'>{label}</p>
+    <div className='flex w-20 flex-col justify-between gap-2 items-center h-full'>
+      <div className='flex w-full flex-col justify-end gap-2 items-center flex-1 bg-gray-bg-subtle rounded-20 p-1.5'>
+        <p className='text-gray-20 text-xxs2 font-medium break-words text-center'>{label}</p>
         <div
-          className="tw-bg-blue tw-rounded-20 tw-w-full"
+          className="bg-blue rounded-20 w-full"
           style={{ height: `${percent}%` }}
         />
       </div>
-      <p className='tw-text-gray-20 tw-text-xxs2 tw-font-medium'>{xaxis}</p>
+      <p className='text-gray-20 text-xxs2 font-medium'>{xaxis}</p>
     </div>
   )
 }
 
 const WorkoutActivityPanel = () => {
   return (
-    <div className='tw-flex tw-flex-col tw-items-center tw-gap-4 tw-w-full tw-p-4 tw-border-stroke tw-border tw-rounded-20'>
+    <div className='flex flex-col items-center gap-4 w-full p-4 border-stroke border rounded-20'>
       <TitleWithEllipsis title='Workout Activity' />
 
-      <div className='tw-flex tw-justify-between tw-items-center tw-w-full tw-h-90'>
+      <div className='flex justify-between items-center w-full h-90'>
         {
           workoutActivityDummy.map((workout, index) => {
             return (

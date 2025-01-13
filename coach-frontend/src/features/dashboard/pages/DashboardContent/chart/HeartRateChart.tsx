@@ -4,7 +4,7 @@ const tempHeartRateChartImage = '/images/heart-rate.png'
 
 const HeartRateChart = () => {
   return (
-    <div className='tw-relative tw-w-full tw-h-full'>
+    <div className='relative w-full h-full'>
       <Image
         src={tempHeartRateChartImage}
         alt="heart rate chart"

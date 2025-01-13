@@ -10,7 +10,7 @@ interface IContact {
 
 const ContactDetailBox: React.FC<ILayoutProps> = ({ children }) => {
   return (
-    <div className='tw-flex tw-justify-start tw-items-start tw-gap-3.5'>
+    <div className='flex justify-start items-start gap-3.5'>
       {children}
     </div>
   )
@@ -18,7 +18,7 @@ const ContactDetailBox: React.FC<ILayoutProps> = ({ children }) => {
 
 const ContactSvgBox: React.FC<ILayoutProps> = ({ children }) => {
   return (
-    <div className='tw-flex tw-justify-center tw-items-center tw-w-9.5 tw-h-9.5 tw-rounded-2xl tw-bg-green'>
+    <div className='flex justify-center items-center w-9.5 h-9.5 rounded-2xl bg-green'>
       {children}
     </div>
   )
@@ -31,16 +31,16 @@ interface IContactDetailText {
 
 const ContactDetailText: React.FC<IContactDetailText> = ({ title, content }) => {
   return (
-    <div className='tw-flex-1'>
-      <p className='tw-text-gray-20 tw-text-xs'>{title}</p>
-      <p className='tw-text-black tw-text-sm break-words'>{content}</p> 
+    <div className='flex-1'>
+      <p className='text-gray-20 text-xs'>{title}</p>
+      <p className='text-black text-sm break-words'>{content}</p> 
     </div>
   )
 }
 
 const Contact: React.FC<{contact?: IContact}> = ({ contact }) => {
   return (
-    <div className='tw-flex tw-flex-col tw-w-full tw-gap-3.5'>
+    <div className='flex flex-col w-full gap-3.5'>
       <TitleWithEllipsis title='Contact' />
 
       {/* EMAIL */}

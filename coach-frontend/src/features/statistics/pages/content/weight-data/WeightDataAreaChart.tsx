@@ -65,7 +65,7 @@ const WeightDataAreaChart = () => {
 
 
   return (
-    <div className='tw-w-full'>
+    <div className='w-full'>
       <ReactApexChart options={state.options} series={state.series} type="area" height={350} />
     </div>
   )

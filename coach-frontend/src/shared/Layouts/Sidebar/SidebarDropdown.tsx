@@ -7,13 +7,13 @@ const SidebarDropdown = ({ item }: any) => {
 
   return (
     <>
-      <ul className="tw-mb-5.5 tw-mt-4 tw-flex tw-flex-col tw-gap-2.5 tw-pl-6">
+      <ul className="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
         {item.map((item: any, index: number) => (
           <li key={index}>
             <Link
               href={item.route}
-              className={`tw-group tw-relative tw-flex tw-items-center tw-gap-2.5 tw-rounded-md tw-px-4 tw-font-medium tw-text-bodydark2 tw-duration-300 tw-ease-in-out tw-hover:tw-text-white ${
-                pathname === item.route ? "tw-text-white" : ""
+              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
+                pathname === item.route ? "text-white" : ""
               }`}
             >
               {item.label}

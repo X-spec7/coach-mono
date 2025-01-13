@@ -20,15 +20,15 @@ interface TrainingProgressComponentProps {
 const getColorByCategory = (category: ClassCategory): string => {
   switch (category) {
     case 'Strength':
-      return 'tw-bg-yellow'
+      return 'bg-yellow'
     case 'Cardio':
-      return 'tw-bg-blue'
+      return 'bg-blue'
     case 'Core':
-      return 'tw-bg-red'
+      return 'bg-red'
     case 'Flexibility':
-      return 'tw-bg-green'
+      return 'bg-green'
     default:
-      return 'tw-bg-blue'
+      return 'bg-blue'
   }
 }
 
@@ -61,19 +61,19 @@ const TrainingProgressComponent: React.FC<TrainingProgressComponentProps> = ({ca
   const color = getColorByCategory(category)
 
   return (
-    <div className='tw-w-full'>
-      <div className='tw-flex tw-justify-between tw-items-start'>
-        <div className='tw-flex tw-justify-start tw-items-center tw-gap-2'>
-          <span className={`tw-w-3 tw-h-3 tw-rounded-full ${color}`}></span>
-          <div className='tw-flex tw-flex-col tw-justify-start tw-items-start tw-gap-[6px]'>
+    <div className='w-full'>
+      <div className='flex justify-between items-start'>
+        <div className='flex justify-start items-center gap-2'>
+          <span className={`w-3 h-3 rounded-full ${color}`}></span>
+          <div className='flex flex-col justify-start items-start gap-[6px]'>
             <h3>{category} Training</h3>
           </div>
         </div>
 
-        <p className='tw-text-black tw-font-medium'>{progress}%</p>
+        <p className='text-black font-medium'>{progress}%</p>
       </div>
 
-      <p className='tw-text-gray-20 tw-text-xs tw-mt-[6px]'>
+      <p className='text-gray-20 text-xs mt-[6px]'>
         {completedSessionCount}/{totalSessionCount} sets of {sessionName}
       </p>
     </div>
@@ -82,16 +82,16 @@ const TrainingProgressComponent: React.FC<TrainingProgressComponentProps> = ({ca
 
 const ProgressPanel = () => {
   return (
-    <div className='tw-flex tw-flex-col tw-flex-1 tw-items-center tw-h-[520px] tw-bg-white tw-rounded-20 tw-px-4 tw-pt-4 tw-pb-5'>
-      <div className='tw-flex tw-justify-between tw-w-full tw-items-center tw-mb-4'>
-        <h3 className='tw-text-black tw-text-base tw-font-medium'>Progress</h3>
+    <div className='flex flex-col flex-1 items-center h-[520px] bg-white rounded-20 px-4 pt-4 pb-5'>
+      <div className='flex justify-between w-full items-center mb-4'>
+        <h3 className='text-black text-base font-medium'>Progress</h3>
         {/* TODO: should be replaced with dropdown button */}
-        <div className='tw-flex tw-justify-center tw-items-center tw-w-22 tw-h-8 tw-rounded-20 tw-bg-green tw-text-center tw-text-gray-30 tw-font-medium tw-text-xxs'>This Week</div>
+        <div className='flex justify-center items-center w-22 h-8 rounded-20 bg-green text-center text-gray-30 font-medium text-xxs'>This Week</div>
       </div>
 
-      <div className='tw-h-12 tw-w-full'>
-        <p className='tw-text-2xl tw-text-black tw-font-medium'>{totalProgress}%</p>
-        <p className='tw-text-xxs tw-text-gray-20'>Goal Completion</p>
+      <div className='h-12 w-full'>
+        <p className='text-2xl text-black font-medium'>{totalProgress}%</p>
+        <p className='text-xxs text-gray-20'>Goal Completion</p>
       </div>
 
       <ReactApexChart
@@ -102,9 +102,9 @@ const ProgressPanel = () => {
         height={192}
       />
       
-      {/* <div className='tw-flex tw-items-center tw-text-center tw-w-48 tw-h-48 tw-rounded-full tw-border-red-30 tw-border tw-mb-[6px]'>Progress Circle Component</div> */}
+      {/* <div className='flex items-center text-center w-48 h-48 rounded-full border-red-30 border mb-[6px]'>Progress Circle Component</div> */}
 
-      <div className='tw-flex tw-flex-col tw-items-center tw-gap-4 tw-w-full'>
+      <div className='flex flex-col items-center gap-4 w-full'>
         {
           trainingProgressDummyData.map((progressData, index) => (
             <TrainingProgressComponent

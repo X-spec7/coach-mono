@@ -8,8 +8,8 @@ interface AddButtonProps {
 const AddButton: React.FC<AddButtonProps> = ({title, onClick}) => {
   return (
     <button
-      className={`tw-flex tw-justify-center tw-items-center tw-bg-green tw-text-gray-30 tw-text-xxs
-        ${title ? 'tw-px-2.5 tw-py-1.5 tw-rounded-20' : 'tw-p-1.5 tw-rounded-full'}
+      className={`flex justify-center items-center bg-green text-gray-30 text-xxs
+        ${title ? 'px-2.5 py-1.5 rounded-20' : 'p-1.5 rounded-full'}
       `}
       onClick={onClick}
     >

@@ -10,10 +10,10 @@ interface CaloriesChartProps {
 
 const CaloriesChart: React.FC<CaloriesChartProps> = ({ degree, progressDegree }) => {
   return (
-    <div className="tw-relative tw-w-full tw-h-full tw-rounded-lg tw-overflow-hidden">
+    <div className="relative w-full h-full rounded-lg overflow-hidden">
 
       {/* Progress bar */}
-      <div className='tw-flex tw-justify-center tw-items-end tw-w-full tw-h-full'>
+      <div className='flex justify-center items-bottom w-full h-full'>
         <SemiCircleProgressBar
           percentage={progressDegree}
           strokeWidth={16}
@@ -24,12 +24,12 @@ const CaloriesChart: React.FC<CaloriesChartProps> = ({ degree, progressDegree })
 
       {/* Rotating bar */}
       <div
-        className="tw-absolute tw-bottom-0 tw-w-10 tw-left-1/2 tw-transform"
+        className="absolute bottom-0 w-10 left-1/2 transform"
         style={{
           transform: `translateX(-50%) rotate(${-100 + progressDegree/100 * 180}deg)`,
         }}
       >
-        <div className="tw-absolute tw-bottom-2 tw-left-2 tw-w-3 tw-h-3 tw-bg-white tw-rounded-full tw-border tw-border-gray-300" />
+        <div className="absolute bottom-2 left-2 w-3 h-3 bg-white rounded-full border border-gray-300" />
 
         <Image
           width={40}

@@ -54,13 +54,13 @@ const NutritionCard: React.FC<Nutrition> = ({ title, total, value }) => {
   const progressPercentage = Math.min((value / total) * 100, 100)
 
   return (
-    <div className={`tw-flex tw-flex-col tw-items-start tw-justify-center tw-w-full tw-gap-2 tw-xl:tw-gap-3 tw-px-3 tw-py-3 tw-xl:tw-py-6 tw-rounded-2xl ${colorSet.bgColor}`}>
-      <h4 className='tw-text-black tw-text-sm tw-font-medium'>{title}</h4>
+    <div className={`flex flex-col items-start justify-center w-full gap-2 xl:gap-3 px-3 py-3 xl:py-6 rounded-2xl ${colorSet.bgColor}`}>
+      <h4 className='text-black text-sm font-medium'>{title}</h4>
 
       {/* Progress Bar */}
-      <div className={`tw-w-full tw-h-2 tw-rounded-md tw-overflow-hidden ${colorSet.progressBgColor}`}>
+      <div className={`w-full h-2 rounded-md overflow-hidden ${colorSet.progressBgColor}`}>
         <div
-          className={`tw-h-full tw-rounded-md ${colorSet.progressColor}`}
+          className={`h-full rounded-md ${colorSet.progressColor}`}
           style={{
             width: `${progressPercentage}%`,
           }}
@@ -68,8 +68,8 @@ const NutritionCard: React.FC<Nutrition> = ({ title, total, value }) => {
       </div>
 
       <div className=''>
-        <span className='tw-text-gray-30 tw-text-sm tw-font-medium'>{total.toLocaleString()}</span>
-        <span className='tw-text-gray-20 tw-text-xxs'> / {value.toLocaleString()} cal</span>
+        <span className='text-gray-30 text-sm font-medium'>{total.toLocaleString()}</span>
+        <span className='text-gray-20 text-xxs'> / {value.toLocaleString()} cal</span>
       </div>
     </div>
   )
@@ -77,21 +77,21 @@ const NutritionCard: React.FC<Nutrition> = ({ title, total, value }) => {
 
 const CaloriesStatistics = () => {
   return (
-    <div className='tw-flex tw-flex-col tw-gap-4 tw-items-center'>
+    <div className='flex flex-col gap-4 items-center'>
       <TitleWithEllipsis title='Calories Statistics' />
 
-      <div className='tw-flex tw-justify-start tw-items-center tw-w-full tw-text-gray-20 tw-text-xxs'>
-        <div className='tw-bg-blue tw-w-2.5 tw-h-2.5 tw-rounded-sm mr-1.5' />
+      <div className='flex justify-start items-center w-full text-gray-20 text-xxs'>
+        <div className='bg-blue w-2.5 h-2.5 rounded-sm mr-1.5' />
         <p>Active Calories</p>
-        <div className='tw-bg-gray-20 tw-w-2.5 tw-h-2.5 tw-rounded-sm ml-4 mr-1.5' />
+        <div className='bg-gray-20 w-2.5 h-2.5 rounded-sm ml-4 mr-1.5' />
         <p>Resting Calories</p>
       </div>
 
-      <div className='tw-w-full tw-h-70 tw-border-stroke tw-border'>
+      <div className='w-full h-70 border-stroke border'>
         <CaloriesChart />
       </div>
 
-      <div className='tw-grid tw-grid-cols-2 tw-xl:tw-grid-cols-4 tw-gap-4 tw-w-full'>
+      <div className='grid grid-cols-2 xl:grid-cols-4 gap-4 w-full'>
         {
           nutritionDummyData.map((nutrition, index) => {
             return (

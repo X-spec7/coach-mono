@@ -45,10 +45,10 @@ const RecentActivity = () => {
   const handleOpen = (value: number) => setOpen(open === value ? 0 : value)
   
   return (
-    <div className='tw-flex tw-flex-col tw-gap-5 tw-bg-[#F8F8F8] tw-mt-4 tw-mx-1.5 tw-px-4 tw-pt-4 tw-pb-2 tw-rounded-20'>
+    <div className='flex flex-col gap-5 bg-[#F8F8F8] mt-4 mx-1.5 px-4 pt-4 pb-2 rounded-20'>
       {/* <!-- Title --> */}
-      <div className='tw-flex tw-justify-between tw-items-center'>
-        <h3 className='tw-text-black tw-font-medium'>Recent Activity</h3>
+      <div className='flex justify-between items-center'>
+        <h3 className='text-black font-medium'>Recent Activity</h3>
         <button>...</button>
       </div>
 
@@ -60,37 +60,37 @@ const RecentActivity = () => {
           return (
             <div
               key={index}
-              className={`tw-flex tw-justify-start tw-items-start tw-gap-3.5 ${open === index + 1 ? 'tw-mb-4' : ''}`}
+              className={`flex justify-start items-start gap-3.5 ${open === index + 1 ? 'mb-4' : ''}`}
             >
-              <div className='tw-flex tw-flex-col tw-items-center tw-justify-start tw-w-9 tw-h-full tw-gap-1.5'>
-                <div className='tw-flex tw-justify-center tw-items-center tw-w-9 tw-h-9 tw-bg-blue tw-rounded-full'>
+              <div className='flex flex-col items-center justify-start w-9 h-full gap-1.5'>
+                <div className='flex justify-center items-center w-9 h-9 bg-blue rounded-full'>
                   <HeartBeatSvg width='18' height='18' color='#212738' />
                 </div>
                 {
-                  open === index + 1 && <div className='tw-w-[2px] tw-flex-1 tw-mt-1.5 tw-bg-stroke'/>
+                  open === index + 1 && <div className='w-[2px] flex-1 mt-1.5 bg-stroke'/>
                 }
               </div>
-              <div className='tw-flex tw-flex-1'>
+              <div className='flex flex-1'>
                 <Accordion
                   open={open === (index + 1)}
-                  className='tw-p-0 tw-border-0'
+                  className='p-0 border-0'
                   placeholder={undefined}
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
                   <AccordionHeader
                     onClick={() => handleOpen(index + 1)}
-                    className='tw-p-0 tw-border-0'
+                    className='p-0 border-0'
                     placeholder={undefined}
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}
                   >
-                    <div className='tw-flex tw-flex-col tw-flex-1 tw-gap-1'>
+                    <div className='flex flex-col flex-1 gap-1'>
                       {/* <!-- TIME WITH ARROW SVG --> */}
-                      <div className={`tw-flex tw-items-center
-                        ${open === index + 1 ? 'tw-justify-between tw-w-full' : 'tw-justify-start tw-gap-2'}
+                      <div className={`flex items-center
+                        ${open === index + 1 ? 'justify-between w-full' : 'justify-start gap-2'}
                       `}>
-                        <p className='tw-text-gray-20 tw-text-xxs'>{formattedTime}</p>
+                        <p className='text-gray-20 text-xxs'>{formattedTime}</p>
                         {
                           open !== index + 1
                           ? <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -102,18 +102,18 @@ const RecentActivity = () => {
                         }
                       </div>
 
-                      <p className='tw-text-black tw-font-medium tw-text-sm'>{activity.title}</p>
+                      <p className='text-black font-medium text-sm'>{activity.title}</p>
                     </div>
                   </AccordionHeader>
-                  <AccordionBody className='tw-pt-1.5 tw-px-0 tw-pb-0 tw-border-0'>
-                    <div className='tw-text-gray-20 tw-text-xs'>
-                      <div className='tw-flex tw-items-center'>
+                  <AccordionBody className='pt-1.5 px-0 pb-0 border-0'>
+                    <div className='text-gray-20 text-xs'>
+                      <div className='flex items-center'>
                         <ClockSvg width='13' height='13' color='#878A94'/>
-                        <p className='tw-pl-1.5 tw-pr-4'>{activity.duration}-minute</p>
+                        <p className='pl-1.5 pr-4'>{activity.duration}-minute</p>
                         <FireSvg width='16' height='16' color='#878A94'/>
-                        <p className='tw-pl-1.5'>{activity.calory} Cal</p>
+                        <p className='pl-1.5'>{activity.calory} Cal</p>
                       </div>
-                      <p className='tw-break-word tw-pt-1'>{activity.description}</p>
+                      <p className='break-word pt-1'>{activity.description}</p>
                     </div>
                   </AccordionBody>
                 </Accordion>

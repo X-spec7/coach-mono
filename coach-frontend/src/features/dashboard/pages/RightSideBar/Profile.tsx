@@ -45,9 +45,9 @@ const ProfileDetail: React.FC<ProfileDetailProps> = ({ label, value }) => {
   const unit = getUnitByLabel(label)
 
   return (
-    <div className='tw-flex tw-flex-col tw-justify-center tw-items-center tw-gap-1'>
-      <span className='tw-text-gray-20 tw-text-xxs'>{label}</span>
-      <span className='tw-text-black tw-font-medium'>{value} {unit}</span>
+    <div className='flex flex-col justify-center items-center gap-1'>
+      <span className='text-gray-20 text-xxs'>{label}</span>
+      <span className='text-black font-medium'>{value} {unit}</span>
     </div>
   )
 }
@@ -76,7 +76,7 @@ const Profile: React.FC<ProfileProps> = ({ fullname, level, number, weight, heig
   }
 
   return (
-    <div className='tw-flex tw-flex-col tw-justify-start tw-gap-5 tw-pb-2 tw-px-1.5'>
+    <div className='flex flex-col justify-start gap-5 pb-2 px-1.5'>
       <TitleWithEllipsis
         title='My Profile'
         menus={['Profile']}
@@ -84,9 +84,9 @@ const Profile: React.FC<ProfileProps> = ({ fullname, level, number, weight, heig
       />
 
       {/* <!-- Profile Overview --> */}
-      <div className='tw-flex tw-justify-center tw-items-center tw-gap-4'>
+      <div className='flex justify-center items-center gap-4'>
         {!isUserLoaded ? (
-          <div className='tw-h-9 tw-w-9 tw-bg-gray-300 tw-animate-pulse tw-rounded-full'></div>
+          <div className='h-9 w-9 bg-gray-300 animate-pulse rounded-full'></div>
         ) : (user.profilePicture ? (
           <Image
             width={36}
@@ -97,7 +97,7 @@ const Profile: React.FC<ProfileProps> = ({ fullname, level, number, weight, heig
               height: 'auto',
             }}
             alt='User'
-            className='tw-rounded-full'
+            className='rounded-full'
           />
         ) : (
           <Image
@@ -113,18 +113,18 @@ const Profile: React.FC<ProfileProps> = ({ fullname, level, number, weight, heig
         ))}
 
         <div>
-          <h4 className='tw-text-lg tw-text-black tw-font-medium'>{user.firstName} {user.lastName}</h4>
+          <h4 className='text-lg text-black font-medium'>{user.firstName} {user.lastName}</h4>
           {/* TODO: add svg images here */}
-          <div className='tw-flex tw-justify-start tw-items-center tw-gap-1 tw-text-gray-20 tw-text-xs'>
+          <div className='flex justify-start items-center gap-1 text-gray-20 text-xs'>
             <p>{level}</p>
-            <span className='tw-w-1 tw-h-1 tw-rounded-full tw-bg-gray-20'></span>
+            <span className='w-1 h-1 rounded-full bg-gray-20'></span>
             <p>{number.toLocaleString()}</p>
           </div>
         </div>
       </div>
 
       {/* <!-- Profile Detail --> */}
-      <div className='tw-flex tw-justify-between tw-items-center tw-px-6 tw-py-3 tw-rounded-20 tw-bg-blue-subtle'>
+      <div className='flex justify-between items-center px-6 py-3 rounded-20 bg-blue-subtle'>
         <ProfileDetail label='Weight' value={weight} />
         <ProfileDetail label='Height' value={height} />
         <ProfileDetail label='Age' value={age} />

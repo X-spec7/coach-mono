@@ -30,10 +30,10 @@ const EllipsisMenu: React.FC<EllipsisMenuProps> = ({ menus, onClick }) => {
   }, [])
 
   return (
-    <div className="tw-relative" ref={menuRef}>
+    <div className="relative" ref={menuRef}>
       <button
         onClick={toggleMenu}
-        className="tw-p-2 tw-rounded-full tw-hover:tw-bg-gray-200 tw-focus:tw-outline-none"
+        className="p-2 rounded-full hover:bg-gray-200 focus:outline-none"
         aria-label="Ellipsis menu"
       >
         <svg fill="#212738" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
@@ -54,11 +54,11 @@ const EllipsisMenu: React.FC<EllipsisMenuProps> = ({ menus, onClick }) => {
 
       {/* TODO: remove default values in future */}
       {isOpen && menus.length == 0 && (
-        <div className="tw-absolute tw-right-0 tw-mt-2 tw-w-48 tw-bg-white tw-border tw-border-gray-200 tw-rounded-md tw-shadowlg tw-z-9999">
-          <ul className="tw-py-1">
+        <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-9999">
+          <ul className="py-1">
             <li>
               <button
-                className="tw-block tw-w-full tw-text-left tw-px-4 tw-py-2 tw-text-gray-700 tw-hover:tw-bg-gray-100"
+                className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
                 onClick={() => {
                   alert("Option 1 clicked")
                   setIsOpen(false)
@@ -69,7 +69,7 @@ const EllipsisMenu: React.FC<EllipsisMenuProps> = ({ menus, onClick }) => {
             </li>
             <li>
               <button
-                className="tw-block tw-w-full tw-text-left tw-px-4 tw-py-2 tw-text-gray-700 tw-hover:tw-bg-gray-100"
+                className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
                 onClick={() => {
                   alert("Option 2 clicked")
                   setIsOpen(false)
@@ -80,7 +80,7 @@ const EllipsisMenu: React.FC<EllipsisMenuProps> = ({ menus, onClick }) => {
             </li>
             <li>
               <button
-                className="tw-block tw-w-full tw-text-left tw-px-4 tw-py-2 tw-text-gray-700 tw-hover:tw-bg-gray-100"
+                className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
                 onClick={() => {
                   alert("Option 3 clicked")
                   setIsOpen(false)
@@ -94,13 +94,13 @@ const EllipsisMenu: React.FC<EllipsisMenuProps> = ({ menus, onClick }) => {
       )}
 
       {isOpen && menus.length != 0 && (
-        <div className="tw-absolute tw-right-0 tw-mt-2 tw-w-48 tw-bg-white tw-border tw-border-gray-200 tw-rounded-md tw-shadowlg tw-z-9999">
-          <ul className="tw-py-1">
+        <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-9999">
+          <ul className="py-1">
             {
               menus.map((menu, index) => (
                 <li key={index}>
                   <button
-                    className="tw-block tw-w-full tw-text-left tw-px-4 tw-py-2 tw-text-gray-700 tw-hover:tw-bg-gray-100"
+                    className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
                     onClick={() => {
                       if(onClick) {
                         onClick(menu)

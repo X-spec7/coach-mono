@@ -19,7 +19,7 @@ const TrainersPage: React.FC<ITrainersPageProps> = async ({ query, expertise, cu
   // TODO: handle response error case
 
   return (
-      <div className='tw-flex tw-flex-col tw-p-4 tw-gap-4 tw-bg-white tw-rounded-4xl'>
+      <div className='flex flex-col p-4 gap-4 bg-white rounded-4xl'>
         <ContentHeader searchPlaceHolder={query} />
 
         {/* <!-- MAIN CONTENT --> */}

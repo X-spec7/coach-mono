@@ -10,40 +10,40 @@ const SelectGroupOne: React.FC = () => {
   };
 
   return (
-    <div className="tw-mb-4.5">
-      <label className="tw-mb-2.5 tw-block tw-text-black">
+    <div className="mb-4.5">
+      <label className="mb-2.5 block text-black dark:text-white">
         {" "}
         Subject{" "}
       </label>
 
-      <div className="tw-relative tw-z-20 tw-bg-transparent">
+      <div className="relative z-20 bg-transparent dark:bg-form-input">
         <select
           value={selectedOption}
           onChange={(e) => {
             setSelectedOption(e.target.value);
             changeTextColor();
           }}
-          className={`tw-relative tw-z-20 tw-w-full appearance-none rounded tw-border tw-border-stroke tw-bg-transparent tw-px-5 tw-py-3 tw-outline-none tw-transition tw-focus:tw-border-primary active:tw-border-primary ${
-            isOptionSelected ? "tw-text-black" : ""
+          className={`relative z-20 w-full appearance-none rounded border border-stroke bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary ${
+            isOptionSelected ? "text-black dark:text-white" : ""
           }`}
         >
-          <option value="" disabled className="tw-text-body">
+          <option value="" disabled className="text-body dark:text-bodydark">
             Select your subject
           </option>
-          <option value="USA" className="tw-text-body">
+          <option value="USA" className="text-body dark:text-bodydark">
             USA
           </option>
-          <option value="UK" className="tw-text-body">
+          <option value="UK" className="text-body dark:text-bodydark">
             UK
           </option>
-          <option value="Canada" className="tw-text-body">
+          <option value="Canada" className="text-body dark:text-bodydark">
             Canada
           </option>
         </select>
 
-        <span className="tw-absolute tw-right-4 tw-top-1/2 tw-z-30 tw--translate-y-1/2">
+        <span className="absolute right-4 top-1/2 z-30 -translate-y-1/2">
           <svg
-            className="tw-fill-current"
+            className="fill-current"
             width="24"
             height="24"
             viewBox="0 0 24 24"

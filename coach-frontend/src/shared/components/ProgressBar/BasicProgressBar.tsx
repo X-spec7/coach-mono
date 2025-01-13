@@ -14,9 +14,9 @@ const BasicProgressBar: React.FC<BasicProgressBarProps> = ({
   progress,
 }) => {
   return (
-    <div className={`${bgColor} ${height} ${radius} tw-w-full`}>
+    <div className={`${bgColor} ${height} ${radius} w-full`}>
       <div
-        className={`${progressColor} ${radius} tw-h-full`}
+        className={`${progressColor} ${radius} h-full`}
         style={{
           width: `${progress}%`,
         }}

@@ -75,22 +75,22 @@ const SignUpPage: React.FC = () => {
   }
 
   return (
-    <div className='tw-border tw-border-stroke tw-bg-white tw-rounded-20 tw-shadowdefault tw-min-w-150'>
-      <div className='tw-flex tw-flex-wrap tw-items-center tw-w-full'>
-        <div className='tw-w-full'>
-          <div className='tw-w-full tw-p-4 tw-sm:tw-p-12.5 tw-xl:tw-p-17.5'>
-            <span className='tw-mb-1.5 tw-block tw-font-medium'>Start for free</span>
-            <h2 className='tw-mb-9 tw-text-2xl tw-font-bold tw-text-black tw-sm:tw-text-title-xl2'>
+    <div className='border border-stroke bg-white rounded-20 shadow-default min-w-150'>
+      <div className='flex flex-wrap items-center w-full'>
+        <div className='w-full'>
+          <div className='w-full p-4 sm:p-12.5 xl:p-17.5'>
+            <span className='mb-1.5 block font-medium'>Start for free</span>
+            <h2 className='mb-9 text-2xl font-bold text-black sm:text-title-xl2'>
               Sign Up to COA-CH
             </h2>
 
             <form onSubmit={handleRegister}>
-              {error && <p className='tw-text-red-500'>{error}</p>}
+              {error && <p className='text-red-500'>{error}</p>}
               {Object.keys(formData).map((key) => (
                 key !== 'userType' ? (
-                  <div className='tw-mb-8 tw-flex tw-items-center tw-gap-4' key={key}>
+                  <div className='mb-8 flex items-center gap-4' key={key}>
                     <label
-                      className='tw-font-medium tw-text-black tw-min-w-32'
+                      className='font-medium text-black min-w-32'
                       htmlFor={key}
                     >
                       {key.charAt(0).toUpperCase() + key.slice(1).replace('Password', ' Password')}
@@ -100,15 +100,15 @@ const SignUpPage: React.FC = () => {
                       id={key}
                       name={key}
                       placeholder={`Enter your ${key}`}
-                      className='tw-flex-1 tw-rounded-lg tw-border tw-border-stroke tw-bg-transparent tw-py-2 tw-px-4 tw-text-black tw-outline-none tw-focus:tw-border-primary focus-visible:tw-shadownone'
+                      className='flex-1 rounded-lg border border-stroke bg-transparent py-2 px-4 text-black outline-none focus:border-primary focus-visible:shadow-none'
                       value={formData[key as keyof typeof formData]}
                       onChange={handleChange}
                     />
                   </div>
                 ) : (
-                  <div className='tw-mb-8 tw-flex tw-items-center tw-gap-4' key={key}>
+                  <div className='mb-8 flex items-center gap-4' key={key}>
                     <label
-                      className='tw-font-medium tw-text-black tw-min-w-32'
+                      className='font-medium text-black min-w-32'
                       htmlFor={key}
                     >
                       User Type
@@ -118,10 +118,10 @@ const SignUpPage: React.FC = () => {
                       name="userType"
                       value={formData.userType}
                       onChange={handleChange}
-                      className="tw-flex-1 tw-rounded-lg tw-border tw-border-stroke tw-bg-transparent tw-py-2 tw-px-4 tw-text-black tw-outline-none tw-focus:tw-border-primary focus-visible:tw-shadownone"
+                      className="flex-1 rounded-lg border border-stroke bg-transparent py-2 px-4 text-black outline-none focus:border-primary focus-visible:shadow-none"
                     >
-                      <option value="Client" className="tw-py-2">Client</option>
-                      <option value="Coach" className="tw-py-2">Coach</option>
+                      <option value="Client" className="py-2">Client</option>
+                      <option value="Coach" className="py-2">Coach</option>
                     </select>
                   </div>
                 )
@@ -129,15 +129,15 @@ const SignUpPage: React.FC = () => {
               <button
                 type='submit'
                 disabled={isSubmitting}
-                className='tw-w-full tw-cursor-pointer tw-rounded-lg tw-border tw-border-green tw-bg-green tw-p-2 tw-text-black tw-text-lg tw-font-medium tw-transition tw-hover:tw-bg-opacity-90 disabled:tw-opacity-50'
+                className='w-full cursor-pointer rounded-lg border border-green bg-green p-2 text-black text-lg font-medium transition hover:bg-opacity-90 disabled:opacity-50'
               >
                 {isSubmitting ? 'Signing Up...' : 'Sign Up'}
               </button>
 
-              <div className='tw-mt-6 tw-text-center'>
+              <div className='mt-6 text-center'>
                 <p>
                   Already have an account?{' '}
-                  <Link href='/signin' className='tw-text-primary'>
+                  <Link href='/signin' className='text-primary'>
                     Sign in
                   </Link>
                 </p>

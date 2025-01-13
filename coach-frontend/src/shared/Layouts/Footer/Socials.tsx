@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const Socials = () => {
   return (
-    <div className='tw-flex tw-justify-end tw-items-center tw-gap-3'>
+    <div className='flex justify-end items-center gap-3'>
       {/* facebook */}
       <Link href="#">
         <svg width="20px" height="20px" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg" fill="none">

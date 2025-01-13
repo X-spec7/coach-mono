@@ -11,8 +11,8 @@ const Dashboard = () => {
   const user = useSelector(selectUser)
   
   return (
-    <div className="tw-flex tw-justify-between tw-gap-4 tw-p-4 tw-h-full">
-      <div className='tw-flex tw-flex-col tw-flex-1'>
+    <div className="flex justify-between gap-4 p-4 h-full">
+      <div className='flex flex-col flex-1'>
         <Header
           isDashboard
           title={`Hello, ${user.firstName} ${user.lastName}!  👋`}
@@ -23,7 +23,7 @@ const Dashboard = () => {
         
         <Footer />
       </div>
-      <div className='tw-max-2xl:tw-hidden'>
+      <div className='max-2xl:hidden'>
         <RightSideBar />
       </div>
     </div>

@@ -15,7 +15,7 @@ const SharedLayout: React.FC<ISharedLayout> = ({
   isDetailPage
 }) => {
   return (
-    <div className='tw-flex tw-flex-col tw-gap-4 tw-p-4'>
+    <div className='flex flex-col gap-4 p-4'>
       <Header
         title={headerTitle}
         description={headerDescription}
