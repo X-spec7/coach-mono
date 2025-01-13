@@ -10,21 +10,21 @@ const WeightDataPanel = () => {
       <div className='tw-flex tw-justify-between tw-items-end tw-w-full tw-text-xs tw-text-gray-20 tw-font-medium'>
         <p>Current Weight</p>
         <div>
-          <span className='tw-text-black tw-text-2xl tw-font-medium tw-mr-1'>72</span>
+          <span className='tw-text-black tw-text-2xl tw-font-medium mr-1'>72</span>
           <span>kg</span>
         </div>
       </div>
       <div className='tw-flex tw-justify-between tw-items-end tw-w-full tw-text-xs tw-text-gray-20 tw-font-medium'>
         <p>Weight Goal</p>
         <div>
-          <span className='tw-text-black tw-text-2xl tw-font-medium tw-mr-1'>65</span>
+          <span className='tw-text-black tw-text-2xl tw-font-medium mr-1'>65</span>
           <span>kg</span>
         </div>
       </div>
       <div className='tw-flex tw-justify-between tw-items-end tw-w-full tw-text-xs tw-text-gray-20 tw-font-medium'>
         <p>Progress</p>
         <div>
-          <span className='tw-text-black tw-text-2xl tw-font-medium tw-mr-1'>18</span>
+          <span className='tw-text-black tw-text-2xl tw-font-medium mr-1'>18</span>
           <span>%</span>
         </div>
       </div>

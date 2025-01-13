@@ -12,11 +12,11 @@ const dashboardClassDummyData = classDummyData.length > 3 ? classDummyData.slice
 const DashboardContent = () => {
 
   return (
-    <div className='tw-flex tw-flex-col tw-md:tw-flex-row tw-gap-4 tw-h-full tw-mt-4'>
+    <div className='tw-flex tw-flex-col md:tw-flex-row tw-gap-4 tw-h-full tw-mt-4'>
 
       <div className='tw-flex tw-flex-col tw-flex-1 tw-h-full'>
         {/* <-- Calorie Heart Rate Steps Chart Part --> */}
-        <div className='tw-grid tw-grid-cols-1 tw-xs:tw-grid-cols-2 tw-sm:tw-grid-cols-3 tw-justify-between tw-items-center tw-gap-4 tw-w-full'>
+        <div className='tw-grid tw-grid-cols-1 xs:tw-grid-cols-2 tw-sm:tw-grid-cols-3 tw-justify-between tw-items-center tw-gap-4 tw-w-full'>
           <div className='tw-flex tw-justify-center tw-items-center tw-h-56 tw-rounded-4xl tw-bg-white'>
             <CaloriesPanel />
           </div>
@@ -31,7 +31,7 @@ const DashboardContent = () => {
         </div>
 
         {/* <-- Activity Chart Part --> */}
-        <div className='tw-flex tw-justify-center tw-items-center tw-h-70 tw-rounded-4xl tw-bg-yellow-50 tw-xs:tw-bg-red-10 tw-sm:tw-bg-gray-bg tw-md:tw-bg-white tw-mt-4'>
+        <div className='tw-flex tw-justify-center tw-items-center tw-h-70 tw-rounded-4xl tw-bg-yellow-50 xs:tw-bg-red-10 tw-sm:tw-bg-gray-bg md:tw-bg-white tw-mt-4'>
           <ActivityPanel />
         </div>
 
@@ -59,7 +59,7 @@ const DashboardContent = () => {
         </div>
       </div>
 
-      <div className='tw-flex tw-flex-col tw-xs:tw-flex-row tw-md:tw-flex-col tw-max-tw-md:tw-justify-center tw-max-tw-md:tw-gap-4 tw-max-tw-md:tw-w-full tw-gap-4 tw-w-65 tw-h-full'>
+      <div className='tw-flex tw-flex-col xs:tw-flex-row md:tw-flex-col tw-max-md:tw-justify-center tw-max-md:tw-gap-4 tw-max-md:tw-w-full tw-gap-4 tw-w-65 tw-h-full'>
         <ProgressPanel />
         <MealPlan />
       </div>

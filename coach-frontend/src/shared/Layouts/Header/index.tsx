@@ -86,7 +86,7 @@ const Header = (props: HeaderProps) => {
           </Link>
         </div>
 
-        <div className='tw-flex tw-flex-col tw-justify-between tw-items-start tw-max-tw-md:tw-hidden'>
+        <div className='tw-flex tw-flex-col tw-justify-between tw-items-start tw-max-md:tw-hidden'>
           {
             props.isDetailPage && (
               <BackButton buttonTitle={props.description} handleBack={handleBack} />
@@ -103,7 +103,7 @@ const Header = (props: HeaderProps) => {
         <div className='tw-flex tw-flex-center tw-gap-2 tw-p-2 tw-bg-white tw-rounded-4xl'>
           {
             props.isDashboard && (
-              <div className='tw-max-tw-md:tw-hidden'>
+              <div className='tw-max-md:tw-hidden'>
                 <SearchField width='tw-w-67' height='tw-h-9' placeholder='Search anything'/>
               </div>
             )
@@ -116,7 +116,7 @@ const Header = (props: HeaderProps) => {
           }
           {
             props.isDashboard && (
-              <div className='tw-md:tw-hidden'>
+              <div className='md:tw-hidden'>
                 <DropdownUser />
               </div>
             )

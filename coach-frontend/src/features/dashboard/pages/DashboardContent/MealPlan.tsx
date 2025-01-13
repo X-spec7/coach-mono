@@ -59,9 +59,9 @@ const MealPlanCard: React.FC<MealPlanCardProps> = ({mealTime, mealTitle, difficu
         </div>
       </div>
 
-      <div className='tw-w-full tw-h-[2px] tw-bg-white tw-mr-3 tw-mb-3'></div>
+      <div className='tw-w-full tw-h-[2px] tw-bg-white mr-3 tw-mb-3'></div>
 
-      <p className='tw-text-xxs tw-text-gray-30 tw-break-words'>{description}</p>
+      <p className='tw-text-xxs tw-text-gray-30 break-words'>{description}</p>
     </div>
   )
 }

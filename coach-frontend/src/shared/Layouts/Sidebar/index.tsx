@@ -74,9 +74,9 @@ const Sidebar = () => {
         className={`
           tw-max-lg:fixed tw-max-lg:tw-top-0 tw-max-lg:tw-left-0 tw-max-lg:tw-z-99999
           tw-flex tw-flex-col tw-justify-between
-          tw-h-[calc(100%-32px)] tw-box-border tw-my-4 tw-ml-4 tw-px-4 tw-py-8 tw-w-55 tw-lg:translate-x-0
+          tw-h-[calc(100%-32px)] tw-box-border my-4 ml-4 tw-px-4 tw-py-8 tw-w-55 tw-lg:translate-x-0
           tw-bg-white tw-rounded-4xl tw-max-lg:tw-border-stroke tw-max-lg:tw-border-2
-          tw-duration-200 tw-ease-linear ${ isSidebarOpen ? "tw--translate-x-2" : "tw--translate-x-60"}`}
+          tw-duration-200 ease-linear ${ isSidebarOpen ? "tw--translate-x-2" : "tw--translate-x-60"}`}
       >
         <div>
           {/* <!-- SIDEBAR HEADER --> */}
@@ -110,7 +110,7 @@ const Sidebar = () => {
           </div>
 
           {/* <!-- SIDEBAR MENU --> */}
-          <div className='no-scrollbar tw-flex tw-flex-col tw-overflow-y-auto tw-duration-300 tw-ease-linear'>
+          <div className='no-scrollbar tw-flex tw-flex-col tw-overflow-y-auto tw-duration-300 ease-linear'>
             {/* <!-- Sidebar Menu --> */}
             <nav className='tw-mt-5 tw-lg:tw-mt-6'>
               {menuGroups.map((group, groupIndex) => (
@@ -135,7 +135,7 @@ const Sidebar = () => {
         <div>
           <div className='tw-lg:tw-flex tw-lg:tw-flex-col tw-gap-4 tw-p-4 tw-bg-blue tw-rounded-20 tw-hidden'>
             <div className='tw-h-8'>
-              <div className='tw-bg-red-30 tw-w-8 tw-h-8 tw-rounded-full'></div>
+              <div className='tw-bg-red-30 w-8 tw-h-8 tw-rounded-full'></div>
             </div>
 
             <p className='tw-text-black tw-text-2xl tw-font-medium'>
